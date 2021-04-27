@@ -2,13 +2,16 @@
 
 from odoo import models, fields, api
 
-# class pacientes(models.Model):
-#     _name = 'pacientes.pacientes'
+class pacientes(models.Model):
+    _name = 'pacientes.pacientes'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
+    name = fields.Char(string="Nombre", required=True)
+    id_card = fields.Integer(string="CI", required=True)
+    date = fields.Datetime(string="Fecha", required=True)
+    birthyear = fields.Integer(string="Año de nacimiento", required=True)
+    phone = fields.Integer(string="Número telefónico", required=True)
+    email = fields.Char(string="Correo eletrónico", required=True)
+    address = fields.Char(string="Dirección", required=True)
 #
 #     @api.depends('value')
 #     def _value_pc(self):
