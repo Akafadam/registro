@@ -1,28 +1,35 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
+    
     <record model="ir.ui.view" id="empleados.list">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="date"/>
+          <field name="birthyear"/>
+          <field name="phone"/>
+          <field name="email"/>
+          <field name="address"/>
+          <field name="charge"/>
+          <field name="speciality"/>
+          <field name="worked"/>
+          <field name="pay"/>
         </tree>
       </field>
     </record>
-    -->
+   
 
     <!-- actions opening views on models -->
-    <!--
+    
     <record model="ir.actions.act_window" id="empleados.action_window">
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
+   
 
     <!-- server action to the one above -->
     <!--
@@ -41,12 +48,13 @@
     -->
 
     <!-- Top menu item -->
-    <!--
+    
     <menuitem name="empleados" id="empleados.menu_root"/>
-    -->
+   
     <!-- menu categories -->
+    
+    <menuitem name="Menu 1" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_window"/>
     <!--
-    <menuitem name="Menu 1" id="empleados.menu_1" parent="empleados.menu_root"/>
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>
     -->
     <!-- actions -->
