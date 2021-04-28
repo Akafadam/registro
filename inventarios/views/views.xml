@@ -1,28 +1,28 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
     <record model="ir.ui.view" id="inventarios.list">
       <field name="name">inventarios list</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="product"/>
+          <field name="reserve_type"/>
+          <field name="cuantity"/>
+          <field name="date"/>
         </tree>
       </field>
     </record>
-    -->
+   
 
     <!-- actions opening views on models -->
-    <!--
+    
     <record model="ir.actions.act_window" id="inventarios.action_window">
       <field name="name">inventarios window</field>
       <field name="res_model">inventarios.inventarios</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
+   
 
     <!-- server action to the one above -->
     <!--
@@ -30,7 +30,7 @@
       <field name="name">inventarios server</field>
       <field name="model_id" ref="model_inventarios_inventarios"/>
       <field name="state">code</field>
-      <field name="code">
+      <field name="code">fields
         action = {
           "type": "ir.actions.act_window",
           "view_mode": "tree,form",
@@ -41,12 +41,12 @@
     -->
 
     <!-- Top menu item -->
-    <!--
+    
     <menuitem name="inventarios" id="inventarios.menu_root"/>
-    -->
+   
     <!-- menu categories -->
+    <menuitem name="Menu 1" id="inventarios.menu_1" parent="inventarios.menu_root" action="inventarios.action_window"/>
     <!--
-    <menuitem name="Menu 1" id="inventarios.menu_1" parent="inventarios.menu_root"/>
     <menuitem name="Menu 2" id="inventarios.menu_2" parent="inventarios.menu_root"/>
     -->
     <!-- actions -->
