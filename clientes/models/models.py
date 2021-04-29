@@ -7,8 +7,7 @@ class clientes(models.Model):
 
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
-    date = fields.Datetime(string="Fecha", required=True)
-    birthyear = fields.Integer(string="Año de nacimiento", required=True)
+    birthyear = fields.Datetime(string="Año de nacimiento", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     address = fields.Char(string="Dirección", required=True)
