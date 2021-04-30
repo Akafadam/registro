@@ -2,7 +2,27 @@
   <data>
     <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="empleados.list">
+    <record model="ir.ui.view" id="empleados.medicos">
+      <field name="name">empleados list</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="date"/>
+          <field name="birthyear"/>
+          <field name="phone"/>
+          <field name="email"/>
+          <field name="address"/>
+          <field name="schedule"/>
+          <field name="charge"/>
+          <field name="speciality"/>
+          <field name="worked"/>
+          <field name="pay"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados.servicio">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -14,22 +34,52 @@
           <field name="email"/>
           <field name="address"/>
           <field name="charge"/>
-          <field name="speciality"/>
           <field name="worked"/>
           <field name="pay"/>
         </tree>
       </field>
     </record>
    
+   <record model="ir.ui.view" id="empleados.administrativo">
+      <field name="name">empleados list</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="date"/>
+          <field name="birthyear"/>
+          <field name="phone"/>
+          <field name="email"/>
+          <field name="address"/>
+          <field name="charge"/>
+          <field name="worked"/>
+          <field name="pay"/>
+        </tree>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
     
-    <record model="ir.actions.act_window" id="empleados.action_window">
+    <record model="ir.actions.act_window" id="empleados.action_medico">
+      <field name="name">empleados window</field>
+      <field name="res_model">empleados.empleados</field>
+      <field name="view_id" ref="empleados.medicos"/>
+      <field name="view_mode">tree,form</field>
+    </record>
+   
+    <record model="ir.actions.act_window" id="empleados.action_servicio">
+      <field name="view_id" ref="empleados.servicio"/>
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
     </record>
-   
+
+    <record model="ir.actions.act_window" id="empleados.action_administrativo">
+      <field name="view_id" ref="empleados.administrativo"/>
+      <field name="name">empleados window</field>
+      <field name="res_model">empleados.empleados</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- server action to the one above -->
     <!--
@@ -53,7 +103,12 @@
    
     <!-- menu categories -->
     
-    <menuitem name="Menu 1" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_window"/>
+    <menuitem name="Personal Médico" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
+    
+    <menuitem name="Personal de Servicio" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_servicio"/>
+    
+    <menuitem name="Personal Administrativo" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_administrativo"/>
+
     <!--
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>
     -->

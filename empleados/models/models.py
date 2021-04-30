@@ -10,6 +10,7 @@ class empleados(models.Model):
     birthyear = fields.Integer(string="Año de nacimiento", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
+    schedule = fields.Datetime(string="Horario", required=True)
     address = fields.Char(string="Dirección", required=True)
     charge = fields.Char(string="Cargo", required=True)
     speciality = fields.Char(string="Especialidad", required=True)
