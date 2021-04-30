@@ -14,7 +14,6 @@
           <field name="email"/>
           <field name="address"/>
           <field name="schedule"/>
-          <field name="charge"/>
           <field name="speciality"/>
           <field name="worked"/>
           <field name="pay"/>
@@ -33,7 +32,6 @@
           <field name="phone"/>
           <field name="email"/>
           <field name="address"/>
-          <field name="charge"/>
           <field name="worked"/>
           <field name="pay"/>
         </tree>
@@ -51,7 +49,6 @@
           <field name="phone"/>
           <field name="email"/>
           <field name="address"/>
-          <field name="charge"/>
           <field name="worked"/>
           <field name="pay"/>
         </tree>

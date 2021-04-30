@@ -12,7 +12,6 @@ class empleados(models.Model):
     email = fields.Char(string="Correo eletrónico", required=True)
     schedule = fields.Datetime(string="Horario", required=True)
     address = fields.Char(string="Dirección", required=True)
-    charge = fields.Char(string="Cargo", required=True)
     speciality = fields.Char(string="Especialidad", required=True)
     worked = fields.Char(string="Horas trabajadas", required=True)
     pay = fields.Char(string="Remuneración", required=True)
