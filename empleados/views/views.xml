@@ -8,7 +8,6 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="date"/>
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>
@@ -27,7 +26,6 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="date"/>
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>
@@ -44,7 +42,6 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="date"/>
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>

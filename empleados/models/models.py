@@ -6,7 +6,6 @@ class empleados(models.Model):
     _name = 'empleados.empleados'
 
     name = fields.Char(string="Nombre", required=True)
-    date = fields.Datetime(string="Fecha", required=True)
     birthyear = fields.Integer(string="Año de nacimiento", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
