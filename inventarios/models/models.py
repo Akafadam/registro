@@ -6,7 +6,7 @@ class inventarios(models.Model):
     _name = 'inventarios.inventarios'
 
     product = fields.Char(string="Producto", required=True)
-    reserve_type = fields.Char(string="Tipo de Reserva", required=True)
+    reserve_type = fields.Selection(string="Tipo de Reserva", selection=[("egreso", "Egreso"), ("ingreso", "Ingreso")])
     cuantity = fields.Integer(string="Cantidad", required=True)
     date = fields.Datetime(string="Fecha", required=True)
 
