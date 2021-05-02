@@ -14,6 +14,23 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="productos.form">
+      <field name="name">productos form</field>
+      <field name="model">productos.productos</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="cost"/>
+              <field name="qr_code"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
    
 
     <!-- actions opening views on models -->

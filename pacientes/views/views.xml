@@ -16,6 +16,25 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="pacientes.form">
+      <field name="name">pacientes form</field>
+      <field name="model">pacientes.pacientes</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="id_card"/>
+              <field name="birthyear"/>
+              <field name="phone"/>
+              <field name="email"/>
+              <field name="address"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
    
 
     <!-- actions opening views on models -->

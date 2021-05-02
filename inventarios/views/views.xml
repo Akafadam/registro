@@ -13,6 +13,23 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="inventarios.form">
+      <field name="name">inventarios form</field>
+      <field name="model">inventarios.inventarios</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="product"/>
+              <field name="reserve_type"/>
+              <field name="cuantity"/>
+              <field name="date"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
    
 
     <!-- actions opening views on models -->
