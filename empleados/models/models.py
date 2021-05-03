@@ -8,6 +8,7 @@ class empleados(models.Model):
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Integer(string="Año de nacimiento", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
+    id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     schedule = fields.Datetime(string="Horario", required=True)
     address = fields.Char(string="Dirección", required=True)
