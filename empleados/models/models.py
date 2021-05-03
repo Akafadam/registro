@@ -10,9 +10,9 @@ class empleados(models.Model):
     phone = fields.Integer(string="Número telefónico", required=True)
     id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
-    schedule = fields.Datetime(string="Horario", required=True)
+    schedule = fields.Datetime(string="Horario")
     address = fields.Char(string="Dirección", required=True)
-    speciality = fields.Char(string="Especialidad", required=True)
+    speciality = fields.Char(string="Especialidad")
     worked = fields.Char(string="Horas trabajadas", required=True)
     pay = fields.Char(string="Remuneración", required=True)
 #
