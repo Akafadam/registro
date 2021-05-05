@@ -12,7 +12,14 @@ class empleados(models.Model):
     email = fields.Char(string="Correo eletrónico", required=True)
     schedule = fields.Datetime(string="Horario")
     address = fields.Char(string="Dirección", required=True)
-    speciality = fields.Char(string="Especialidad")
+    speciality = fields.Selection([('geriatra', 'Geriatra'),
+                                    ('pediatra', 'Pediatra'),
+                                    ('cardiologo', 'Cardiologo'),
+                                    ('hematologo', 'Hematologo'),
+                                    ('neurologo', 'Neurologo'),
+                                    ('nutriologo', 'Nutriologo'),
+                                    ('traumatologo', 'Traumatologo')],
+    string="Especialidad")
     worked = fields.Char(string="Horas trabajadas", required=True)
     pay = fields.Char(string="Remuneración", required=True)
 #
