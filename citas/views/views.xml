@@ -1,28 +1,48 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
+    
     <record model="ir.ui.view" id="citas.list">
       <field name="name">citas list</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="client_data"/>
+          <field name="pacient_data"/>
+          <field name="speciality"/>
+          <field name="medic_data"/>
+          <field name="date_time"/>
         </tree>
       </field>
     </record>
-    -->
+
+    <record model="ir.ui.view" id="citas.form">
+      <field name="name">citas form</field>
+      <field name="model">citas.citas</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="client_data"/>
+              <field name="pacient_data"/>
+              <field name="speciality"/>
+              <field name="medic_data"/>
+              <field name="date_time"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+   
 
     <!-- actions opening views on models -->
-    <!--
+    
     <record model="ir.actions.act_window" id="citas.action_window">
       <field name="name">citas window</field>
       <field name="res_model">citas.citas</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
+   
 
     <!-- server action to the one above -->
     <!--
@@ -41,12 +61,12 @@
     -->
 
     <!-- Top menu item -->
-    <!--
+    
     <menuitem name="citas" id="citas.menu_root"/>
-    -->
+   
     <!-- menu categories -->
+    <menuitem name="Menu 1" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
     <!--
-    <menuitem name="Menu 1" id="citas.menu_1" parent="citas.menu_root"/>
     <menuitem name="Menu 2" id="citas.menu_2" parent="citas.menu_root"/>
     -->
     <!-- actions -->
