@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from time import strftime
 
 class citas(models.Model):
     _name = 'citas.citas'
+
+    def check_schedule(self):
+        time = self.date_time[-5:]
+
     date_time = fields.Datetime(string="Fecha y Hora", required=True)
     client_data = fields.Many2one('clientes.clientes', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one('pacientes.pacientes', string="Datos del paciente", required=True)
