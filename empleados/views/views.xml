@@ -12,8 +12,9 @@
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>
+          <field name="arrive_time"/>
+          <field name="leave_time"/>
           <field name="address"/>
-          <field name="schedule"/>
           <field name="speciality"/>
           <field name="worked"/>
           <field name="pay"/>
@@ -27,13 +28,16 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group col="2">
+            <group>
               <field name="name"/>
               <field name="id_card"/>
               <field name="birthyear"/>
               <field name="phone"/>
               <field name="email"/>
-              <field name="schedule"/>
+              <field name="arrive_time"/>
+            </group>
+            <group>
+              <field name="leave_time"/>  
               <field name="speciality"/>
               <field name="address"/>
               <field name="worked"/>
