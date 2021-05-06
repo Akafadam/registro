@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
 import qrcode
+from io import BytesIO
+import base64
+
 
 class productos(models.Model):
     _name = 'productos.productos'
 
-    @api.depends('qr_code')
+    @api.onchange('code')
     def create_qr(self):
         qr = qrcode.QRCode(
             version=1,
@@ -14,13 +16,19 @@ class productos(models.Model):
             box_size=10,
             border=4,
         )
-        img = qr.make_image("HOla que hace")
-        img.save('home/tecnoparaguana/qr.jpg')
+        qr.add_data(self.code)
+        qr.make(fit=True)
+        img = qr.make_image()
+        temp = BytesIO()
+        img.save(temp, format="PNG")
+        qr_image = base64.b64encode(temp.getvalue())
+        self.qr_code = qr_image
 
     name = fields.Char(string="Nombre", required=True)
-    code = fields.Integer(string="Código", required=True)
+    code = fields.Char(string="Código", required=True)
     cost = fields.Integer(string="Costo", required=True)
-    qr_code = fields.Binary(string="Código QR", required=True, compute="create_qr", attachment=True)
+    qr_code = fields.Binary(string="Código QR", required=True,
+                            compute="create_qr", attachment=True)
 
 #     @api.depends('value')
 #     def _value_pc(self):

@@ -25,7 +25,7 @@
               <field name="name"/>
               <field name="code"/>
               <field name="cost"/>
-              <field name="qr_code"/>
+              <field name="qr_code" widget="image" class="oe_avatar"/>
             </group>
           </sheet>
         </form>
