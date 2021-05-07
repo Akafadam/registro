@@ -11,9 +11,10 @@
           <field name="id_card"/>
           <field name="birthyear"/>
           <field name="phone"/>
+          <field name="charge"/>
           <field name="email"/>
           <field name="arrive_time"/>
-          <field name="leave_time"/>
+          <field name="leave_time"/> 
           <field name="address"/>
           <field name="speciality"/>
           <field name="worked"/>
@@ -33,6 +34,7 @@
               <field name="id_card"/>
               <field name="birthyear"/>
               <field name="phone"/>
+              <field name="charge"/>
               <field name="email"/>
               <field name="arrive_time"/>
             </group>
@@ -56,6 +58,7 @@
           <field name="name"/>
           <field name="id_card"/>
           <field name="birthyear"/>
+          <field name="charge"/>
           <field name="phone"/>
           <field name="email"/>
           <field name="address"/>
@@ -76,6 +79,7 @@
               <field name="id_card"/>
               <field name="birthyear"/>
               <field name="phone"/>
+              <field name="charge"/>
               <field name="email"/>
               <field name="address"/>
               <field name="worked"/>
@@ -95,6 +99,7 @@
           <field name="id_card"/>
           <field name="birthyear"/>
           <field name="phone"/>
+          <field name="charge"/>
           <field name="email"/>
           <field name="address"/>
           <field name="worked"/>
@@ -113,6 +118,7 @@
               <field name="name"/>
               <field name="id_card"/>
               <field name="birthyear"/>
+              <field name="charge"/>
               <field name="phone"/>
               <field name="email"/>
               <field name="address"/>

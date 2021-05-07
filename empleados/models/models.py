@@ -9,6 +9,10 @@ class empleados(models.Model):
 
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Integer(string="Año de nacimiento", required=True)
+    charge = fields.Selection([('medico', 'Medico'),
+                              ('servicio', 'Servicio'),
+                              ('administrativo', 'Administrativo')],
+    string="Cargo")
     phone = fields.Integer(string="Número telefónico", required=True)
     id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
