@@ -5,6 +5,8 @@ from odoo import models, fields, api
 class clientes(models.Model):
     _name = 'clientes.clientes'
 
+    _sql_constraints = [('clients_record','UNIQUE(id_card)', 'Este usuario ya esta registrado')]
+
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
     birthyear = fields.Datetime(string="Año de nacimiento", required=True)

@@ -8,6 +8,8 @@ import base64
 class productos(models.Model):
     _name = 'productos.productos'
 
+    _sql_constraints = [('products_record','UNIQUE(code)', 'Este producto ya esta registrado')]
+
     @api.onchange('code')
     def create_qr(self):
         qr = qrcode.QRCode(

@@ -5,6 +5,8 @@ from odoo import models, fields, api
 class empleados(models.Model):
     _name = 'empleados.empleados'
 
+    _sql_constraints = [('employees_record','UNIQUE(id_card)', 'Este usuario ya esta registrado')]
+
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Integer(string="Año de nacimiento", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
