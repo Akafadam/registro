@@ -8,7 +8,7 @@ class empleados(models.Model):
     _sql_constraints = [('employees_record','UNIQUE(id_card)', 'Este usuario ya esta registrado')]
 
     name = fields.Char(string="Nombre", required=True)
-    birthyear = fields.Integer(string="Año de nacimiento", required=True)
+    birthyear = fields.Datetime(string="Año de nacimiento", required=True)
     charge = fields.Selection([('medico', 'Medico'),
                               ('servicio', 'Servicio'),
                               ('administrativo', 'Administrativo')],
