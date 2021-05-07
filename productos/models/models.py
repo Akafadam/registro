@@ -30,7 +30,7 @@ class productos(models.Model):
     code = fields.Char(string="Código", required=True)
     cost = fields.Integer(string="Costo", required=True)
     qr_code = fields.Binary(string="Código QR", required=True,
-                            compute="create_qr", attachment=True)
+                            compute="create_qr")
 
 #     @api.depends('value')
 #     def _value_pc(self):

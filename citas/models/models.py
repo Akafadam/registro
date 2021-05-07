@@ -6,8 +6,16 @@ from time import strftime
 class citas(models.Model):
     _name = 'citas.citas'
 
-    def check_schedule(self):
-        time = self.date_time[-5:]
+    _sql_constraints = [('revision_record','UNIQUE(date_time)', 'Esta hora ya esta registrada')]
+
+
+    # def check_schedule(self):
+    #     for data1 in self:
+    #         time1 = data1.date_time[-5:]
+    #         for data2 in self:     
+    #             time2 = date2.date_time[-5:]
+    #             if time1 == time2:
+
 
     date_time = fields.Datetime(string="Fecha y Hora", required=True)
     client_data = fields.Many2one('clientes.clientes', string="Datos del cliente", required=True)
