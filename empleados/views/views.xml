@@ -31,28 +31,50 @@
           <sheet>
             <notebook>
               <page string="Personal Médico">
+                <group>
+                  <field name="name"/>
+                  <field name="id_card"/>
+                  <field name="birthyear"/>
+                  <field name="phone"/>
+                  <field name="charge"/>
+                  <field name="email"/>
+                  <field name="address"/>
+                  <field name="worked"/>
+                  <field name="pay"/>
+                  <field name="arrive_time"/>
+                  <field name="leave_time"/>  
+                  <field name="speciality"/>
+                </group>
               </page>
               <page string="Personal de Servcio">
+                <group>
+                  <field name="name"/>
+                  <field name="id_card"/>
+                  <field name="birthyear"/>
+                  <field name="phone"/>
+                  <field name="charge"/>
+                  <field name="email"/>
+                  <field name="address"/>
+                  <field name="worked"/>
+                  <field name="pay"/>
+                </group>
               </page>
               <page string="Personal Administrativo">
+                <group>
+                  <field name="name"/>
+                  <field name="id_card"/>
+                  <field name="birthyear"/>
+                  <field name="phone"/>
+                  <field name="charge"/>
+                  <field name="email"/>
+                  <field name="address"/>
+                  <field name="worked"/>
+                  <field name="pay"/>
+                </group>
               </page>
             </notebook>
-            <group>
-              <field name="name"/>
-              <field name="id_card"/>
-              <field name="birthyear"/>
-              <field name="phone"/>
-              <field name="charge"/>
-              <field name="email"/>
-              <field name="arrive_time"/>
-            </group>
-            <group>
-              <field name="leave_time"/>  
-              <field name="speciality"/>
-              <field name="address"/>
-              <field name="worked"/>
-              <field name="pay"/>
-            </group>
+              <group>
+              </group>
           </sheet>
         </form>
       </field>

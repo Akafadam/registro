@@ -9,6 +9,8 @@ class empleados(models.Model):
     _sql_constraints = [
         ('employees_record', 'UNIQUE(id_card)', 'Este usuario ya esta registrado')]
 
+    _order = 'pay, arrive_time, leave_time, speciality'
+
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
     charge = fields.Selection([('medico', 'Medico'),
