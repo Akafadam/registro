@@ -1,15 +1,26 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
 
 
 class empleados(models.Model):
     _name = 'empleados.empleados'
 
     _sql_constraints = [
-        ('employees_record_id_card', 'UNIQUE(id_card)', 'Este usuario ya esta registrado'),
-        ('employees_record_pastdate', 'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
+        ('employees_record_id_card', 'UNIQUE(id_card)',
+         'Este usuario ya esta registrado'),
+        ('employees_record_pastdate',
+         'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
     ]
+
+    @api.constrains('birthyear')
+    def _check_underage(self):
+        timediff = relativedelta(date.today(), self.birthyear)
+        yeardiff = timediff.years
+        if yeardiff < 18:
+            raise ValueError('El usuario debe ser mayor de edad')
 
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
