@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-# from datetime import date, datetime
+from datetime import date, datetime
+from dateutil import relativedelta
 
 
 class clientes(models.Model):
@@ -9,8 +10,19 @@ class clientes(models.Model):
 
     _sql_constraints = [
         ('clients_record_id_card', 'UNIQUE(id_card)','Este usuario ya esta registrado'),
-        ('clients_record_birthday', 'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
+        ('clients_record_birthday', 'CHECK(birthyear<current_date)', 'Esta fecha aun no existe'),
     ]
+
+    # _constraints = [
+    #     ('check_underage', 'El usuario debe ser mayor de edad', ['birthyear'])
+    # ]
+
+    @api.constrains('birthyear')
+    def _check_underage(self):
+        # timediff = relativedelta(date.today(), self.birthyear)
+        # yeardiff = timediff.years
+        if 1 < 18:
+            raise ValueError('El usuario debe ser mayor de edad')
 
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
