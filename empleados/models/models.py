@@ -7,9 +7,9 @@ class empleados(models.Model):
     _name = 'empleados.empleados'
 
     _sql_constraints = [
-        ('employees_record', 'UNIQUE(id_card)', 'Este usuario ya esta registrado')]
-
-    _order = 'pay, arrive_time, leave_time, speciality'
+        ('employees_record_id_card', 'UNIQUE(id_card)', 'Este usuario ya esta registrado'),
+        ('employees_record_pastdate', 'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
+    ]
 
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)

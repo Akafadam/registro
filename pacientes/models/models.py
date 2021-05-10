@@ -7,7 +7,9 @@ class pacientes(models.Model):
     _name = 'pacientes.pacientes'
 
     _sql_constraints = [
-        ('pacients_record', 'UNIQUE(id_card)', 'Este usuario ya esta registrado')]
+        ('pacients_record_id_card', 'UNIQUE(id_card)', 'Este usuario ya esta registrado'),
+        ('pacientes_record_birthyear', 'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
+    ]
 
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
