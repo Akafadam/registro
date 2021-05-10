@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+
+     <report id="report_dailyExternalLayout"
+
+     string="Daily External Layout"
+     model="empleados.empleados"
+     report_type="qweb-pdf"
+     name="empleados.dailyReportExternalLayout"
+     menu="True"
+     print_report_name="'External Report %s %s empleados'"
+     
+     />
+
+
+     <template id="dailyReportExternalLayout">
+
+     <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page" style="font-size:18px">
+                        <div class="row">
+                            <div class="col-md-12" aling="center">
+                                <h2>Reporte de Empleados</h2>
+                                <h4>Zona Medica</h4>
+                                <h5>Registros</h5>                       
+                            </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Nombre: <span t-field="o.nombre"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Apellido: <span t-field="o.apellido"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Cedula: <span t-field="o.cedula"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Fecha de Nacimiento: <span t-field="o.date"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Numero Telefonico: <span t-field="o.numero_telefono"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Correo Electronico: <span t-field="o.email"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Direccion de Domicilio: <span t-field="o.direccion"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-md-12">
+                                Cargo: <span t-field="o.cargo"/>                     
+                            </div>                   
+                        </div>
+                </div>
+            </t>
+        </t>
+     </t>
+
+
+     </template>
+
+
+    </data>
+</odoo>
