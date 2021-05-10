@@ -6,7 +6,10 @@ from time import strftime
 class citas(models.Model):
     _name = 'citas.citas'
 
-    _sql_constraints = [('revision_record','UNIQUE(date_time)', 'Esta hora ya esta registrada')]
+    _sql_constraints = [
+        ('revision_record_id_card','UNIQUE(date_time)', 'Esta hora ya esta registrada'),
+        ('revision_record_date_time','CHECK(date_time>current_date)', 'Esta fecha y hora ya pasaron')
+    ]
 
 
     # def check_schedule(self):
@@ -29,6 +32,7 @@ class citas(models.Model):
                                     ('traumatologo', 'Traumatologo')],
     string="Especialidad Medica", required=True)
     medic_data = fields.Many2one('empleados.empleados', string="Medico", required=True)
+
 
 #
 #     @api.depends('value')
