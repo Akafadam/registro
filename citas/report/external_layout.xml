@@ -4,14 +4,14 @@
     <data>
 
 
-     <report id="clientes.report"
+     <report id="citas.report"
 
-     string="Reporte de Clientes"
-     model="clientes.clientes"
+     string="Reporte de Citas"
+     model="citas.citas"
      report_type="qweb-pdf"
-     name="clientes.report"
+     name="citas.report"
      menu="True"
-     print_report_name="'External Report %s %s clientes'"
+     print_report_name="'External Report %s %s citas'"
      
      />
 
@@ -24,39 +24,34 @@
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">
-                                <h2>Reporte de Clientes</h2>
+                                <h2>Reporte de Citas</h2>
                                 <h4>Zona Medica</h4>
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Nombre: <span t-field="o.name"/>                     
+                                Datos del cliente: <span t-field="o.client_data"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Cedula: <span t-field="o.id_card"/>                     
+                                Datos del paciente: <span t-field="o.pacient_data"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Fecha de Nacimiento: <span t-field="o.birthyear"/>                     
+                                Fecha y Hora: <span t-field="o.date_time"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Numero Telefonico: <span t-field="o.phone"/>                     
+                                Especialidad: <span t-field="o.speciality"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Correo Electronico: <span t-field="o.email"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Direccion de Domicilio: <span t-field="o.address"/>                     
+                                Medico: <span t-field="o.medic_data"/>                     
                             </div>                   
                         </div>
                 </div>

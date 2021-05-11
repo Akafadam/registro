@@ -1,0 +1,55 @@
+[33m32d3405[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m HEAD@{0}: rebase -i (finish): returning to refs/heads/develop
+[33m32d3405[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m HEAD@{1}: rebase -i (squash): [EDIT]Quitar required de los campos especialidad y horario
+[33mfb1a21c[m HEAD@{2}: rebase -i (squash): # This is a combination of 2 commits.
+[33m3f98c8a[m HEAD@{3}: rebase -i (start): checkout HEAD^^^
+[33m5928517[m HEAD@{4}: rebase -i (finish): returning to refs/heads/develop
+[33m5928517[m HEAD@{5}: rebase -i (start): checkout HEAD^^
+[33m5928517[m HEAD@{6}: commit: [EDIT]Asignando un un form para cada menu
+[33m20e1b2a[m HEAD@{7}: reset: moving to HEAD
+[33m20e1b2a[m HEAD@{8}: reset: moving to HEAD
+[33m20e1b2a[m HEAD@{9}: commit: [EDIT]Agregando los formularios para cada record
+[33m3f98c8a[m HEAD@{10}: reset: moving to HEAD
+[33m3f98c8a[m HEAD@{11}: reset: moving to HEAD
+[33m3f98c8a[m HEAD@{12}: reset: moving to HEAD
+[33m3f98c8a[m HEAD@{13}: commit: [EDIT]Quitar required de los campos especialidad y horario
+[33mdab0634[m HEAD@{14}: reset: moving to HEAD
+[33mdab0634[m HEAD@{15}: commit: [EDIT]Agregando campo "cedula" en el module "empleados"
+[33m554fb95[m[33m ([m[1;31mtecno/develop[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{16}: merge master: Fast-forward
+[33m7c420e3[m[33m ([m[1;31morigin/develop[m[33m)[m HEAD@{17}: checkout: moving from master to develop
+[33m554fb95[m[33m ([m[1;31mtecno/develop[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{18}: pull origin master: Fast-forward
+[33m8ce14c1[m HEAD@{19}: checkout: moving from develop to master
+[33m7c420e3[m[33m ([m[1;31morigin/develop[m[33m)[m HEAD@{20}: commit: [EDIT]Quitar cargo del apartado empleado
+[33mc9048a9[m HEAD@{21}: commit: [EDIT]Agregar menu para personal de servicio y administrativo en el apartado de empleados
+[33m4d047f4[m HEAD@{22}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{23}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{24}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{25}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{26}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{27}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{28}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{29}: reset: moving to HEAD
+[33m4d047f4[m HEAD@{30}: commit: [EDIT]Quitar "fecha" de clientes y pacientes
+[33m9fa8be8[m HEAD@{31}: reset: moving to HEAD
+[33m9fa8be8[m HEAD@{32}: reset: moving to HEAD
+[33m9fa8be8[m HEAD@{33}: reset: moving to HEAD
+[33m9fa8be8[m HEAD@{34}: commit: [EDIT]Quitar "fecha" de clientes y pacientes
+[33m8ce14c1[m HEAD@{35}: checkout: moving from bin to develop
+[33me8d19d1[m HEAD@{36}: checkout: moving from develop to bin
+[33m8ce14c1[m HEAD@{37}: reset: moving to HEAD
+[33m8ce14c1[m HEAD@{38}: checkout: moving from bin to develop
+[33me8d19d1[m HEAD@{39}: commit: Wait
+[33m8ce14c1[m HEAD@{40}: checkout: moving from develop to bin
+[33m8ce14c1[m HEAD@{41}: reset: moving to HEAD
+[33m8ce14c1[m HEAD@{42}: reset: moving to HEAD
+[33m8ce14c1[m HEAD@{43}: merge master: Fast-forward
+[33m41978ab[m HEAD@{44}: checkout: moving from master to develop
+[33m8ce14c1[m HEAD@{45}: pull tecno master --allow-unrelated-histories: Merge made by the 'recursive' strategy.
+[33m41978ab[m HEAD@{46}: checkout: moving from develop to master
+[33m41978ab[m HEAD@{47}: checkout: moving from master to develop
+[33m41978ab[m HEAD@{48}: commit: [ADD]Creando modulo "citas", "inventario" y "productos"
+[33meb2e4af[m HEAD@{49}: commit: [EDIT]Agregar atributos al modulo "paciente"
+[33m7d8657a[m HEAD@{50}: reset: moving to HEAD
+[33m7d8657a[m HEAD@{51}: commit: [EDIT]Dando permiso a los modulos "clientes" y "empleados"
+[33m17e8753[m HEAD@{52}: commit: [EDIT]Agregar atributos para el modulo "empleados"
+[33m2eeeebf[m HEAD@{53}: reset: moving to HEAD
+[33m2eeeebf[m HEAD@{54}: commit (initial): [ADD]Crear estructura de paquetes

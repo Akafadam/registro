@@ -4,14 +4,14 @@
     <data>
 
 
-     <report id="empleados.report"
+     <report id="pacientes.report"
 
-     string="Reporte de Empleados"
-     model="empleados.empleados"
+     string="Reporte de Pacientes"
+     model="pacientes.pacientes"
      report_type="qweb-pdf"
-     name="empleados.report"
+     name="pacientes.report"
      menu="True"
-     print_report_name="'Internal Report %s %s empleados'"
+     print_report_name="'External Report %s %s pacientes'"
      
      />
 
@@ -20,11 +20,11 @@
 
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-            <t t-call="web.internal_layout">
+            <t t-call="web.external_layout">
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">
-                                <h2>Reporte de Empleados</h2>
+                                <h2>Reporte de Pacientes</h2>
                                 <h4>Zona Medica</h4>
                                 <h5>Registros</h5>                       
                             </div>
@@ -57,26 +57,6 @@
                         <div class="row mt8">
                             <div class="col-md-12">
                                 Direccion de Domicilio: <span t-field="o.address"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Cargo: <span t-field="o.charge"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Especialidad: <span t-field="o.speciality"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Hora de entrada: <span t-field="o.arrive_time"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Hora de salida: <span t-field="o.leave_time"/>                     
                             </div>                   
                         </div>
                 </div>

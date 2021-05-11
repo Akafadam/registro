@@ -17,10 +17,10 @@ class citas(models.Model):
         if self.date_time < datetime.now():
             raise ValueError('Esta fecha y hora ya pasaron')
 
-        timediff = relativedelta(self.date_time, datetime.now())
-        hourdiff = timediff.hours
-        if hourdiff < 1:
-            raise ValueError('Esta hora ya está reservada')
+        # timediff = relativedelta(self.date_time, datetime.now())
+        # hourdiff = timediff.hours
+        # if hourdiff < 1:
+        #     raise ValueError('Esta hora ya está reservada')
 
     date_time = fields.Datetime(string="Fecha y Hora", required=True)
     client_data = fields.Many2one(

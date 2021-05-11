@@ -4,14 +4,14 @@
     <data>
 
 
-     <report id="clientes.report"
+     <report id="report_dailyInternalLayout"
 
-     string="Reporte de Clientes"
-     model="clientes.clientes"
+     string="Reporte de Inventarios"
+     model="inventarios.inventarios"
      report_type="qweb-pdf"
-     name="clientes.report"
+     name="inventarios.report"
      menu="True"
-     print_report_name="'External Report %s %s clientes'"
+     print_report_name="'Internal Report %s %s inventarios'"
      
      />
 
@@ -20,43 +20,33 @@
 
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-            <t t-call="web.external_layout">
+            <t t-call="web.internal_layout">
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">
-                                <h2>Reporte de Clientes</h2>
+                                <h2>Reporte de InventariosS</h2>
                                 <h4>Zona Medica</h4>
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Nombre: <span t-field="o.name"/>                     
+                                Producto: <span t-field="o.product"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Cedula: <span t-field="o.id_card"/>                     
+                                Tipo de reserva: <span t-field="o.reserve_type"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Fecha de Nacimiento: <span t-field="o.birthyear"/>                     
+                                Cantidad: <span t-field="o.cuantity"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Numero Telefonico: <span t-field="o.phone"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Correo Electronico: <span t-field="o.email"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Direccion de Domicilio: <span t-field="o.address"/>                     
+                                Fecha: <span t-field="o.date"/>                     
                             </div>                   
                         </div>
                 </div>
