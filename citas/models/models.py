@@ -8,23 +8,16 @@ from dateutil.relativedelta import relativedelta
 class citas(models.Model):
     _name = 'citas.citas'
 
-    # _sql_constraints = [
-    #     ('revision_record_id_card', 'UNIQUE(date_time)',
-    # 'Esta hora ya esta registrada')]
+    _sql_constraints = [
+        ('revision_record_id_card', 'UNIQUE(time)', 'Esta hora ya esta registrada')]
 
     @api.constrains('time')
     def _check_schedule(self):
-        if self.time >= 24:
-            raise ValueError('Rango de hora no permitido')
-
-        # timediff = relativedelta(self.date_time, datetime.now())
-        # hourdiff = timediff.hours
-        # if hourdiff < 1:
-        #     raise ValueError('Esta hora ya está reservada')
+        if self.time >= 24 or self.time % 1 != 0:
+            raise ValueError('Hora no permitida')
 
     date_time = fields.Date(string="Fecha", required=True)
-    entry_time = fields.Float(string="Hora de Entrada", required=True)
-    leave_time = fields.Float(string="Hora de Entrada", required=True)
+    time = fields.Float(string="Hora", required=True)
     client_data = fields.Many2one(
         'clientes.clientes', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one(
