@@ -12,17 +12,19 @@ class citas(models.Model):
     #     ('revision_record_id_card', 'UNIQUE(date_time)',
     # 'Esta hora ya esta registrada')]
 
-    @api.constrains('date_time')
+    @api.constrains('time')
     def _check_schedule(self):
-        if self.date_time < datetime.now():
-            raise ValueError('Esta fecha y hora ya pasaron')
+        if self.time >= 24:
+            raise ValueError('Rango de hora no permitido')
 
         # timediff = relativedelta(self.date_time, datetime.now())
         # hourdiff = timediff.hours
         # if hourdiff < 1:
         #     raise ValueError('Esta hora ya está reservada')
 
-    date_time = fields.Datetime(string="Fecha y Hora", required=True)
+    date_time = fields.Date(string="Fecha", required=True)
+    entry_time = fields.Float(string="Hora de Entrada", required=True)
+    leave_time = fields.Float(string="Hora de Entrada", required=True)
     client_data = fields.Many2one(
         'clientes.clientes', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one(
