@@ -9,7 +9,9 @@ class citas(models.Model):
     _name = 'citas.citas'
 
     _sql_constraints = [
-        ('revision_record_id_card', 'UNIQUE(time)', 'Esta hora ya esta registrada')]
+        ('revision_record_id_card', 'UNIQUE(time, date_time)',
+         'Esta hora ya esta registrada')
+    ]
 
     @api.constrains('time')
     def _check_schedule(self):
