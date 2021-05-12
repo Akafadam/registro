@@ -12,7 +12,7 @@
           <field name="speciality"/>
           <field name="medic_data"/>
           <field name="date_time"/>
-          <field name="time" widget="float_time"/>
+          <field name="time"/>
         </tree>
       </field>
     </record>
@@ -29,7 +29,7 @@
               <field name="speciality"/>
               <field name="medic_data"/>
               <field name="date_time"/>
-              <field name="time" widget="float_time"/>
+              <field name="time"/>
             </group>
           </sheet>
         </form>
