@@ -13,8 +13,8 @@
           <field name="phone"/>
           <field name="charge"/>
           <field name="email"/>
-          <field name="arrive_time" widget="float_time"/>
-          <field name="leave_time" widget="float_time"/> 
+          <field name="arrive_time"/>
+          <field name="leave_time"/> 
           <field name="address"/>
           <field name="speciality"/>
           <field name="worked"/>
@@ -41,8 +41,8 @@
                   <field name="address"/>
                   <field name="worked"/>
                   <field name="pay"/>
-                  <field name="arrive_time" widget="float_time"/>
-                  <field name="leave_time" widget="float_time"/>  
+                  <field name="arrive_time"/>
+                  <field name="leave_time"/>  
                   <field name="speciality"/>
                 </group>
               </page>
