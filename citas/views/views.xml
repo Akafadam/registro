@@ -9,8 +9,8 @@
         <tree>
           <field name="client_data"/>
           <field name="pacient_data"/>
-          <field name="speciality"/>
           <field name="medic_data"/>
+          <field name="speciality"/>
           <field name="date_time"/>
           <field name="time"/>
         </tree>
@@ -26,8 +26,8 @@
             <group>
               <field name="client_data"/>
               <field name="pacient_data"/>
-              <field name="speciality"/>
               <field name="medic_data"/>
+              <field name="speciality"/>
               <field name="date_time"/>
               <field name="time"/>
             </group>
