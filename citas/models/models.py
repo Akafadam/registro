@@ -10,15 +10,20 @@ class citas(models.Model):
     _name = 'citas.citas'
 
     _sql_constraints = [
-        ('revision_record_id_card', 'UNIQUE(time, date_time)', 'Esta hora ya esta registrada'),
+        ('revision_record_id_card', 'UNIQUE(time, date_time)',
+         'Esta hora ya esta registrada'),
     ]
+
+    @api.onchange('medic_data')
+    def _set_specs(self):
+        self.speciality = self.medic_data.speciality
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
         if self.date_time < date.today():
             raise ValueError('Esta fecha ya paso')
-                
-        else:
+
+        elif self.date_time == date.today():
             right_now = datetime.now()
             ccs = timezone('America/Caracas')
             local_rn = right_now.astimezone(ccs)
@@ -42,19 +47,13 @@ class citas(models.Model):
                              (20, '20:00'),
                              (21, '21:00'),
                              (22, '22:00')],
-    string="Hora", required=True)
+                            string="Hora", required=True)
     client_data = fields.Many2one(
         'clientes.clientes', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one(
         'pacientes.pacientes', string="Datos del paciente", required=True)
-    speciality = fields.Selection([('geriatra', 'Geriatra'),
-                                   ('pediatra', 'Pediatra'),
-                                   ('cardiologo', 'Cardiologo'),
-                                   ('hematologo', 'Hematologo'),
-                                   ('neurologo', 'Neurologo'),
-                                   ('nutriologo', 'Nutriologo'),
-                                   ('traumatologo', 'Traumatologo')],
-                                  string="Especialidad Medica", required=True)
+    speciality = fields.Char(string="Especialidad Medica",
+                             required=True, compute="_set_specs")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico", required=True)
 
