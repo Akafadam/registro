@@ -20,15 +20,18 @@ class citas(models.Model):
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
+        right_now = datetime.now()
+        ccs = timezone('America/Caracas')
+        local_rn = right_now.astimezone(ccs)
+
         if self.date_time < date.today():
             raise ValueError('Esta fecha ya paso')
 
         elif self.date_time == date.today():
-            right_now = datetime.now()
-            ccs = timezone('America/Caracas')
-            local_rn = right_now.astimezone(ccs)
             if self.time < local_rn.hour:
                 raise ValueError('Esta hora ya paso')
+        elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
+            raise ValueError('El médico no ocupa esa hora')
 
     date_time = fields.Date(string="Fecha", required=True)
     time = fields.Selection([(7, '07:00'),
