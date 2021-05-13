@@ -32,6 +32,7 @@ class clientes(models.Model):
     phone = fields.Integer(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     address = fields.Char(string="Dirección", required=True)
+
     # today = fields.Date.today()
 #
 #     @api.depends('value')

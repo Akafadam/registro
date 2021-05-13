@@ -22,6 +22,18 @@
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <field name="state" invisible="True"/>
+            <button name="button_done"
+                    type="object"
+                    states="draft,accepted"
+                    class="eo_highlight"/>
+
+            <field name="state"
+                   widget="statusbar"
+                   clickable="True"
+                   statusbar_visible="draft,accepted"/>
+          </header>
           <sheet>
             <group>
               <field name="client_data"/>

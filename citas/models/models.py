@@ -59,7 +59,10 @@ class citas(models.Model):
                              required=True, compute="_set_specs")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico", required=True)
-
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('accepted', 'Validado')
+    ])
 
 #
 #     @api.depends('value')
