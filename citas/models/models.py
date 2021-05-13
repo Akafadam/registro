@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
+from pytz import timezone
 
 
 class citas(models.Model):
@@ -19,7 +20,9 @@ class citas(models.Model):
                 
         else:
             right_now = datetime.now()
-            if self.time < right_now.hour:
+            ccs = timezone('America/Caracas')
+            local_rn = right_now.astimezone(ccs)
+            if self.time < local_rn.hour:
                 raise ValueError('Esta hora ya paso')
 
     date_time = fields.Date(string="Fecha", required=True)
