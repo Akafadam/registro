@@ -24,24 +24,24 @@
         <form>
           <header>
             <field name="state" invisible="True"/>
-            <button name="button_done"
+            <!-- <button name="button_done"
                     type="object"
-                    states="draft,accepted"
-                    class="eo_highlight"/>
+                    states="draft"
+                    class="eo_highlight"/> -->
 
             <field name="state"
-                   widget="statusbar"
+                   widget="radio"
                    clickable="True"
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
             <group>
-              <field name="client_data"/>
-              <field name="pacient_data"/>
-              <field name="medic_data"/>
-              <field name="speciality"/>
-              <field name="date_time"/>
-              <field name="time"/>
+              <field name="client_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="pacient_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="medic_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="speciality" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="date_time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
             </group>
           </sheet>
         </form>
