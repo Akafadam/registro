@@ -28,18 +28,6 @@
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
         <form>
-        <header>
-            <field name="state" invisible="True"/>
-            <!-- <button name="button_done"
-                    type="object"
-                    states="draft"
-                    class="eo_highlight"/> -->
-
-            <field name="state"
-                   widget="statusbar"
-                   clickable="True"
-                   statusbar_visible="medic,service,admin"/>
-          </header>
           <sheet>
             <group>
               <field name="name"/>
@@ -47,6 +35,91 @@
               <field name="birthyear"/>
               <field name="phone"/>
               <field name="charge"/>
+              <field name="email"/>
+              <field name="arrive_time"/>
+            </group>
+            <group>
+              <field name="leave_time"/>  
+              <field name="speciality"/>
+              <field name="address"/>
+              <field name="worked"/>
+              <field name="pay"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_servicio">
+      <field name="name">empleados list</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="id_card"/>
+          <field name="birthyear"/>
+          <field name="charge"/>
+          <field name="phone"/>
+          <field name="email"/>
+          <field name="address"/>
+          <field name="worked"/>
+          <field name="pay"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_servicio_form">
+      <field name="name">empleados form</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="2">
+              <field name="name"/>
+              <field name="id_card"/>
+              <field name="birthyear"/>
+              <field name="phone"/>
+              <field name="charge"/>
+              <field name="email"/>
+              <field name="address"/>
+              <field name="worked"/>
+              <field name="pay"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+   
+   <record model="ir.ui.view" id="empleados_administrativo">
+      <field name="name">empleados list</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="id_card"/>
+          <field name="birthyear"/>
+          <field name="phone"/>
+          <field name="charge"/>
+          <field name="email"/>
+          <field name="address"/>
+          <field name="worked"/>
+          <field name="pay"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_administrativo_form">
+      <field name="name">empleados form</field>
+      <field name="model">empleados.empleados</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="2">
+              <field name="name"/>
+              <field name="id_card"/>
+              <field name="birthyear"/>
+              <field name="charge"/>
+              <field name="phone"/>
               <field name="email"/>
               <field name="address"/>
               <field name="worked"/>
@@ -69,6 +142,26 @@
         (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_medicos')}), 
         (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_medicos_form')}),                           
         (0, 0, {'view_mode': 'kanban'})]"/>
+      <field name="view_mode">tree,form</field>
+    </record>
+   
+    <record model="ir.actions.act_window" id="empleados.action_servicio">
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_servicio')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_servicio_form')}),                           
+        (0, 0, {'view_mode': 'kanban'})]"/>
+      <field name="name">empleados window</field>
+      <field name="res_model">empleados.empleados</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados.action_administrativo">
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_administrativo')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_administrativo_form')}),                           
+        (0, 0, {'view_mode': 'kanban'})]"/>
+      <field name="name">empleados window</field>
+      <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -94,7 +187,11 @@
    
     <!-- menu categories -->
     
-    <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
+    <menuitem name="Personal Médico" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
+    
+    <menuitem name="Personal de Servicio" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_servicio"/>
+    
+    <menuitem name="Personal Administrativo" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_administrativo"/>
 
     <!--
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>
