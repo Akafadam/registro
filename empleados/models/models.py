@@ -76,3 +76,8 @@ class empleados(models.Model):
                                   string="Especialidad")
     worked = fields.Char(string="Horas trabajadas", required=True)
     pay = fields.Char(string="Remuneración", required=True)
+    state = fields.Selection([
+        ('medic', 'Personal Medico'),
+        ('service', 'Personal de Servicio'),
+        ('admin', 'Personal Administrativo')
+    ])

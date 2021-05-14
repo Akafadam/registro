@@ -28,53 +28,33 @@
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
         <form>
+        <header>
+            <field name="state" invisible="True"/>
+            <!-- <button name="button_done"
+                    type="object"
+                    states="draft"
+                    class="eo_highlight"/> -->
+
+            <field name="state"
+                   widget="statusbar"
+                   clickable="True"
+                   statusbar_visible="medic,service,admin"/>
+          </header>
           <sheet>
-            <notebook>
-              <page string="Personal Médico">
-                <group>
-                  <field name="name"/>
-                  <field name="id_card"/>
-                  <field name="birthyear"/>
-                  <field name="phone"/>
-                  <field name="charge"/>
-                  <field name="email"/>
-                  <field name="address"/>
-                  <field name="worked"/>
-                  <field name="pay"/>
-                  <field name="arrive_time"/>
-                  <field name="leave_time"/>  
-                  <field name="speciality"/>
-                </group>
-              </page>
-              <page string="Personal de Servcio">
-                <group>
-                  <field name="name"/>
-                  <field name="id_card"/>
-                  <field name="birthyear"/>
-                  <field name="phone"/>
-                  <field name="charge"/>
-                  <field name="email"/>
-                  <field name="address"/>
-                  <field name="worked"/>
-                  <field name="pay"/>
-                </group>
-              </page>
-              <page string="Personal Administrativo">
-                <group>
-                  <field name="name"/>
-                  <field name="id_card"/>
-                  <field name="birthyear"/>
-                  <field name="phone"/>
-                  <field name="charge"/>
-                  <field name="email"/>
-                  <field name="address"/>
-                  <field name="worked"/>
-                  <field name="pay"/>
-                </group>
-              </page>
-            </notebook>
-              <group>
-              </group>
+            <group>
+              <field name="name"/>
+              <field name="id_card"/>
+              <field name="birthyear"/>
+              <field name="phone"/>
+              <field name="charge"/>
+              <field name="email"/>
+              <field name="address"/>
+              <field name="worked"/>
+              <field name="pay"/>
+              <field name="arrive_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
+              <field name="leave_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>  
+              <field name="speciality" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
+            </group>
           </sheet>
         </form>
       </field>
