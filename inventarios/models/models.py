@@ -5,10 +5,14 @@ from odoo import models, fields, api
 class inventarios(models.Model):
     _name = 'inventarios.inventarios'
 
-    product = fields.Char(string="Producto", required=True)
+    _sql_constraints = [
+        ('pacientes_record_birthyear', 'CHECK(date>current_date)', 'Esta fecha ya paso')
+    ]
+
+    product = fields.Many2one('productos.productos', string="Producto", required=True)
     reserve_type = fields.Selection(string="Tipo de Reserva", selection=[("egreso", "Egreso"), ("ingreso", "Ingreso")])
     cuantity = fields.Integer(string="Cantidad", required=True)
-    date = fields.Datetime(string="Fecha", required=True)
+    date = fields.Date(string="Fecha", required=True)
 
 #     @api.depends('value')
 #     def _value_pc(self):
