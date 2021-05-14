@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
+from datetime import timedelta
 from pytz import timezone
 
 
@@ -23,6 +24,7 @@ class citas(models.Model):
         right_now = datetime.now()
         ccs = timezone('America/Caracas')
         local_rn = right_now.astimezone(ccs)
+        plusTwoMonth = timedelta(days=60) + date.today()
 
         if self.date_time < date.today():
             raise ValueError('Esta fecha ya paso')
@@ -32,6 +34,8 @@ class citas(models.Model):
                 raise ValueError('Esta hora ya paso')
         elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
             raise ValueError('El médico no ocupa esa hora')
+        elif self.date_time > plusTwoMonth:
+            raise ValueError('No se puede agendar una fecha para mas de dos meses en adelante')
 
     date_time = fields.Date(string="Fecha", required=True)
     time = fields.Selection([(7, '07:00'),
