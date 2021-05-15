@@ -124,9 +124,9 @@
               <field name="address"/>
               <field name="worked"/>
               <field name="pay"/>
-              <field name="arrive_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
+              <!-- <field name="arrive_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
               <field name="leave_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>  
-              <field name="speciality" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
+              <field name="speciality" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/> -->
             </group>
           </sheet>
         </form>
