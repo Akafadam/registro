@@ -17,7 +17,8 @@ class citas(models.Model):
 
     @api.onchange('medic_data')
     def _set_specs(self):
-        self.speciality = self.medic_data.speciality
+        data = self[0]
+        data.speciality = data.medic_data.speciality
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
@@ -35,7 +36,8 @@ class citas(models.Model):
         elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
             raise ValueError('El médico no ocupa esa hora')
         elif self.date_time > plusTwoMonth:
-            raise ValueError('No se puede agendar una fecha para mas de dos meses en adelante')
+            raise ValueError(
+                'No se puede agendar una fecha para mas de dos meses en adelante')
 
     date_time = fields.Date(string="Fecha", required=True)
     time = fields.Selection([(7, '07:00'),

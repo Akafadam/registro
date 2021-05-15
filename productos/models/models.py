@@ -8,7 +8,8 @@ import base64
 class productos(models.Model):
     _name = 'productos.productos'
 
-    _sql_constraints = [('products_record','UNIQUE(code)', 'Este producto ya esta registrado')]
+    _sql_constraints = [('products_record', 'UNIQUE(code)',
+                         'Este producto ya esta registrado')]
 
     @api.onchange('code')
     def create_qr(self):
@@ -18,13 +19,14 @@ class productos(models.Model):
             box_size=10,
             border=4,
         )
-        qr.add_data(self.code)
+        data = self[0]
+        qr.add_data(data.code)
         qr.make(fit=True)
         img = qr.make_image()
         temp = BytesIO()
         img.save(temp, format="PNG")
         qr_image = base64.b64encode(temp.getvalue())
-        self.qr_code = qr_image
+        data.qr_code = qr_image
 
     name = fields.Char(string="Nombre", required=True)
     code = fields.Char(string="Código", required=True)
