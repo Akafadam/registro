@@ -68,7 +68,7 @@ class citas(models.Model):
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
-    ])
+    ], default="draft")
 
 #
 #     @api.depends('value')

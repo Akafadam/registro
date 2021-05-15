@@ -24,14 +24,16 @@
         <form>
           <header>
             <field name="state" invisible="True"/>
-            <!-- <button name="button_done"
+            <button name="button_done"
                     type="object"
                     states="draft"
-                    class="eo_highlight"/> -->
+                    string="Validar"
+                    style="background:#7c7bad; color:white"
+                    class="eo_highlight"/>
 
             <field name="state"
-                   widget="radio"
-                   clickable="True"
+                   widget="statusbar"
+                   default="draft"
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
