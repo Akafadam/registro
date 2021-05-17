@@ -38,12 +38,12 @@
           </header>
           <sheet>
             <group>
-              <field name="client_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="pacient_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="medic_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="speciality" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="date_time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="client_data"/>
+              <field name="pacient_data"/>
+              <field name="medic_data"/>
+              <field name="speciality"/>
+              <field name="date_time"/>
+              <field name="time"/>
             </group>
           </sheet>
         </form>
