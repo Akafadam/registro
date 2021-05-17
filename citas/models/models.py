@@ -5,6 +5,7 @@ from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 from datetime import timedelta
 from pytz import timezone
+from odoo.exceptions import UserError
 
 
 class citas(models.Model):
@@ -18,6 +19,11 @@ class citas(models.Model):
     def validate(self):
         data = self[0]
         data.state = 'accepted'
+
+    def unlink(self):
+        if self.state == "accepted":
+            raise UserError('Deleting is only possible in case of draft')
+        return super(citas, self).unlink()
 
     @api.onchange('medic_data')
     def _set_specs(self):

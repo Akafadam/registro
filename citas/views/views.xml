@@ -29,7 +29,7 @@
                     states="draft"
                     string="Validar"
                     style="background:#7c7bad; color:white"
-                    class="eo_highlight"/>
+                    class="btn btn-primary"/>
 
             <field name="state"
                    widget="statusbar"
