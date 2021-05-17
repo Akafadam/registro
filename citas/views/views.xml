@@ -24,7 +24,7 @@
         <form>
           <header>
             <field name="state" invisible="True"/>
-            <button name="button_done"
+            <button name="validate"
                     type="object"
                     states="draft"
                     string="Validar"

@@ -15,6 +15,10 @@ class citas(models.Model):
          'Esta hora ya esta registrada'),
     ]
 
+    def validate(self):
+        data = self[0]
+        data.state = 'accepted'
+
     @api.onchange('medic_data')
     def _set_specs(self):
         data = self[0]
