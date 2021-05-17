@@ -5,7 +5,7 @@ from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 from datetime import timedelta
 from pytz import timezone
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class citas(models.Model):
@@ -38,15 +38,15 @@ class citas(models.Model):
         plusTwoMonth = timedelta(days=60) + date.today()
 
         if self.date_time < date.today():
-            raise ValueError('Esta fecha ya paso')
+            raise ValidationError('Esta fecha ya paso')
 
         elif self.date_time == date.today():
             if self.time < local_rn.hour:
-                raise ValueError('Esta hora ya paso')
+                raise ValidationError('Esta hora ya paso')
         elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
-            raise ValueError('El médico no ocupa esa hora')
+            raise ValidationError('El médico no ocupa esa hora')
         elif self.date_time > plusTwoMonth:
-            raise ValueError(
+            raise ValidationError(
                 'No se puede agendar una fecha para mas de dos meses en adelante')
 
     date_time = fields.Date(string="Fecha", required=True)
