@@ -32,6 +32,12 @@ class citas(models.Model):
             raise UserError("El registro fue validado, no puede ser ejecutado")
         return super(citas, self).write(vals)
 
+    @api.onchange('is_client')
+    def _auto_fill(self):
+        data = self[0]
+        if data.is_client:
+            data.pacient_data = data.client_data
+
     @api.onchange('medic_data')
     def _set_specs(self):
         data = self[0]
@@ -74,14 +80,12 @@ class citas(models.Model):
                              (21, '21:00'),
                              (22, '22:00')],
                             string="Hora", required=True)
-    client_data = fields.Many2one(
-        'citas.personas', string="Datos del cliente", required=True)
-    pacient_data = fields.Many2one(
-        'citas.personas', string="Datos del paciente", required=True)
-    speciality = fields.Char(string="Especialidad Medica",
-                             required=True, compute="_set_specs")
-    medic_data = fields.Many2one(
-        'empleados.empleados', string="Medico", required=True)
+    client_data = fields.Many2one('citas.personas', string="Datos del cliente", required=True)
+    is_client = fields.Boolean(string="¿Es el cliente el paciente?")
+    pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
+    compute="_auto_fill", readonly=False, store=True)
+    speciality = fields.Char(string="Especialidad Medica", required=True, compute="_set_specs")
+    medic_data = fields.Many2one('empleados.empleados', string="Medico", required=True)
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

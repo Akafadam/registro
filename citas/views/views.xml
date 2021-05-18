@@ -45,6 +45,7 @@
           <sheet>
             <group>
               <field name="client_data"/>
+              <field name="is_client"/>
               <field name="pacient_data"/>
               <field name="medic_data"/>
               <field name="speciality"/>
@@ -84,7 +85,7 @@
 
     <!-- Top menu item -->
     
-    <menuitem name="citas" id="citas.menu_root"/>
+    <menuitem name="Citas" id="citas.menu_root"/>
    
     <!-- menu categories -->
     <menuitem name="Citas" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
