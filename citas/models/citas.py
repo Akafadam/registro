@@ -75,9 +75,9 @@ class citas(models.Model):
                              (22, '22:00')],
                             string="Hora", required=True)
     client_data = fields.Many2one(
-        'clientes.clientes', string="Datos del cliente", required=True)
+        'citas.personas', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one(
-        'pacientes.pacientes', string="Datos del paciente", required=True)
+        'citas.personas', string="Datos del paciente", required=True)
     speciality = fields.Char(string="Especialidad Medica",
                              required=True, compute="_set_specs")
     medic_data = fields.Many2one(

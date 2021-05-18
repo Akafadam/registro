@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_citas_citas,citas.citas,model_citas_citas,,1,1,1,1
+access_citas_personas,citas.personas,model_citas_personas,,1,1,1,1

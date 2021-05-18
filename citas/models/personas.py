@@ -5,8 +5,8 @@ from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 
 
-class clientes(models.Model):
-    _name = 'clientes.clientes'
+class personas(models.Model):
+    _name = 'citas.personas'
 
     _sql_constraints = [
         ('clients_record_id_card', 'UNIQUE(id_card)',

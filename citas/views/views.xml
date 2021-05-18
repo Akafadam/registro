@@ -81,10 +81,8 @@
     <menuitem name="citas" id="citas.menu_root"/>
    
     <!-- menu categories -->
-    <menuitem name="Menu 1" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
-    <!--
-    <menuitem name="Menu 2" id="citas.menu_2" parent="citas.menu_root"/>
-    -->
+    <menuitem name="Citas" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
+   
     <!-- actions -->
     <!--
     <menuitem name="List" id="citas.menu_1_list" parent="citas.menu_1"

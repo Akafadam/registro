@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="clientes.list">
-      <field name="name">clientes list</field>
-      <field name="model">clientes.clientes</field>
+    <record model="ir.ui.view" id="personas_list">
+      <field name="name">personas list</field>
+      <field name="model">citas.personas</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,9 +17,9 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="clientes.form">
-      <field name="name">clientes form</field>
-      <field name="model">clientes.clientes</field>
+    <record model="ir.ui.view" id="personas_form">
+      <field name="name">personas form</field>
+      <field name="model">citas.personas</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
@@ -38,16 +38,18 @@
 
     <!-- actions opening views on models -->
     
-    <record model="ir.actions.act_window" id="clientes.action_window">
-      <field name="name">clientes window</field>
-      <field name="res_model">clientes.clientes</field>
+    <record model="ir.actions.act_window" id="personas_action_window">
+      <field name="name">personas window</field>
+      <field name="res_model">citas.personas</field>
       <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem name="Personas" id="citas.menu_2" parent="citas.menu_root" action="personas_action_window"/>
    
 
     <!-- server action to the one above -->
     <!--
-    <record model="ir.actions.server" id="clientes.action_server">
+    <record model="ir.actions.server" id="personas.action_server">
       <field name="name">clientes server</field>
       <field name="model_id" ref="model_clientes_clientes"/>
       <field name="state">code</field>
@@ -63,11 +65,11 @@
 
     <!-- Top menu item -->
     
-    <menuitem name="clientes" id="clientes.menu_root"/>
+    <!-- <menuitem name="clientes" id="clientes.menu_root"/> -->
    
     <!-- menu categories -->
     
-    <menuitem name="Menu 1" id="clientes.menu_1" parent="clientes.menu_root" action="clientes.action_window"/>
+    <!-- <menuitem name="Menu 1" id="clientes.menu_1" parent="clientes.menu_root" action="clientes.action_window"/> -->
     <!--
     <menuitem name="Menu 2" id="clientes.menu_2" parent="clientes.menu_root"/>
     -->
