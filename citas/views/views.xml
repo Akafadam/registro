@@ -31,6 +31,12 @@
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
+            <button name="%(citas.dialog_action_window)d"
+                    type="action"
+                    string="Invalidar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
             <field name="state"
                    widget="statusbar"
                    default="draft"
@@ -38,12 +44,12 @@
           </header>
           <sheet>
             <group>
-              <field name="client_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="pacient_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="medic_data" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="speciality" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="date_time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
-              <field name="time" attrs="{'readonly':[('state', 'in', ['accepted'])]}"/>
+              <field name="client_data"/>
+              <field name="pacient_data"/>
+              <field name="medic_data"/>
+              <field name="speciality"/>
+              <field name="date_time"/>
+              <field name="time"/>
             </group>
           </sheet>
         </form>
@@ -81,10 +87,8 @@
     <menuitem name="citas" id="citas.menu_root"/>
    
     <!-- menu categories -->
-    <menuitem name="Menu 1" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
-    <!--
-    <menuitem name="Menu 2" id="citas.menu_2" parent="citas.menu_root"/>
-    -->
+    <menuitem name="Citas" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
+   
     <!-- actions -->
     <!--
     <menuitem name="List" id="citas.menu_1_list" parent="citas.menu_1"

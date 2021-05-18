@@ -21,9 +21,16 @@ class citas(models.Model):
         data.state = 'accepted'
 
     def unlink(self):
+        data = self[0]
+        if data.state == "accepted":
+            raise UserError('El registro fue validado, no puede ser eliminado')
+        return super(citas, data).unlink()
+
+    @api.multi
+    def write(self, vals):
         if self.state == "accepted":
-            raise UserError('Deleting is only possible in case of draft')
-        return super(citas, self).unlink()
+            raise UserError("El registro fue validado, no puede ser ejecutado")
+        return super(citas, self).write(vals)
 
     @api.onchange('medic_data')
     def _set_specs(self):
@@ -68,9 +75,9 @@ class citas(models.Model):
                              (22, '22:00')],
                             string="Hora", required=True)
     client_data = fields.Many2one(
-        'clientes.clientes', string="Datos del cliente", required=True)
+        'citas.personas', string="Datos del cliente", required=True)
     pacient_data = fields.Many2one(
-        'pacientes.pacientes', string="Datos del paciente", required=True)
+        'citas.personas', string="Datos del paciente", required=True)
     speciality = fields.Char(string="Especialidad Medica",
                              required=True, compute="_set_specs")
     medic_data = fields.Many2one(

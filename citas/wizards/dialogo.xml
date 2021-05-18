@@ -1,0 +1,23 @@
+<odoo>
+    <record model="ir.ui.view" id="dialog_window">
+        <field name="name">dialogo form</field>
+        <field name="model">citas.dialogo</field>
+        <field name="arch" type="xml">
+            <form>
+            <sheet>
+                <group>
+                <field name="password"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="dialog_action_window">
+        <field name="name">dialog window</field>
+        <field name="res_model">citas.dialogo</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="dialog_window"/>
+    </record>
+</odoo>
