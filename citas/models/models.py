@@ -23,19 +23,14 @@ class citas(models.Model):
     def unlink(self):
         data = self[0]
         if data.state == "accepted":
-            raise UserError('Deleting is only possible in case of draft')
+            raise UserError('El registro fue validado, no puede ser eliminado')
         return super(citas, data).unlink()
 
     @api.multi
     def write(self, vals):
-        print(vals)
-        res = super(citas, self).write(vals)
-        print(vals)
-        for rec in self:
-            if rec.state == "accepted":
-                raise UserError(
-                    'El registro fue validado, ya no puede ser editado')
-        return res
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser ejecutado")
+        return super(citas, self).write(vals)
 
     @api.onchange('medic_data')
     def _set_specs(self):
