@@ -39,6 +39,7 @@ class citas(models.Model):
             data.pacient_data = data.client_data
 
     @api.onchange('medic_data')
+    @api.depends('medic_data')
     def _set_specs(self):
         data = self[0]
         data.speciality = data.medic_data.speciality
@@ -80,12 +81,15 @@ class citas(models.Model):
                              (21, '21:00'),
                              (22, '22:00')],
                             string="Hora", required=True)
-    client_data = fields.Many2one('citas.personas', string="Datos del cliente", required=True)
+    client_data = fields.Many2one(
+        'citas.personas', string="Datos del cliente", required=True)
     is_client = fields.Boolean(string="¿Es el cliente el paciente?")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
-    compute="_auto_fill", readonly=False, store=True)
-    speciality = fields.Char(string="Especialidad Medica", required=True, compute="_set_specs")
-    medic_data = fields.Many2one('empleados.empleados', string="Medico", required=True)
+                                   compute="_auto_fill", readonly=False, store=True)
+    speciality = fields.Char(string="Especialidad Medica",
+                             required=True, compute="_set_specs", store=True)
+    medic_data = fields.Many2one(
+        'empleados.empleados', string="Medico", required=True)
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
