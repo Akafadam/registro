@@ -43,14 +43,16 @@
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
-            <group>
-              <field name="client_data"/>
-              <field name="is_client"/>
-              <field name="pacient_data"/>
-              <field name="medic_data"/>
-              <field name="speciality"/>
-              <field name="date_time"/>
-              <field name="time"/>
+            <group col="4">
+              <group colspan="3">
+                <field name="client_data"/>
+                <field name="is_client"/>
+                <field name="pacient_data"/>
+                <field name="medic_data"/>
+                <field name="speciality"/>
+                <field name="date_time"/>
+                <field name="time"/>
+              </group>
             </group>
           </sheet>
         </form>

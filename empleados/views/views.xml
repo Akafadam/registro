@@ -30,20 +30,22 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="id_card"/>
-              <field name="birthyear"/>
-              <field name="phone"/>
-              <field name="charge"/>
-              <field name="email"/>
-              <field name="arrive_time"/>
-            </group>
-            <group>
-              <field name="leave_time"/>  
-              <field name="speciality"/>
-              <field name="address"/>
-              <field name="worked"/>
-              <field name="pay"/>
+              <group>
+                <field name="name"/>
+                <field name="id_card"/>
+                <field name="birthyear"/>
+                <field name="phone"/>
+                <field name="charge"/>
+                <field name="email"/>
+              </group>
+              <group>
+                <field name="arrive_time"/>
+                <field name="leave_time"/>  
+                <field name="speciality"/>
+                <field name="address"/>
+                <field name="worked"/>
+                <field name="pay"/>
+              </group>
             </group>
           </sheet>
         </form>
@@ -74,7 +76,7 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group col="2">
+            <group>
               <field name="name"/>
               <field name="id_card"/>
               <field name="birthyear"/>
