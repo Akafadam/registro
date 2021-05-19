@@ -20,11 +20,13 @@ class citas(models.Model):
         data = self[0]
         data.state = 'accepted'
 
+    @api.multi
     def unlink(self):
-        data = self[0]
-        if data.state == "accepted":
-            raise UserError('El registro fue validado, no puede ser eliminado')
-        return super(citas, data).unlink()
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError('El registro fue validado, no puede ser eliminado')
+        return super(citas, self).unlink()
 
     @api.multi
     def write(self, vals):
