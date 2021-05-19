@@ -2,7 +2,7 @@
   <data>
     <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="empleados_medicos">
+    <record model="ir.ui.view" id="empleados_personal">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -21,7 +21,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_medicos_form">
+    <record model="ir.ui.view" id="empleados_personal_form">
       <field name="name">empleados form</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -82,7 +82,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_servicio">
+    <record model="ir.ui.view" id="empleados_horario">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -98,7 +98,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_servicio_form">
+    <record model="ir.ui.view" id="empleados_horario_form">
       <field name="name">empleados form</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -122,7 +122,7 @@
       </field>
     </record>
    
-   <record model="ir.ui.view" id="empleados_administrativo">
+   <record model="ir.ui.view" id="empleados_especialidad">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -138,7 +138,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_administrativo_form">
+    <record model="ir.ui.view" id="empleados_especialidad_form">
       <field name="name">empleados form</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -164,30 +164,30 @@
 
     <!-- actions opening views on models -->
     
-    <record model="ir.actions.act_window" id="empleados.action_medico">
+    <record model="ir.actions.act_window" id="empleados.action_personal">
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_ids" eval="[(5, 0, 0), 
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_medicos')}), 
-        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_medicos_form')}),                           
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_personal')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_personal_form')}),                           
         (0, 0, {'view_mode': 'kanban'})]"/>
       <field name="view_mode">tree,form</field>
     </record>
    
-    <record model="ir.actions.act_window" id="empleados.action_servicio">
+    <record model="ir.actions.act_window" id="empleados.action_horario">
       <field name="view_ids" eval="[(5, 0, 0), 
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_servicio')}), 
-        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_servicio_form')}),                           
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_horario')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_horario_form')}),                           
         (0, 0, {'view_mode': 'kanban'})]"/>
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="empleados.action_administrativo">
+    <record model="ir.actions.act_window" id="empleados.action_especialidad">
       <field name="view_ids" eval="[(5, 0, 0), 
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_administrativo')}), 
-        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_administrativo_form')}),                           
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_especialidad')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_especialidad_form')}),                           
         (0, 0, {'view_mode': 'kanban'})]"/>
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
@@ -212,15 +212,15 @@
 
     <!-- Top menu item -->
     
-    <menuitem name="empleados" id="empleados.menu_root"/>
+    <menuitem name="Empleados" id="empleados.menu_root"/>
    
     <!-- menu categories -->
     
-    <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
+    <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_personal"/>
     
-    <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_servicio"/>
+    <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_horario"/>
     
-    <menuitem name="Cargo" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_administrativo"/>
+    <menuitem name="Especialidad" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_especialidad"/>
 
     <!--
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>
