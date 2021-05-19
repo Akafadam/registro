@@ -24,7 +24,8 @@ class citas(models.Model):
         # data = self[0]
         for rec in self:
             if rec.state == "accepted":
-                raise UserError('El registro fue validado, no puede ser eliminado')
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
         return super(citas, self).unlink()
 
     @api.multi
@@ -85,7 +86,8 @@ class citas(models.Model):
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
                                    compute="_auto_fill", readonly=False, store=True)
-    speciality = fields.Char(string="Especialidad Medica", compute="_set_specs", store=True)
+    speciality = fields.Char(string="Especialidad Medica",
+                             compute="_set_specs", store=True)
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico", required=True)
     state = fields.Selection([

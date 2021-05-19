@@ -4,7 +4,7 @@
       <field name="model">especialidad.especialidad</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="speciality"/>
+          <field name="name"/>
         </tree>
       </field>
     </record>
@@ -16,7 +16,7 @@
         <form>
           <sheet>
             <group>
-              <field name="speciality"/>
+              <field name="name"/>
             </group>
           </sheet>
         </form>

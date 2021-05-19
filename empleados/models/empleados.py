@@ -24,10 +24,7 @@ class empleados(models.Model):
 
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
-    charge = fields.Selection([('medico', 'Medico'),
-                              ('servicio', 'Servicio'),
-                              ('administrativo', 'Administrativo')],
-                              string="Cargo", required=True)
+    charge = fields.Many2one('cargos.cargos', string="Cargo", required=True)
     phone = fields.Integer(string="Número telefónico", required=True)
     id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
@@ -66,14 +63,8 @@ class empleados(models.Model):
                                    (22, '22:00')],
                                   string="Hora de salida")
     address = fields.Char(string="Dirección", required=True)
-    speciality = fields.Selection([('Geriatra', 'Geriatra'),
-                                   ('Pediatra', 'Pediatra'),
-                                   ('Cardiologo', 'Cardiologo'),
-                                   ('Hematologo', 'Hematologo'),
-                                   ('Neurologo', 'Neurologo'),
-                                   ('Nutriologo', 'Nutriologo'),
-                                   ('Traumatologo', 'Traumatologo')],
-                                  string="Especialidad")
+    speciality = fields.Many2one(
+        'especialidad.especialidad', string="Especialidad")
     worked = fields.Char(string="Horas trabajadas", required=True)
     pay = fields.Char(string="Remuneración", required=True)
     state = fields.Selection([

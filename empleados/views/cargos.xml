@@ -1,0 +1,36 @@
+<odoo>
+  <record model="ir.ui.view" id="empleados_cargos">
+      <field name="name">cargos list</field>
+      <field name="model">cargos.cargos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_cargos_form">
+      <field name="name">cargos form</field>
+      <field name="model">cargos.cargos</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados.action_cargos">
+      <field name="name">cargos window</field>
+      <field name="res_model">cargos.cargos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Empleados" id="empleados.menu_root"/>
+
+    <menuitem name="Cargos" id="empleados.menu_4" parent="empleados.menu_root" action="empleados.action_cargos"/>
+
+</odoo>

@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/cargos.xml',
         'views/especialidad.xml',
         'views/views.xml',
         'views/templates.xml',
@@ -33,5 +34,6 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+        'data/cargos.cargos.csv'
     ],
 }
