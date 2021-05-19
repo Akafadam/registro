@@ -121,46 +121,6 @@
         </form>
       </field>
     </record>
-   
-   <record model="ir.ui.view" id="empleados_especialidad">
-      <field name="name">empleados list</field>
-      <field name="model">empleados.empleados</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="id_card"/>
-          <field name="birthyear"/>
-          <field name="phone"/>
-          <field name="charge"/>
-          <field name="email"/>
-          <field name="address"/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="empleados_especialidad_form">
-      <field name="name">empleados form</field>
-      <field name="model">empleados.empleados</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-              <group>
-                <field name="name"/>
-                <field name="id_card"/>
-                <field name="birthyear"/>
-                <field name="phone"/>
-              </group>
-              <group>
-                <field name="charge"/>
-                <field name="email"/>
-                <field name="address"/>
-              </group>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
 
     <!-- actions opening views on models -->
     
@@ -184,7 +144,7 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="empleados.action_especialidad">
+    <!-- <record model="ir.actions.act_window" id="empleados.action_especialidad">
       <field name="view_ids" eval="[(5, 0, 0), 
         (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_especialidad')}), 
         (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_especialidad_form')}),                           
@@ -192,7 +152,7 @@
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
-    </record>
+    </record> -->
 
     <!-- server action to the one above -->
     <!--
@@ -220,7 +180,6 @@
     
     <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_horario"/>
     
-    <menuitem name="Especialidad" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_especialidad"/>
 
     <!--
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>

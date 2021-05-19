@@ -1,0 +1,36 @@
+<odoo>
+  <record model="ir.ui.view" id="empleados_especialidad">
+      <field name="name">especialidad list</field>
+      <field name="model">especialidad.especialidad</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="speciality"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_especialidad_form">
+      <field name="name">especialidad form</field>
+      <field name="model">especialidad.especialidad</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="speciality"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados.action_especialidad">
+      <field name="name">especialidad window</field>
+      <field name="res_model">especialidad.especialidad</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Empleados" id="empleados.menu_root"/>
+
+    <menuitem name="Especialidad" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_especialidad"/>
+
+</odoo>
