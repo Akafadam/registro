@@ -17,8 +17,6 @@
           <field name="leave_time"/> 
           <field name="address"/>
           <field name="speciality"/>
-          <field name="worked"/>
-          <field name="pay"/>
         </tree>
       </field>
     </record>
@@ -29,24 +27,56 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group>
-              <group>
-                <field name="name"/>
-                <field name="id_card"/>
-                <field name="birthyear"/>
-                <field name="phone"/>
-                <field name="charge"/>
-                <field name="email"/>
-              </group>
-              <group>
-                <field name="arrive_time"/>
-                <field name="leave_time"/>  
-                <field name="speciality"/>
-                <field name="address"/>
-                <field name="worked"/>
-                <field name="pay"/>
-              </group>
-            </group>
+            <notebook>
+              <page string="Personal Medico">
+                <group>
+                  <group>
+                    <field name="name"/>
+                    <field name="id_card"/>
+                    <field name="birthyear"/>
+                    <field name="phone"/>
+                    <field name="charge"/>
+                  </group>
+                  <group>
+                    <field name="email"/>
+                    <field name="arrive_time"/>
+                    <field name="leave_time"/>  
+                    <field name="speciality"/>
+                    <field name="address"/>
+                  </group>
+                </group>
+              </page>
+              <page string="Personal de Servicio">
+                <group>
+                  <group>
+                    <field name="name"/>
+                    <field name="id_card"/>
+                    <field name="birthyear"/>
+                    <field name="phone"/>
+                  </group>
+                  <group>
+                    <field name="charge"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                  </group>
+                </group>
+              </page>
+              <page string="Personal Administrativo">
+                <group>
+                  <group>
+                    <field name="name"/>
+                    <field name="id_card"/>
+                    <field name="birthyear"/>
+                    <field name="phone"/>
+                  </group>
+                  <group>
+                    <field name="charge"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                  </group>
+                </group>
+              </page>
+            </notebook>
           </sheet>
         </form>
       </field>
@@ -64,8 +94,6 @@
           <field name="phone"/>
           <field name="email"/>
           <field name="address"/>
-          <field name="worked"/>
-          <field name="pay"/>
         </tree>
       </field>
     </record>
@@ -77,15 +105,17 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="id_card"/>
-              <field name="birthyear"/>
-              <field name="phone"/>
-              <field name="charge"/>
-              <field name="email"/>
-              <field name="address"/>
-              <field name="worked"/>
-              <field name="pay"/>
+              <group>
+                <field name="name"/>
+                <field name="id_card"/>
+                <field name="birthyear"/>
+                <field name="phone"/>
+              </group>
+              <group>
+                <field name="charge"/>
+                <field name="email"/>
+                <field name="address"/>
+              </group>
             </group>
           </sheet>
         </form>
@@ -104,8 +134,6 @@
           <field name="charge"/>
           <field name="email"/>
           <field name="address"/>
-          <field name="worked"/>
-          <field name="pay"/>
         </tree>
       </field>
     </record>
@@ -116,19 +144,18 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <group col="2">
-              <field name="name"/>
-              <field name="id_card"/>
-              <field name="birthyear"/>
-              <field name="charge"/>
-              <field name="phone"/>
-              <field name="email"/>
-              <field name="address"/>
-              <field name="worked"/>
-              <field name="pay"/>
-              <!-- <field name="arrive_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>
-              <field name="leave_time" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/>  
-              <field name="speciality" attrs="{'invisible':[('state', 'in', ['service','admin'])]}"/> -->
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="id_card"/>
+                <field name="birthyear"/>
+                <field name="phone"/>
+              </group>
+              <group>
+                <field name="charge"/>
+                <field name="email"/>
+                <field name="address"/>
+              </group>
             </group>
           </sheet>
         </form>
@@ -189,11 +216,11 @@
    
     <!-- menu categories -->
     
-    <menuitem name="Personal Médico" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
+    <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_medico"/>
     
-    <menuitem name="Personal de Servicio" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_servicio"/>
+    <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_servicio"/>
     
-    <menuitem name="Personal Administrativo" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_administrativo"/>
+    <menuitem name="Cargo" id="empleados.menu_3" parent="empleados.menu_root" action="empleados.action_administrativo"/>
 
     <!--
     <menuitem name="Menu 2" id="empleados.menu_2" parent="empleados.menu_root"/>
