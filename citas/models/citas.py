@@ -82,7 +82,7 @@ class citas(models.Model):
                             string="Hora", required=True)
     client_data = fields.Many2one(
         'citas.personas', string="Datos del cliente", required=True)
-    is_client = fields.Boolean(string="¿Es el cliente el paciente?")
+    is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Char(string="Especialidad Medica", compute="_set_specs", store=True)

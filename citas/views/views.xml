@@ -46,13 +46,18 @@
             <group col="4">
               <group colspan="3">
                 <field name="client_data"/>
-                <field name="is_client"/>
                 <field name="pacient_data"/>
                 <field name="medic_data"/>
                 <field name="speciality"/>
                 <field name="date_time"/>
                 <field name="time"/>
               </group>
+              <div attrs="{'invisible': [('client_data', '=', False)]}">
+                <div style="display: flex;">
+                  <label for="is_client"/>
+                  <field name="is_client" />
+                </div>
+              </div>
             </group>
           </sheet>
         </form>
