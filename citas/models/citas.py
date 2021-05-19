@@ -17,8 +17,7 @@ class citas(models.Model):
     ]
 
     def validate(self):
-        data = self[0]
-        data.state = 'accepted'
+        self.state = 'accepted'
 
     @api.multi
     def unlink(self):
@@ -36,15 +35,13 @@ class citas(models.Model):
 
     @api.onchange('is_client')
     def _auto_fill(self):
-        data = self[0]
-        if data.is_client:
-            data.pacient_data = data.client_data
+        if self.is_client:
+            self.pacient_data = self.client_data
 
     @api.onchange('medic_data')
     @api.depends('medic_data')
     def _set_specs(self):
-        data = self[0]
-        data.speciality = data.medic_data.speciality
+        self.speciality = self.medic_data.speciality
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
