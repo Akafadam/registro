@@ -3,7 +3,7 @@
     <!-- explicit list view definition -->
     
     <record model="ir.ui.view" id="empleados_personal">
-      <field name="name">empleados list</field>
+      <field name="name">Lista de Empleados</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
         <tree>
@@ -22,7 +22,7 @@
     </record>
 
     <record model="ir.ui.view" id="empleados_personal_form">
-      <field name="name">empleados form</field>
+      <field name="name">Formulario de Empleado</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
         <form>
@@ -48,7 +48,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_horario">
+    <!-- <record model="ir.ui.view" id="empleados_horario">
       <field name="name">empleados list</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
@@ -86,12 +86,12 @@
           </sheet>
         </form>
       </field>
-    </record>
+    </record> -->
 
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="empleados.action_personal">
-      <field name="name">empleados window</field>
+      <field name="name">Empleados</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_ids" eval="[(5, 0, 0), 
         (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_personal')}), 
@@ -100,7 +100,7 @@
       <field name="view_mode">tree,form</field>
     </record>
    
-    <record model="ir.actions.act_window" id="empleados.action_horario">
+    <!-- <record model="ir.actions.act_window" id="empleados.action_horario">
       <field name="view_ids" eval="[(5, 0, 0), 
         (0, 0, {'view_mode': 'tree', 'view_id': ref('empleados_horario')}), 
         (0, 0, {'view_mode': 'form', 'view_id': ref('empleados_horario_form')}),                           
@@ -108,7 +108,7 @@
       <field name="name">empleados window</field>
       <field name="res_model">empleados.empleados</field>
       <field name="view_mode">tree,form</field>
-    </record>
+    </record> -->
 
     <!-- <record model="ir.actions.act_window" id="empleados.action_especialidad">
       <field name="view_ids" eval="[(5, 0, 0), 
