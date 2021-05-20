@@ -1,4 +1,4 @@
-"id","name"
-"__export__.cargos_cargos_1_35886b69","Medico"
-"__export__.cargos_cargos_2_4f913e52","Personal de Servicio"
-"__export__.cargos_cargos_3_f5064de5","Personal Administrativo"
+"id","name","speciality","schedule"
+"__export__.cargos_cargos_1_35886b69","Medico","True","True"
+"__export__.cargos_cargos_2_4f913e52","Personal de Servicio","False","False"
+"__export__.cargos_cargos_3_f5064de5","Personal Administrativo","False","False"

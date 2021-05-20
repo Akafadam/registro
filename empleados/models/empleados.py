@@ -64,7 +64,7 @@ class empleados(models.Model):
                                   string="Hora de salida")
     address = fields.Char(string="Dirección", required=True)
     speciality = fields.Many2one(
-        'especialidad.especialidad', string="Especialidad")
+        'especialidad.especialidad', string="Especialidad/Grado")
     worked = fields.Char(string="Horas trabajadas")
     pay = fields.Char(string="Remuneración")
     state = fields.Selection([

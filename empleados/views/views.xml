@@ -37,10 +37,10 @@
               </group>
               <group>
                 <field name="email"/>
+                <field name="address"/>
                 <field name="arrive_time"/>
                 <field name="leave_time"/>  
                 <field name="speciality"/>
-                <field name="address"/>
               </group>
             </group>
           </sheet>
@@ -144,7 +144,7 @@
     
     <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_personal"/>
     
-    <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_horario"/>
+    <!-- <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_horario"/> -->
     
 
     <!--
