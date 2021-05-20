@@ -27,6 +27,8 @@ class cargos(models.Model):
     def _set_medic(self):
         if self.is_medic:
             self.speciality = True
+        else:
+            self.speciality = False
 
     name = fields.Char(string="Cargos",
                        readonly=False, required=True)
