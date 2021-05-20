@@ -4,6 +4,7 @@
       <field name="model">cargos.cargos</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="is_medic"/>
           <field name="name"/>
           <field name="speciality"/>
         </tree>
@@ -17,6 +18,7 @@
         <form>
           <sheet>
             <group>
+              <field name="is_medic"/>
               <field name="name"/>
               <field name="speciality"/>
             </group>

@@ -40,7 +40,14 @@
                 <field name="address"/>
                 <field name="arrive_time"/>
                 <field name="leave_time"/>  
-                <field name="speciality"/>
+                <field name="speciality" 
+                       domain="[('is_medic','=',True)]" 
+                       attrs="{'invisible':[('is_medic','=','False')]}"
+                       />
+                <field name="speciality_no_medic" 
+                       domain="[('is_medic','=',False)]"
+                       attrs="{'invisible':[('is_medic','=','True')]}"
+                       />
               </group>
             </group>
           </sheet>

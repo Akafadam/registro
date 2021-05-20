@@ -3,7 +3,7 @@
     <!-- explicit list view definition -->
     
     <record model="ir.ui.view" id="citas.list">
-      <field name="name">citas list</field>
+      <field name="name">Lista de Citas</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
         <tree>
@@ -18,7 +18,7 @@
     </record>
 
     <record model="ir.ui.view" id="citas.form">
-      <field name="name">citas form</field>
+      <field name="name">Formulario de Cita</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
         <form>
@@ -68,7 +68,7 @@
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="citas.action_window">
-      <field name="name">citas window</field>
+      <field name="name">Citas</field>
       <field name="res_model">citas.citas</field>
       <field name="view_mode">tree,form</field>
     </record>
