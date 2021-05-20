@@ -44,7 +44,7 @@ class empleados(models.Model):
                                     (20, '20:00'),
                                     (21, '21:00'),
                                     (22, '22:00')],
-                                   string="Hora de Llegada")
+                                   string="Hora de Llegada", required=True)
     leave_time = fields.Selection([(7, '07:00'),
                                    (8, '08:00'),
                                    (9, '09:00'),
@@ -61,7 +61,7 @@ class empleados(models.Model):
                                    (20, '20:00'),
                                    (21, '21:00'),
                                    (22, '22:00')],
-                                  string="Hora de salida")
+                                  string="Hora de salida", required=True)
     address = fields.Char(string="Dirección", required=True)
     speciality = fields.Many2one(
         'especialidad.especialidad', string="Especialidad/Grado")
@@ -70,9 +70,11 @@ class empleados(models.Model):
     worked = fields.Char(string="Horas trabajadas")
     pay = fields.Char(string="Remuneración")
     is_medic = fields.Boolean(
-        string='Es medico', related="charge.is_medic", store=True)
-    state = fields.Selection([
-        ('medic', 'Personal Medico'),
-        ('service', 'Personal de Servicio'),
-        ('admin', 'Personal Administrativo')
-    ])
+        string='Es medico', related="charge.is_medic", readonly=True)
+    has_specs = fields.Boolean(
+        string="Tiene especialidad", related="charge.speciality", readonly=True)
+    # state = fields.Selection([
+    #     ('medic', 'Personal Medico'),
+    #     ('service', 'Personal de Servicio'),
+    #     ('admin', 'Personal Administrativo')
+    # ])
