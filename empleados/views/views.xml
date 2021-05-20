@@ -42,13 +42,14 @@
                 <field name="leave_time"/>  
                 <field name="speciality" 
                        domain="[('is_medic','=',True)]" 
-                       attrs="{'invisible':[('is_medic','=','False')]}"
+                       attrs="{'invisible':[('is_medic','=',False)]}"
                        />
                 <field name="speciality_no_medic" 
                        domain="[('is_medic','=',False)]"
-                       attrs="{'invisible':[('is_medic','=','True')]}"
+                       attrs="{'invisible':[('is_medic','=',True)]}"
                        />
               </group>
+                <field name="is_medic"/>
             </group>
           </sheet>
         </form>
