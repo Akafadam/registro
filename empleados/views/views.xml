@@ -27,56 +27,22 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <notebook>
-              <page string="Personal Medico">
-                <group>
-                  <group>
-                    <field name="name"/>
-                    <field name="id_card"/>
-                    <field name="birthyear"/>
-                    <field name="phone"/>
-                    <field name="charge"/>
-                  </group>
-                  <group>
-                    <field name="email"/>
-                    <field name="arrive_time"/>
-                    <field name="leave_time"/>  
-                    <field name="speciality"/>
-                    <field name="address"/>
-                  </group>
-                </group>
-              </page>
-              <page string="Personal de Servicio">
-                <group>
-                  <group>
-                    <field name="name"/>
-                    <field name="id_card"/>
-                    <field name="birthyear"/>
-                    <field name="phone"/>
-                  </group>
-                  <group>
-                    <field name="charge"/>
-                    <field name="email"/>
-                    <field name="address"/>
-                  </group>
-                </group>
-              </page>
-              <page string="Personal Administrativo">
-                <group>
-                  <group>
-                    <field name="name"/>
-                    <field name="id_card"/>
-                    <field name="birthyear"/>
-                    <field name="phone"/>
-                  </group>
-                  <group>
-                    <field name="charge"/>
-                    <field name="email"/>
-                    <field name="address"/>
-                  </group>
-                </group>
-              </page>
-            </notebook>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="id_card"/>
+                <field name="birthyear"/>
+                <field name="phone"/>
+                <field name="charge"/>
+              </group>
+              <group>
+                <field name="email"/>
+                <field name="arrive_time"/>
+                <field name="leave_time"/>  
+                <field name="speciality"/>
+                <field name="address"/>
+              </group>
+            </group>
           </sheet>
         </form>
       </field>
