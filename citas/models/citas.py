@@ -39,10 +39,10 @@ class citas(models.Model):
         if self.is_client:
             self.pacient_data = self.client_data
 
-    @api.onchange('medic_data')
-    @api.depends('medic_data')
-    def _set_specs(self):
-        self.speciality = self.medic_data.speciality
+    # @api.onchange('medic_data')
+    # @api.depends('medic_data')
+    # def _set_specs(self):
+    #     self.speciality = self.medic_data.speciality
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
@@ -87,7 +87,7 @@ class citas(models.Model):
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Char(string="Especialidad Medica",
-                             compute="_set_specs", store=True)
+                             related="medic_data.speciality.name", store=True)
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico", required=True)
     state = fields.Selection([

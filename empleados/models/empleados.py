@@ -65,8 +65,8 @@ class empleados(models.Model):
     address = fields.Char(string="Dirección", required=True)
     speciality = fields.Many2one(
         'especialidad.especialidad', string="Especialidad")
-    worked = fields.Char(string="Horas trabajadas", required=True)
-    pay = fields.Char(string="Remuneración", required=True)
+    worked = fields.Char(string="Horas trabajadas")
+    pay = fields.Char(string="Remuneración")
     state = fields.Selection([
         ('medic', 'Personal Medico'),
         ('service', 'Personal de Servicio'),
