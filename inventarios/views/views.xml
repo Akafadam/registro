@@ -2,7 +2,7 @@
   <data>
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="inventarios.list">
-      <field name="name">inventarios list</field>
+      <field name="name">Lista de Inventario</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
         <tree>
@@ -15,7 +15,7 @@
     </record>
 
     <record model="ir.ui.view" id="inventarios.form">
-      <field name="name">inventarios form</field>
+      <field name="name">Formulario de Inventario</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
         <form>
@@ -35,7 +35,7 @@
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="inventarios.action_window">
-      <field name="name">inventarios window</field>
+      <field name="name">Inventarios</field>
       <field name="res_model">inventarios.inventarios</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -59,10 +59,10 @@
 
     <!-- Top menu item -->
     
-    <menuitem name="inventarios" id="inventarios.menu_root"/>
+    <menuitem name="Inventarios" id="inventarios.menu_root"/>
    
     <!-- menu categories -->
-    <menuitem name="Menu 1" id="inventarios.menu_1" parent="inventarios.menu_root" action="inventarios.action_window"/>
+    <menuitem name="Movimientos" id="inventarios.menu_1" parent="inventarios.menu_root" action="inventarios.action_window"/>
     <!--
     <menuitem name="Menu 2" id="inventarios.menu_2" parent="inventarios.menu_root"/>
     -->
