@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="inventarios.list">
+    <record model="ir.ui.view" id="inventarios_list">
       <field name="name">Lista de Inventario</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
@@ -14,7 +14,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="inventarios.form">
+    <record model="ir.ui.view" id="inventarios_form">
       <field name="name">Formulario de Inventario</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
@@ -55,7 +55,7 @@
 
     <!-- actions opening views on models -->
     
-    <record model="ir.actions.act_window" id="inventarios.action_window">
+    <record model="ir.actions.act_window" id="inventarios_action_window">
       <field name="name">Inventarios</field>
       <field name="res_model">inventarios.inventarios</field>
       <field name="view_mode">tree,form</field>
@@ -80,17 +80,17 @@
 
     <!-- Top menu item -->
     
-    <menuitem name="Inventarios" id="inventarios.menu_root"/>
+    <!-- <menuitem name="Inventarios" id="inventarios.menu_root"/> -->
    
     <!-- menu categories -->
-    <menuitem name="Movimientos" id="inventarios.menu_1" parent="inventarios.menu_root" action="inventarios.action_window"/>
+    <menuitem name="Movimientos" id="inventarios_menu_2" parent="inventarios_menu_root" action="inventarios_action_window"/>
     <!--
     <menuitem name="Menu 2" id="inventarios.menu_2" parent="inventarios.menu_root"/>
     -->
     <!-- actions -->
     <!--
     <menuitem name="List" id="inventarios.menu_1_list" parent="inventarios.menu_1"
-              action="inventarios.action_window"/>
+              action="inventarios_action_window"/>
     <menuitem name="Server to list" id="inventarios" parent="inventarios.menu_2"
               action="inventarios.action_server"/>
     -->

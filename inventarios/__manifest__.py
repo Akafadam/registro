@@ -28,8 +28,8 @@
         'views/views.xml',
         'views/productos.xml',
         'views/templates.xml',
-        'report/external_layout_productos.xml',
         'report/external_layout.xml',
+        'report/external_layout_productos.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
