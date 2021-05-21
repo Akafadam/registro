@@ -21,6 +21,9 @@ class productos(models.Model):
         result_str = ''.join(random.choice(letters) for i in range(12))
         self.code = result_str
 
+    def validate(self):
+        self.state = 'accepted'
+
     @api.onchange('code')
     def create_qr(self):
         qr = qrcode.QRCode(
@@ -43,6 +46,11 @@ class productos(models.Model):
     cost = fields.Integer(string="Costo", required=True)
     qr_code = fields.Binary(string="Código QR", required=True,
                             compute="create_qr")
+
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('accepted', 'Validado')
+    ], default="draft")
 
 #     @api.depends('value')
 #     def _value_pc(self):

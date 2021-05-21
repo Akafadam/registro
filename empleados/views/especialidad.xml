@@ -15,6 +15,26 @@
       <field name="model">especialidad.especialidad</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <field name="state" invisible="True"/>
+            <button name="validate"
+                    type="object"
+                    states="draft"
+                    string="Validar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <!-- <button name="%(citas.dialog_action_window)d"
+                    type="action"
+                    string="Invalidar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/> -->
+
+            <field name="state"
+                   widget="statusbar"
+                   default="draft"
+                   statusbar_visible="draft,accepted"/>
+          </header>
           <sheet>
             <group>
               <field name="name"/>

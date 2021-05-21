@@ -9,6 +9,9 @@ class cargos(models.Model):
         ('charge_record_constrain', 'UNIQUE(name)', 'Este cargo ya está registrado')
     ]
 
+    def validate(self):
+        self.state = 'accepted'
+
     # @api.multi
     # def unlink(self):
     #     if self.name == 'Medico':
@@ -40,6 +43,10 @@ class cargos(models.Model):
     type = fields.Selection([('medico', 'Medico'),
                              ('servicio', 'Servicio'),
                              ('administrativo', 'Administrativo')],string="Tipo de cargo")
-    is_medic = fields.Boolean(string="Es medico")
-    speciality = fields.Boolean(string="Especialidad Requerida")
+    is_medic = fields.Boolean(string="Es medico", readonly=True)
+    speciality = fields.Boolean(string="Especialidad Requerida", readonly=True)
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('accepted', 'Validado')
+    ], default="draft")
 

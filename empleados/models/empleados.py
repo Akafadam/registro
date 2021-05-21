@@ -17,6 +17,9 @@ class empleados(models.Model):
          'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
     ]
 
+    def validate(self):
+        self.state = 'accepted'
+
     @api.constrains('birthyear')
     def _check_underage(self):
         timediff = relativedelta(date.today(), self.birthyear)
@@ -88,6 +91,10 @@ class empleados(models.Model):
         string='Es medico', related="charge.is_medic", readonly=True)
     has_specs = fields.Boolean(
         string="Tiene especialidad", related="charge.speciality", readonly=True)
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('accepted', 'Validado')
+    ], default="draft")
     # state = fields.Selection([
     #     ('medic', 'Personal Medico'),
     #     ('service', 'Personal de Servicio'),

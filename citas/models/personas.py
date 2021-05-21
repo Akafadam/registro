@@ -21,6 +21,9 @@ class personas(models.Model):
     #     ('check_underage', 'El usuario debe ser mayor de edad', ['birthyear'])
     # ]
 
+    def validate(self):
+        self.state = 'accepted'
+
     @api.constrains('email')
     def _validate_email(self):
         self.email.replace(" ", "")
@@ -47,6 +50,10 @@ class personas(models.Model):
     phone = fields.Char(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     address = fields.Char(string="Dirección", required=True)
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('accepted', 'Validado')
+    ], default="draft")
 
     # today = fields.Date.today()
 #
