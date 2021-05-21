@@ -20,6 +20,13 @@
       <field name="model">productos.productos</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <button name="get_random_string"
+                    type="object"
+                    string="Generar codigo"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+          </header>
           <sheet>
             <group>
               <field name="name"/>
@@ -27,6 +34,7 @@
               <field name="cost"/>
               <field name="qr_code" widget="image" class="oe_avatar"/>
             </group>
+            
           </sheet>
         </form>
       </field>

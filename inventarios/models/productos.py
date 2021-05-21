@@ -3,6 +3,10 @@ from odoo import models, fields, api
 import qrcode
 from io import BytesIO
 import base64
+import random
+import string
+
+
 
 
 class productos(models.Model):
@@ -10,6 +14,12 @@ class productos(models.Model):
 
     _sql_constraints = [('products_record', 'UNIQUE(code)',
                          'Este producto ya esta registrado')]
+
+    def get_random_string(self):
+        # choose from all lowercase letter
+        letters = string.ascii_lowercase
+        result_str = ''.join(random.choice(letters) for i in range(12))
+        self.code = result_str
 
     @api.onchange('code')
     def create_qr(self):
