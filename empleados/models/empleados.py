@@ -3,6 +3,8 @@
 from odoo import models, fields, api
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
+import re
+from odoo.exceptions import UserError, ValidationError
 
 
 class empleados(models.Model):
@@ -22,10 +24,23 @@ class empleados(models.Model):
         if yeardiff < 18:
             raise ValueError('El usuario debe ser mayor de edad')
 
+    @api.constrains('email')
+    def _validate_email(self):
+        self.email.replace(" ", "")
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
+            raise ValidationError("Invalido. Ingrese el Correo nuevamente")
+
+    @api.constrains('phone')
+    def validate_phone(self):
+        if self.phone:
+            match = re.match('^[0]\d{10}$', self.phone)
+        if not match:
+            raise ValidationError('El Numero de Telefono no es Correcto')
+
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
     charge = fields.Many2one('cargos.cargos', string="Cargo", required=True)
-    phone = fields.Integer(string="Número telefónico", required=True)
+    phone = fields.Char(string="Número telefónico", required=True)
     id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     arrive_time = fields.Selection([(7, '07:00'),

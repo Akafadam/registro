@@ -3,6 +3,8 @@
 from odoo import models, fields, api
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
+import re
+from odoo.exceptions import UserError, ValidationError
 
 
 class personas(models.Model):
@@ -19,6 +21,19 @@ class personas(models.Model):
     #     ('check_underage', 'El usuario debe ser mayor de edad', ['birthyear'])
     # ]
 
+    @api.constrains('email')
+    def _validate_email(self):
+        self.email.replace(" ", "")
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
+            raise ValidationError("Invalido. Ingrese el Correo nuevamente")
+
+    @api.constrains('phone')
+    def validate_phone(self):
+        if self.phone:
+            match = re.match('^[0]\d{10}$', self.phone)
+        if not match:
+            raise ValidationError('El Numero de Telefono no es Correcto')
+
     @api.constrains('birthyear')
     def _check_underage(self):
         timediff = relativedelta(date.today(), self.birthyear)
@@ -29,7 +44,7 @@ class personas(models.Model):
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
-    phone = fields.Integer(string="Número telefónico", required=True)
+    phone = fields.Char(string="Número telefónico", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
     address = fields.Char(string="Dirección", required=True)
 
