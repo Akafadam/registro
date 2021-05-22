@@ -35,12 +35,12 @@
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
-            <!-- <button name="invalidate"
-                    type="action"
-                    attrs="{'invisible':[('state','in',['draft'])]}"
+            <button name="invalidate"
+                    type="object"
+                    states="accepted"
                     string="Invalidar"
                     style="background:#7c7bad; color:white"
-                    class="btn btn-primary"/> -->
+                    class="btn btn-primary"/>
 
             <field name="state"
                    widget="statusbar"

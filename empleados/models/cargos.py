@@ -27,6 +27,10 @@ class cargos(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(cargos, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     # @api.multi
     # def unlink(self):
     #     if self.name == 'Medico':

@@ -35,6 +35,10 @@ class empleados(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(empleados, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     @api.constrains('birthyear')
     def _check_underage(self):
         timediff = relativedelta(date.today(), self.birthyear)

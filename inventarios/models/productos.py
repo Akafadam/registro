@@ -23,6 +23,10 @@ class productos(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(productos, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     @api.multi
     def unlink(self):
         # data = self[0]

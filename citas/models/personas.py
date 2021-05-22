@@ -39,6 +39,10 @@ class personas(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(personas, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     @api.constrains('email')
     def _validate_email(self):
         self.email.replace(" ", "")

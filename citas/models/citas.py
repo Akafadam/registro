@@ -19,8 +19,9 @@ class citas(models.Model):
     def validate(self):
         self.state = 'accepted'
 
-    # def invalidate(self):
-    #     self.state = 'draft'
+    def invalidate(self):
+        super(citas, self).write({'state': 'draft'})
+        # self.state = 'draft'
 
     @api.multi
     def unlink(self):

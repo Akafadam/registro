@@ -23,6 +23,10 @@ class especialidad(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(especialidad, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     _sql_constraints = [
         ('speciality_record_constrain', 'UNIQUE(name)',
          'Esta especialidad ya está registrada')

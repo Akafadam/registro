@@ -14,6 +14,10 @@ class inventarios(models.Model):
     def validate(self):
         self.state = 'accepted'
 
+    def invalidate(self):
+        super(inventarios, self).write({'state': 'draft'})
+        # self.state = 'draft'
+
     @api.multi
     def unlink(self):
         # data = self[0]
