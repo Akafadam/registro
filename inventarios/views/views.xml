@@ -79,8 +79,8 @@
     -->
 
     <!-- Top menu item -->
-    
-    <!-- <menuitem name="Inventarios" id="inventarios.menu_root"/> -->
+    _
+    <menuitem name="Inventarios" id="inventarios_menu_root"/>
    
     <!-- menu categories -->
     <menuitem name="Movimientos" id="inventarios_menu_2" parent="inventarios_menu_root" action="inventarios_action_window"/>
