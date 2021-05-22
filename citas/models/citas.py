@@ -34,7 +34,7 @@ class citas(models.Model):
     @api.multi
     def write(self, vals):
         if self.state == "accepted":
-            raise UserError("El registro fue validado, no puede ser ejecutado")
+            raise UserError("El registro fue validado, no puede ser editado")
         return super(citas, self).write(vals)
 
     @api.onchange('is_client')

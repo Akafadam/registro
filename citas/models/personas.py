@@ -21,6 +21,21 @@ class personas(models.Model):
     #     ('check_underage', 'El usuario debe ser mayor de edad', ['birthyear'])
     # ]
 
+    @api.multi
+    def unlink(self):
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
+        return super(personas, self).unlink()
+
+    @api.multi
+    def write(self, vals):
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser editado")
+        return super(personas, self).write(vals)
+
     def validate(self):
         self.state = 'accepted'
 

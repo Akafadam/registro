@@ -17,6 +17,21 @@ class empleados(models.Model):
          'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
     ]
 
+    @api.multi
+    def unlink(self):
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
+        return super(empleados, self).unlink()
+
+    @api.multi
+    def write(self, vals):
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser editado")
+        return super(empleados, self).write(vals)
+
     def validate(self):
         self.state = 'accepted'
 

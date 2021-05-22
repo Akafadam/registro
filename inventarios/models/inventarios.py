@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
+
 
 class inventarios(models.Model):
     _name = 'inventarios.inventarios'
@@ -12,8 +14,25 @@ class inventarios(models.Model):
     def validate(self):
         self.state = 'accepted'
 
-    product = fields.Many2one('productos.productos', string="Producto", required=True)
-    reserve_type = fields.Selection(string="Tipo de Reserva", selection=[("egreso", "Egreso"), ("ingreso", "Ingreso")])
+    @api.multi
+    def unlink(self):
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
+        return super(inventarios, self).unlink()
+
+    @api.multi
+    def write(self, vals):
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser editado")
+        return super(inventarios, self).write(vals)
+
+    product = fields.Many2one('productos.productos',
+                              string="Producto", required=True)
+    reserve_type = fields.Selection(string="Tipo de Reserva", selection=[
+                                    ("egreso", "Egreso"), ("ingreso", "Ingreso")])
     cuantity = fields.Integer(string="Cantidad", required=True)
     date = fields.Date(string="Fecha", required=True)
 

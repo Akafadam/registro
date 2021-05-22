@@ -9,6 +9,21 @@ class cargos(models.Model):
         ('charge_record_constrain', 'UNIQUE(name)', 'Este cargo ya está registrado')
     ]
 
+    @api.multi
+    def unlink(self):
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
+        return super(cargos, self).unlink()
+
+    @api.multi
+    def write(self, vals):
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser editado")
+        return super(cargos, self).write(vals)
+
     def validate(self):
         self.state = 'accepted'
 

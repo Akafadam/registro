@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
 import qrcode
 from io import BytesIO
 import base64
 import random
 import string
-
-
 
 
 class productos(models.Model):
@@ -23,6 +22,21 @@ class productos(models.Model):
 
     def validate(self):
         self.state = 'accepted'
+
+    @api.multi
+    def unlink(self):
+        # data = self[0]
+        for rec in self:
+            if rec.state == "accepted":
+                raise UserError(
+                    'El registro fue validado, no puede ser eliminado')
+        return super(productos, self).unlink()
+
+    @api.multi
+    def write(self, vals):
+        if self.state == "accepted":
+            raise UserError("El registro fue validado, no puede ser editado")
+        return super(productos, self).write(vals)
 
     @api.onchange('code')
     def create_qr(self):
