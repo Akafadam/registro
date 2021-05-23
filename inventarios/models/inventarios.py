@@ -33,7 +33,7 @@ class inventarios(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(inventarios, self).write(vals)
 
-    product = fields.Many2one('productos.productos',
+    product = fields.Many2one('inventarios.productos',
                               string="Producto", required=True)
     reserve_type = fields.Selection(string="Tipo de Reserva", selection=[
                                     ("egreso", "Egreso"), ("ingreso", "Ingreso")])

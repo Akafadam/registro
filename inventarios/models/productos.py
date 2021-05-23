@@ -9,16 +9,16 @@ import string
 
 
 class productos(models.Model):
-    _name = 'productos.productos'
+    _name = 'inventarios.productos'
 
     _sql_constraints = [('products_record', 'UNIQUE(code)',
                          'Este producto ya esta registrado')]
 
-    def get_random_string(self):
-        # choose from all lowercase letter
-        letters = string.ascii_lowercase
-        result_str = ''.join(random.choice(letters) for i in range(12))
-        self.code = result_str
+    # def get_random_string():
+    #     # choose from all lowercase letter
+    #     letters = string.ascii_uppercase
+    #     result_str = ''.join(random.choice(letters) for i in range(12))
+    #     return result_str
 
     def validate(self):
         self.state = 'accepted'
@@ -42,7 +42,20 @@ class productos(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(productos, self).write(vals)
 
+    # @api.multi
+    # @api.depends('code')
+    # def _get_length(data=self):
+    #     # data = self[0]
+    #     data.code = f"item-00{len(data.env['productos.productos'].search([]))}"
+
+    # @api.multi
+    # def create(self):
+    #     lenght = len(self.env['productos.productos'].search([]))
+    #     # self.code = f'item-00{lenght}'
+    #     return super(productos, self).create({'code': f'item-00{lenght}'})
+
     @api.onchange('code')
+    @api.depends('code')
     def create_qr(self):
         qr = qrcode.QRCode(
             version=1,
@@ -60,7 +73,8 @@ class productos(models.Model):
         data.qr_code = qr_image
 
     name = fields.Char(string="Nombre", required=True)
-    code = fields.Char(string="Código", required=True)
+    code = fields.Char(
+        string="Código")
     cost = fields.Integer(string="Costo", required=True)
     qr_code = fields.Binary(string="Código QR", required=True,
                             compute="create_qr")

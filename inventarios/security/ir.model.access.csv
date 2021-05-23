@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_inventarios_inventarios,inventarios.inventarios,model_inventarios_inventarios,,1,1,1,1
-access_productos_productos,productos.productos,model_productos_productos,,1,1,1,1
+access_inventarios_productos,inventarios.productos,model_inventarios_productos,,1,1,1,1

@@ -4,7 +4,7 @@
     
     <record model="ir.ui.view" id="productos_list">
       <field name="name">Lista de Productos</field>
-      <field name="model">productos.productos</field>
+      <field name="model">inventarios.productos</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,16 +17,16 @@
 
     <record model="ir.ui.view" id="productos_form">
       <field name="name">Formulario de Productos</field>
-      <field name="model">productos.productos</field>
+      <field name="model">inventarios.productos</field>
       <field name="arch" type="xml">
         <form>
           <header>
             <field name="state" invisible="True"/>
-            <button name="get_random_string"
+            <!-- <button name="get_random_string"
                     type="object"
                     string="Generar codigo"
                     style="background:#7c7bad; color:white"
-                    class="btn btn-primary"/>
+                    class="btn btn-primary"/> -->
         
             <button name="validate"
                     type="object"
@@ -65,14 +65,14 @@
     
     <record model="ir.actions.act_window" id="productos_action_window">
       <field name="name">Productos</field>
-      <field name="res_model">productos.productos</field>
+      <field name="res_model">inventarios.productos</field>
       <field name="view_mode">tree,form</field>
     </record>
    
 
     <!-- server action to the one above -->
     <!--
-    <record model="ir.actions.server" id="productos.action_server">
+    <record model="ir.actions.server" id="inventarios.action_server">
       <field name="name">productos server</field>
       <field name="model_id" ref="model_productos_productos"/>
       <field name="state">code</field>
@@ -94,14 +94,14 @@
     
     <menuitem name="Productos" id="productos_menu_1" parent="inventarios_menu_root" action="productos_action_window"/>
     <!--
-    <menuitem name="Menu 2" id="productos.menu_2" parent="productos.menu_root"/>
+    <menuitem name="Menu 2" id="inventarios.menu_2" parent="inventarios.menu_root"/>
     -->
     <!-- actions -->
     <!--
-    <menuitem name="List" id="productos.menu_1_list" parent="productos.menu_1"
-              action="productos.action_window"/>
-    <menuitem name="Server to list" id="productos" parent="productos.menu_2"
-              action="productos.action_server"/>
+    <menuitem name="List" id="inventarios.menu_1_list" parent="inventarios.menu_1"
+              action="inventarios.action_window"/>
+    <menuitem name="Server to list" id="productos" parent="inventarios.menu_2"
+              action="inventarios.action_server"/>
     -->
   </data>
 </odoo>
