@@ -54,7 +54,7 @@
                 <field name="id_card"/>
                 <field name="birthyear"/>
                 <field name="phone"/>
-                <field name="charge"/>
+                <field name="charge" domain="[('state','=','accepted')]"/>
               </group>
               <group>
                 <field name="email"/>
@@ -62,12 +62,12 @@
                 <field name="arrive_time"/>
                 <field name="leave_time"/>  
                 <field name="speciality" 
-                       domain="[('is_medic','=',True)]" 
+                       domain="[('is_medic','=',True),('state','=','accepted')]" 
                        attrs="{'invisible':['|',('is_medic','=',False),'|',('has_specs','=',False)], 
                                'required':[('is_medic','=',True),('has_specs','=',True)]}"
                        />
                 <field name="speciality_no_medic" 
-                       domain="[('is_medic','=',False)]"
+                       domain="[('is_medic','=',False),('state','=','accepted')]"
                        attrs="{'invisible':['|',('is_medic','=',True),'|',('has_specs','=',False)], 
                                'required':[('is_medic','=',False),('has_specs','=',True)]}"
                        />

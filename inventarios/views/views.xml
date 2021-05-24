@@ -42,7 +42,7 @@
           </header>s
           <sheet>
             <group>
-              <field name="product"/>
+              <field name="product" domain="[('state','=','accepted')]"/>
               <field name="reserve_type"/>
               <field name="cuantity"/>
               <field name="date"/>
