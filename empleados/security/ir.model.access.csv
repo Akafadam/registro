@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_empleados_empleados,empleados.empleados,model_empleados_empleados,,1,1,1,1
-access_especialidad_especialidad,especialidad.especialidad,model_especialidad_especialidad,,1,1,1,1
-access_cargos_cargos,cargos.cargos,model_cargos_cargos,,1,1,1,1
+access_empleados_especialidad,empleados.especialidad,model_empleados_especialidad,,1,1,1,1
+access_empleados_cargos,empleados.cargos,model_empleados_cargos,,1,1,1,1

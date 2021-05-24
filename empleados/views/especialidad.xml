@@ -1,7 +1,7 @@
 <odoo>
   <record model="ir.ui.view" id="empleados_especialidad">
       <field name="name">Lista de Especialidades</field>
-      <field name="model">especialidad.especialidad</field>
+      <field name="model">empleados.especialidad</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -12,7 +12,7 @@
 
     <record model="ir.ui.view" id="empleados_especialidad_form">
       <field name="name">Formulario de Especialidad</field>
-      <field name="model">especialidad.especialidad</field>
+      <field name="model">empleados.especialidad</field>
       <field name="arch" type="xml">
         <form>
           <header>
@@ -48,7 +48,7 @@
 
     <record model="ir.actions.act_window" id="empleados.action_especialidad">
       <field name="name">Especialidad</field>
-      <field name="res_model">especialidad.especialidad</field>
+      <field name="res_model">empleados.especialidad</field>
       <field name="view_mode">tree,form</field>
     </record>
 

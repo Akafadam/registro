@@ -61,7 +61,7 @@ class empleados(models.Model):
 
     name = fields.Char(string="Nombre", required=True)
     birthyear = fields.Date(string="Año de nacimiento", required=True)
-    charge = fields.Many2one('cargos.cargos', string="Cargo", required=True)
+    charge = fields.Many2one('empleados.cargos', string="Cargo", required=True)
     phone = fields.Char(string="Número telefónico", required=True)
     id_card = fields.Integer(string="Cédula", required=True)
     email = fields.Char(string="Correo eletrónico", required=True)
@@ -101,9 +101,9 @@ class empleados(models.Model):
                                   string="Hora de salida", required=True)
     address = fields.Char(string="Dirección", required=True)
     speciality = fields.Many2one(
-        'especialidad.especialidad', string="Especialidad/Grado")
+        'empleados.especialidad', string="Especialidad/Grado")
     speciality_no_medic = fields.Many2one(
-        'especialidad.especialidad', string="Especialidad/Grado")
+        'empleados.especialidad', string="Especialidad/Grado")
     worked = fields.Char(string="Horas trabajadas")
     pay = fields.Char(string="Remuneración")
     is_medic = fields.Boolean(

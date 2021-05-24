@@ -3,7 +3,7 @@ from odoo.exceptions import UserError, ValidationError
 
 
 class cargos(models.Model):
-    _name = 'cargos.cargos'
+    _name = 'empleados.cargos'
 
     _sql_constraints = [
         ('charge_record_constrain', 'UNIQUE(name)', 'Este cargo ya está registrado')

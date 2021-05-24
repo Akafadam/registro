@@ -93,7 +93,7 @@ class citas(models.Model):
     speciality = fields.Char(string="Especialidad Medica",
                              related="medic_data.speciality.name", store=True)
     speciality_select = fields.Many2one(
-        'especialidad.especialidad', string="Especialidad Medica")
+        'empleados.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
     medic_data_get = fields.Many2one(

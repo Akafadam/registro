@@ -3,7 +3,7 @@ from odoo.exceptions import UserError, ValidationError
 
 
 class especialidad(models.Model):
-    _name = 'especialidad.especialidad'
+    _name = 'empleados.especialidad'
 
     @api.multi
     def unlink(self):
