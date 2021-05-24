@@ -40,7 +40,7 @@
           </header>
           <sheet>
             <group>
-              <group>
+              <group string="Cargos">
                 <field name="name"/>
                 <field name="subtype"/>
                 <field name="is_medic"/>

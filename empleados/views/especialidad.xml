@@ -37,7 +37,7 @@
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
-            <group>
+            <group string="Especialidad">
               <field name="name"/>
               <field name="is_medic"/>
             </group>

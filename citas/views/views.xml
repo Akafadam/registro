@@ -44,10 +44,12 @@
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
-            <group col="4">
-              <group colspan="3">
+            <group col="2">
+              <group colspan="1" string="Datos del Cliente/Paciente">
                 <field name="client_data" domain="[('state','=','accepted')]"/>
                 <field name="pacient_data" domain="[('state','=','accepted')]"/>
+              </group>
+              <group colspan="1" string="Datos del Medico">
                 <field name="medic_data" domain="[('state','=','accepted')]" attrs="{
                     'required':[('search_by','=','medico')],
                     'invisible':[('search_by','=','especialidad')]
@@ -63,6 +65,8 @@
                     'invisible': [('search_by','=','medico')],
                     'required': [('search_by','=','especialidad')]
                   }"/>
+              </group>
+              <group colspan="1" string="Horario">
                 <field name="date_time"/>
                 <field name="time"/>
               </group>
