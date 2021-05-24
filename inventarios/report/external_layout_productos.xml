@@ -7,7 +7,7 @@
      <report id="reporte_productos_custom"
 
      string="Reporte de Productos"
-     model="productos.productos"
+     model="inventarios.productos"
      report_type="qweb-pdf"
      name="inventarios.reporte_productos"
      menu="True"
