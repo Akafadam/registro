@@ -92,8 +92,14 @@ class citas(models.Model):
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Char(string="Especialidad Medica",
                              related="medic_data.speciality.name", store=True)
+    speciality_select = fields.Many2one(
+        'especialidad.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
-        'empleados.empleados', string="Medico", required=True)
+        'empleados.empleados', string="Medico")
+    medic_data_get = fields.Many2one(
+        'empleados.empleados', string="Medico")
+    search_by = fields.Selection(
+        [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

@@ -48,8 +48,21 @@
               <group colspan="3">
                 <field name="client_data"/>
                 <field name="pacient_data"/>
-                <field name="medic_data"/>
-                <field name="speciality"/>
+                <field name="medic_data" attrs="{
+                    'required':[('search_by','=','medico')],
+                    'invisible':[('search_by','=','especialidad')]
+                  }"/>
+                <field name="medic_data_get" domain="[('speciality','=',speciality_select)]" attrs="{
+                    'required':[('search_by','=','especialidad')],
+                    'invisible':[('search_by','=','medico')],
+                    'readonly': [('speciality_select','=',False)]
+                  }"/>
+                <field name="speciality" attrs="{
+                    'invisible': [('search_by','=','especialidad')]}"/>
+                <field name="speciality_select" attrs="{
+                    'invisible': [('search_by','=','medico')],
+                    'required': [('search_by','=','especialidad')]
+                  }"/>
                 <field name="date_time"/>
                 <field name="time"/>
               </group>
@@ -60,6 +73,7 @@
                 </div>
               </div>
             </group>
+            <field name="search_by" widget='radio'/>
           </sheet>
         </form>
       </field>
