@@ -50,12 +50,11 @@
                 <field name="pacient_data" domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
-                <field name="medic_data" domain="[('state','=','accepted')]" attrs="{
-                    'invisible':[('search_by','=','especialidad')]
-                  }"/>
-                <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
+                <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" 
+                />
+                <!-- <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
                     'invisible':[('search_by','=','medico')],
-                  }"/>
+                  }"/> -->
                 <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]" attrs="{
                     'readonly': [('search_by','=','medico')]}"/>
                 <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{

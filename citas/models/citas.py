@@ -43,6 +43,21 @@ class citas(models.Model):
         if self.is_client:
             self.pacient_data = self.client_data
 
+    @api.onchange('speciality')
+    def set_domain_for_teacher(self):
+        class_obj = self.env['empleados.empleados'].search(
+            [('speciality', '=', self.speciality.id)])
+        print(class_obj)
+        speciality_list = []
+        for data in class_obj:
+            # print(data.id)
+            speciality_list.append(data.id)
+
+        res = {}
+        res['domain'] = {'medic_data': [
+            ('id', 'in', speciality_list), ('state', '=', 'accepted')]}
+        return res
+
     # @api.onchange('medic_data')
     # @api.depends('medic_data')
     # def _set_specs(self):
@@ -91,7 +106,7 @@ class citas(models.Model):
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Many2one('empleados.especialidad', string="Especialidad Medica",
-                             related="medic_data.speciality", store=True)
+                                 store=True)
     # speciality_select = fields.Many2one(
     #     'especialidad.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
