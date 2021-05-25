@@ -13,8 +13,6 @@
           <field name="phone"/>
           <field name="charge"/>
           <field name="email"/>
-          <field name="arrive_time"/>
-          <field name="leave_time"/> 
           <field name="address"/>
           <field name="speciality"/>
         </tree>
@@ -54,13 +52,11 @@
                 <field name="id_card"/>
                 <field name="birthyear"/>
                 <field name="phone"/>
-                <field name="charge" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
               <group>
                 <field name="email"/>
+                <field name="charge" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
                 <field name="address"/>
-                <field name="arrive_time"/>
-                <field name="leave_time"/>  
                 <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
             </group>

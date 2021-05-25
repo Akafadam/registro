@@ -51,11 +51,9 @@
               </group>
               <group colspan="1" string="Datos del Medico">
                 <field name="medic_data" domain="[('state','=','accepted')]" attrs="{
-                    'required':[('search_by','=','medico')],
                     'invisible':[('search_by','=','especialidad')]
                   }"/>
                 <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
-                    'required':[('search_by','=','especialidad')],
                     'invisible':[('search_by','=','medico')],
                   }"/>
                 <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]" attrs="{

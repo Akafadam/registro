@@ -1,17 +1,19 @@
 <odoo>
-  <record model="ir.ui.view" id="empleados_cargos">
-      <field name="name">Lista de Cargos</field>
-      <field name="model">empleados.cargos</field>
+  <record model="ir.ui.view" id="empleados_horario">
+      <field name="name">Lista de Horarios</field>
+      <field name="model">empleados.horario</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="employee"/>
+          <field name="arrive_time"/>
+          <field name="leave_time"/>
         </tree>
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empleados_cargos_form">
-      <field name="name">Formulario de Cargo</field>
-      <field name="model">empleados.cargos</field>
+    <record model="ir.ui.view" id="empleados_horario_form">
+      <field name="name">Formulario de Horario</field>
+      <field name="model">empleados.horario</field>
       <field name="arch" type="xml">
         <form>
           <header>
@@ -38,7 +40,9 @@
           <sheet>
             <group>
               <group string="Cargos">
-                <field name="name"/>
+                <field name="employee"/>
+                <field name="arrive_time"/>
+                <field name="leave_time"/>
               </group>
             </group>
           </sheet>
@@ -46,14 +50,14 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="empleados.action_cargos">
-      <field name="name">Cargos</field>
-      <field name="res_model">empleados.cargos</field>
+    <record model="ir.actions.act_window" id="empleados.action_horario">
+      <field name="name">Horario</field>
+      <field name="res_model">empleados.horario</field>
       <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem name="Empleados" id="empleados.menu_root"/>
 
-    <menuitem name="Cargos" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_cargos"/>
+    <menuitem name="Horario" id="empleados.menu_4" parent="empleados.menu_root" action="empleados.action_horario"/>
 
 </odoo>
