@@ -33,6 +33,7 @@
     ],
     # only loaded in demonstration mode
     'demo': [
+        'data/empleados.cargos.csv',
         'demo/demo.xml',
     ],
 }
