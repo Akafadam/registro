@@ -71,19 +71,25 @@ class citas(models.Model):
         local_rn = right_now.astimezone(ccs)
         plusTwoMonth = timedelta(days=60) + date.today()
 
-        if self.date_time < date.today():
-            raise ValidationError('Esta fecha ya paso')
+        try:
+            if self.state == 'draft':
+                raise BaseException
 
-        elif self.date_time == date.today():
-            if self.time < local_rn.hour:
-                raise ValidationError('Esta hora ya paso')
-        elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
-            raise ValidationError('El médico no ocupa esa hora')
-        elif self.date_time > plusTwoMonth:
-            raise ValidationError(
-                'No se puede agendar una fecha para mas de dos meses en adelante')
+            if self.date_time < date.today():
+                raise ValidationError('Esta fecha ya paso')
 
-    date_time = fields.Date(string="Fecha", required=True)
+            elif self.date_time == date.today():
+                if self.time < local_rn.hour:
+                    raise ValidationError('Esta hora ya paso')
+            elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
+                raise ValidationError('El médico no ocupa esa hora')
+            elif self.date_time > plusTwoMonth:
+                raise ValidationError(
+                    'No se puede agendar una fecha para mas de dos meses en adelante')
+        except(BaseException):
+            pass
+
+    date_time = fields.Date(string="Fecha")
     time = fields.Selection([(7, '07:00'),
                              (8, '08:00'),
                              (9, '09:00'),
@@ -100,11 +106,11 @@ class citas(models.Model):
                              (20, '20:00'),
                              (21, '21:00'),
                              (22, '22:00')],
-                            string="Hora", required=True)
+                            string="Hora")
     client_data = fields.Many2one(
-        'citas.personas', string="Datos del cliente", required=True)
+        'citas.personas', string="Datos del cliente")
     is_client = fields.Boolean(string="Autocompletar paciente")
-    pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
+    pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Many2one('empleados.especialidad', string="Especialidad Medica",
                                  related="medic_data.speciality", store=True)
