@@ -90,14 +90,14 @@ class citas(models.Model):
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente", required=True,
                                    compute="_auto_fill", readonly=False, store=True)
-    speciality = fields.Char(string="Especialidad Medica",
-                             related="medic_data.speciality.name", store=True)
-    speciality_select = fields.Many2one(
-        'empleados.especialidad', string="Especialidad Medica")
+    speciality = fields.Many2one('empleados.especialidad', string="Especialidad Medica",
+                             related="medic_data.speciality", store=True)
+    # speciality_select = fields.Many2one(
+    #     'especialidad.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
-    medic_data_get = fields.Many2one(
-        'empleados.empleados', string="Medico")
+    # medic_data_get = fields.Many2one(
+    #     'empleados.empleados', string="Medico")
     search_by = fields.Selection(
         [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([

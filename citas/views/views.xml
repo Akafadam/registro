@@ -2,7 +2,7 @@
   <data>
     <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="citas.list">
+    <record model="ir.ui.view" id="citas_list">
       <field name="name">Lista de Citas</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
@@ -17,7 +17,7 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="citas.form">
+    <record model="ir.ui.view" id="citas_form">
       <field name="name">Formulario de Cita</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
@@ -54,17 +54,16 @@
                     'required':[('search_by','=','medico')],
                     'invisible':[('search_by','=','especialidad')]
                   }"/>
-                <field name="medic_data_get" domain="[('speciality','=',speciality_select),('state','=','accepted')]" attrs="{
+                <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
                     'required':[('search_by','=','especialidad')],
                     'invisible':[('search_by','=','medico')],
-                    'readonly': [('speciality_select','=',False)]
                   }"/>
-                <field name="speciality" attrs="{
-                    'invisible': [('search_by','=','especialidad')]}"/>
-                <field name="speciality_select" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
+                <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]" attrs="{
+                    'readonly': [('search_by','=','medico')]}"/>
+                <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
                     'invisible': [('search_by','=','medico')],
                     'required': [('search_by','=','especialidad')]
-                  }"/>
+                  }"/> -->
               </group>
               <group colspan="1" string="Horario">
                 <field name="date_time"/>
