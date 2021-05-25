@@ -60,6 +60,7 @@
                 <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
             </group>
+                <field name="schedule" style="width:500px"/>
           </sheet>
         </form>
       </field>
