@@ -54,14 +54,14 @@
                 <field name="id_card"/>
                 <field name="birthyear"/>
                 <field name="phone"/>
-                <field name="charge" domain="[('state','=','accepted')]"/>
+                <field name="charge" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
               <group>
                 <field name="email"/>
                 <field name="address"/>
                 <field name="arrive_time"/>
                 <field name="leave_time"/>  
-                <field name="speciality" domain="[('state','=','accepted')]"/>
+                <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
             </group>
           </sheet>
