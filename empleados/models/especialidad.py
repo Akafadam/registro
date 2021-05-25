@@ -33,7 +33,6 @@ class especialidad(models.Model):
     ]
 
     name = fields.Char(string="Especialidad")
-    is_medic = fields.Boolean(string="¿Especialidad medica?")
 
     state = fields.Selection([
         ('draft', 'Borrador'),

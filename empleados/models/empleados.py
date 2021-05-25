@@ -102,14 +102,8 @@ class empleados(models.Model):
     address = fields.Char(string="Dirección", required=True)
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
-    speciality_no_medic = fields.Many2one(
-        'empleados.especialidad', string="Especialidad/Grado")
     worked = fields.Char(string="Horas trabajadas")
     pay = fields.Char(string="Remuneración")
-    is_medic = fields.Boolean(
-        string='Es medico', related="charge.is_medic", readonly=True)
-    has_specs = fields.Boolean(
-        string="Tiene especialidad", related="charge.speciality", readonly=True)
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

@@ -61,26 +61,9 @@
                 <field name="address"/>
                 <field name="arrive_time"/>
                 <field name="leave_time"/>  
-                <field name="speciality" 
-                       domain="[('is_medic','=',True),('state','=','accepted')]" 
-                       attrs="{'invisible':['|',('is_medic','=',False),'|',('has_specs','=',False)], 
-                               'required':[('is_medic','=',True),('has_specs','=',True)]}"
-                       />
-                <field name="speciality_no_medic" 
-                       domain="[('is_medic','=',False),('state','=','accepted')]"
-                       attrs="{'invisible':['|',('is_medic','=',True),'|',('has_specs','=',False)], 
-                               'required':[('is_medic','=',False),('has_specs','=',True)]}"
-                       />
+                <field name="speciality" domain="[('state','=','accepted')]"/>
               </group>
             </group>
-            <span style="display:flex">
-              <field name="is_medic"/>
-              <label for="is_medic"/>
-            </span>
-            <span style="display:flex">
-              <field name="has_specs"/>
-              <label for="has_specs"/>
-            </span>
           </sheet>
         </form>
       </field>
