@@ -56,12 +56,12 @@ class personas(models.Model):
         if not match:
             raise ValidationError('El Numero de Telefono no es Correcto')
 
-    @api.constrains('birthyear')
-    def _check_underage(self):
-        timediff = relativedelta(date.today(), self.birthyear)
-        yeardiff = timediff.years
-        if yeardiff < 18:
-            raise ValueError('El usuario debe ser mayor de edad')
+    # @api.constrains('birthyear')
+    # def _check_underage(self):
+    #     timediff = relativedelta(date.today(), self.birthyear)
+    #     yeardiff = timediff.years
+    #     if yeardiff < 18:
+    #         raise ValueError('El usuario debe ser mayor de edad')
 
     name = fields.Char(string="Nombre", required=True)
     id_card = fields.Integer(string="CI", required=True)
