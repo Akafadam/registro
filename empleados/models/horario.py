@@ -44,6 +44,10 @@ class horario(models.Model):
                     'El registro fue validado, no puede ser eliminado')
         return super(horario, self).unlink()
 
+    @api.depends('arrive_time', 'leave_time')
+    def _set_interval(self):
+        self.interval = f"{self.arrive_time}:00-{self.leave_time}:00"
+
     @api.multi
     def write(self, vals):
         if self.state == "accepted":
@@ -56,9 +60,11 @@ class horario(models.Model):
     def invalidate(self):
         super(horario, self).write({'state': 'draft'})
 
-    employee = fields.Many2one('empleados.empleados', string="Empleados")
+    # employee = fields.Many2one('empleados.empleados', string="Empleados")
+    _rec_name = 'interval'
     arrive_time = fields.Selection(time, string="Hora de llegada")
     leave_time = fields.Selection(time, string="Hora de salida")
+    interval = fields.Char(compute="_set_interval")
 
     state = fields.Selection([
         ('draft', 'Borrador'),

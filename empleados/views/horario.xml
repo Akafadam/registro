@@ -4,7 +4,7 @@
       <field name="model">empleados.horario</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="employee"/>
+          <!-- <field name="employee"/> -->
           <field name="arrive_time"/>
           <field name="leave_time"/>
         </tree>
@@ -40,7 +40,7 @@
           <sheet>
             <group>
               <group string="Cargos">
-                <field name="employee"/>
+                <!-- <field name="employee"/> -->
                 <field name="arrive_time"/>
                 <field name="leave_time"/>
               </group>

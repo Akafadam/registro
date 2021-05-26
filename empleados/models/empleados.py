@@ -70,7 +70,7 @@ class empleados(models.Model):
         'empleados.especialidad', string="Especialidad/Grado")
     worked = fields.Char(string="Horas trabajadas")
     pay = fields.Char(string="Remuneración")
-    schedule = fields.One2many('empleados.horario', 'employee')
+    schedule = fields.Many2one('empleados.horario', 'arrive_time')
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
