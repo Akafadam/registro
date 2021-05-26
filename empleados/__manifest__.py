@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/horario.xml',
         'views/cargos.xml',
+        'views/asistencias.xml',
         'views/especialidad.xml',
         'views/views.xml',
         'views/templates.xml',

@@ -1,0 +1,65 @@
+<odoo>
+  <record model="ir.ui.view" id="empleados_asistencias">
+      <field name="name">Lista de Asistencia</field>
+      <field name="model">empleados.asistencias</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="employee"/>
+          <field name="date"/>
+          <field name="arrive_time"/>
+          <field name="leave_time"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_asistencias_form">
+      <field name="name">Formulario de Asistencia</field>
+      <field name="model">empleados.asistencias</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <field name="state" invisible="True"/>
+            <button name="validate"
+                    type="object"
+                    states="draft"
+                    string="Validar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <button name="invalidate"
+                    type="object"
+                    states="accepted"
+                    string="Invalidar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <field name="state"
+                   widget="statusbar"
+                   default="draft"
+                   statusbar_visible="draft,accepted"/>
+          </header>
+          <sheet>
+            <group>
+              <group string="Cargos">
+                  <field name="employee"/>
+                  <field name="date"/>
+                  <field name="arrive_time"/>
+                  <field name="leave_time"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados.action_asistencias">
+      <field name="name">Asistencia</field>
+      <field name="res_model">empleados.asistencias</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Empleados" id="empleados.menu_root"/>
+
+    <menuitem name="Asistencias" id="empleados.menu_5" parent="empleados.menu_root" action="empleados.action_asistencias"/>
+
+</odoo>

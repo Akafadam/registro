@@ -3,3 +3,4 @@ from . import empleados
 from . import especialidad
 from . import cargos
 from . import horario
+from . import asistencias
