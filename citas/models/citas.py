@@ -42,7 +42,7 @@ class citas(models.Model):
         else:
             raise UserError('Los datos de especialidad estan vacios')
         self.state = 'accepted'
-        
+
     def invalidate(self):
         super(citas, self).write({'state': 'draft'})
         # self.state = 'draft'
@@ -101,23 +101,19 @@ class citas(models.Model):
         local_rn = right_now.astimezone(ccs)
         plusTwoMonth = timedelta(days=60) + date.today()
 
-        try:
-            if self.state == 'draft':
-                raise BaseException
-
+        if self.date_time:
             if self.date_time < date.today():
                 raise ValidationError('Esta fecha ya paso')
-
             elif self.date_time == date.today():
                 if self.time < local_rn.hour:
                     raise ValidationError('Esta hora ya paso')
-            elif self.time < self.medic_data.arrive_time or self.time > self.medic_data.leave_time:
+        if self.time:
+            if self.time < self.medic_data.schedule.arrive_time or self.time > self.medic_data.schedule.leave_time:
                 raise ValidationError('El médico no ocupa esa hora')
-            elif self.date_time > plusTwoMonth:
+        if self.date_time:
+            if self.date_time > plusTwoMonth:
                 raise ValidationError(
                     'No se puede agendar una fecha para mas de dos meses en adelante')
-        except(BaseException):
-            pass
 
     date_time = fields.Date(string="Fecha")
     time = fields.Selection([(7, '07:00'),
