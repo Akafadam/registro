@@ -42,6 +42,24 @@ class productos(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(productos, self).write(vals)
 
+    def validate(self):
+        if self.name:
+            pass
+        else:
+            raise UserError('El campo del nombre está vacio')
+        if self.code:
+            pass
+        else:
+            raise UserError('El campo codigo está vacio')
+        if self.cost:
+            pass
+        else:
+            raise UserError('El campo de costo está vacio')
+        if self.qr_code:
+            pass
+        else:
+            raise UserError('El campo del codigo QR está vacio')
+        self.state = 'accepted'
     # @api.multi
     # @api.depends('code')
     # def _get_length(data=self):
@@ -72,11 +90,11 @@ class productos(models.Model):
         qr_image = base64.b64encode(temp.getvalue())
         data.qr_code = qr_image
 
-    name = fields.Char(string="Nombre", required=True)
+    name = fields.Char(string="Nombre")
     code = fields.Char(
         string="Código")
-    cost = fields.Integer(string="Costo", required=True)
-    qr_code = fields.Binary(string="Código QR", required=True,
+    cost = fields.Integer(string="Costo")
+    qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
 
     state = fields.Selection([

@@ -12,6 +12,22 @@ class inventarios(models.Model):
     ]
 
     def validate(self):
+        if self.product:
+            pass
+        else:
+            raise UserError('El campo de productos está vacio')
+        if self.reserve_type:
+            pass
+        else:
+            raise UserError('El campo tipo de reserva está vacio')
+        if self.cuantity:
+            pass
+        else:
+            raise UserError('El campo de cantidad está vacio')
+        if self.date:
+            pass
+        else:
+            raise UserError('El campo de fecha está vacio')
         self.state = 'accepted'
 
     def invalidate(self):
@@ -34,11 +50,11 @@ class inventarios(models.Model):
         return super(inventarios, self).write(vals)
 
     product = fields.Many2one('inventarios.productos',
-                              string="Producto", required=True)
+                              string="Producto")
     reserve_type = fields.Selection(string="Tipo de Reserva", selection=[
                                     ("egreso", "Egreso"), ("ingreso", "Ingreso")])
-    cuantity = fields.Integer(string="Cantidad", required=True)
-    date = fields.Date(string="Fecha", required=True)
+    cuantity = fields.Integer(string="Cantidad")
+    date = fields.Date(string="Fecha")
 
     state = fields.Selection([
         ('draft', 'Borrador'),
