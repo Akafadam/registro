@@ -17,8 +17,32 @@ class citas(models.Model):
     ]
 
     def validate(self):
+        if self.date_time:
+            pass
+        else:
+            raise UserError('Los datos de fecha estan vacios')
+        if self.time:
+            pass
+        else:
+            raise UserError('Los datos de hora estan vacios')
+        if self.client_data:
+            pass
+        else:
+            raise UserError('Los datos del cliente estan vacios')
+        if self.pacient_data:
+            pass
+        else:
+            raise UserError('Los datos del paciente estan vacios')
+        if self.medic_data:
+            pass
+        else:
+            raise UserError('Los datos del medico estan vacios')
+        if self.speciality:
+            pass
+        else:
+            raise UserError('Los datos de especialidad estan vacios')
         self.state = 'accepted'
-
+        
     def invalidate(self):
         super(citas, self).write({'state': 'draft'})
         # self.state = 'draft'
