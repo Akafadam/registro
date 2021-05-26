@@ -40,8 +40,8 @@
           </header>
           <sheet>
             <group>
-              <group string="Cargos">
-                  <field name="employee"/>
+              <group string="Asistencia">
+                  <field name="employee" domain="[('state','=','accepted')]"/>
                   <field name="date"/>
                   <field name="arrive_time"/>
                   <field name="leave_time"/>
