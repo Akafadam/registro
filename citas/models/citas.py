@@ -43,7 +43,7 @@ class citas(models.Model):
         if self.is_client:
             self.pacient_data = self.client_data
 
-    @api.onchange('speciality')
+    @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
         if self.search_by == 'especialidad':
             class_obj = self.env['empleados.empleados'].search(
@@ -57,6 +57,12 @@ class citas(models.Model):
             res = {}
             res['domain'] = {'medic_data': [
                 ('id', 'in', speciality_list), ('state', '=', 'accepted')]}
+            return res
+        else:
+            # print("fdsfsdfsd")
+            # self.speciality = False
+            res = {}
+            res['domain'] = {'medic_data': []}
             return res
 
     # @api.onchange('medic_data')
