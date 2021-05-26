@@ -36,6 +36,25 @@ class asistencias(models.Model):
         ('charge_record_constrain', 'UNIQUE(name)', 'Este cargo ya está registrado')
     ]
 
+    def validate(self):
+        if self.employee:
+            pass
+        else:
+            raise UserError('No se ha especificado al empleado')
+        if self.date:
+            pass
+        else:
+            raise UserError('No se ha especificado la fecha')
+        if self.arrive_time:
+            pass
+        else:
+            raise UserError('No se ha especificado la hora de entrada')
+        if self.leave_time:
+            pass
+        else:
+            raise UserError('No se ha especificado la hora de salida')
+        self.state = 'accepted'
+
     @api.multi
     def unlink(self):
         # data = self[0]
@@ -51,9 +70,6 @@ class asistencias(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(asistencias, self).write(vals)
 
-    def validate(self):
-        self.state = 'accepted'
-
     def invalidate(self):
         super(asistencias, self).write({'state': 'draft'})
 
@@ -62,8 +78,6 @@ class asistencias(models.Model):
     #     if self.name == 'Medico':
     #         raise UserError('Este cargo no se puede borrar')
     #     return super(asistencias, self).unlink()
-
-    
 
     employee = fields.Many2one('empleados.empleados', string="Empleado")
     date = fields.Date(string="Fecha")

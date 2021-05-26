@@ -39,7 +39,7 @@
           </header>
           <sheet>
             <group>
-              <group string="Cargos">
+              <group string="Horarios">
                 <!-- <field name="employee"/> -->
                 <field name="arrive_time"/>
                 <field name="leave_time"/>

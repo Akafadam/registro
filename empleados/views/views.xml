@@ -51,7 +51,7 @@
                 <field name="name"/>
                 <field name="id_card"/>
                 <field name="birthyear"/>
-                <field name="schedule"/>
+                <field name="schedule" domain="[('state','=','accepted')]"/>
                 <field name="phone"/>
               </group>
               <group>
@@ -60,7 +60,7 @@
                 <field name="address"/>
                 <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
-                <field name="attendance"/>
+                <!-- <field name="attendance"/> -->
             </group>
           </sheet>
         </form>

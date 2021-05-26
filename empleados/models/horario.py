@@ -45,8 +45,10 @@ class horario(models.Model):
         return super(horario, self).unlink()
 
     @api.depends('arrive_time', 'leave_time')
+    @api.multi
     def _set_interval(self):
-        self.interval = f"{self.arrive_time}:00-{self.leave_time}:00"
+        for rec in self:
+            rec.interval = f"{rec.arrive_time}:00-{rec.leave_time}:00"
 
     @api.multi
     def write(self, vals):
@@ -55,6 +57,14 @@ class horario(models.Model):
         return super(horario, self).write(vals)
 
     def validate(self):
+        if self.arrive_time:
+            pass
+        else:
+            raise UserError('No se ha especificado la hora de entrada')
+        if self.leave_time:
+            pass
+        else:
+            raise UserError('No se ha especificado la hora de salida')
         self.state = 'accepted'
 
     def invalidate(self):
@@ -70,4 +80,3 @@ class horario(models.Model):
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
     ], default="draft")
-

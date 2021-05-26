@@ -17,6 +17,45 @@ class empleados(models.Model):
          'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
     ]
 
+    def validate(self):
+        if self.name:
+            pass
+        else:
+            raise UserError('Los datos de nombre estan vacios')
+        if self.id_card:
+            pass
+        else:
+            raise UserError('Los datos de la cedula estan vacios')
+        if self.birthyear:
+            pass
+        else:
+            raise UserError('Los datos de la fecha estan vacios')
+        if self.charge:
+            pass
+        else:
+            raise UserError('Los datos del cargo estan vacios')
+        if self.email:
+            pass
+        else:
+            raise UserError('Los datos del correo electronico estan vacios')
+        if self.address:
+            pass
+        else:
+            raise UserError('Los datos de la direccion estan vacios')
+        if self.phone:
+            pass
+        else:
+            raise UserError('Los datos del telefono estan vacios')
+        if self.speciality:
+            pass
+        else:
+            raise UserError('Los datos de la especialida estan vacios')
+        if self.schedule:
+            pass
+        else:
+            raise UserError('Los datos del horario estan vacios')
+        self.state = 'accepted'
+
     @api.multi
     def unlink(self):
         # data = self[0]
@@ -32,40 +71,40 @@ class empleados(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(empleados, self).write(vals)
 
-    def validate(self):
-        self.state = 'accepted'
-
     def invalidate(self):
         super(empleados, self).write({'state': 'draft'})
         # self.state = 'draft'
 
     @api.constrains('birthyear')
     def _check_underage(self):
-        timediff = relativedelta(date.today(), self.birthyear)
-        yeardiff = timediff.years
-        if yeardiff < 18:
-            raise ValueError('El usuario debe ser mayor de edad')
+        if self.birthyear:
+            timediff = relativedelta(date.today(), self.birthyear)
+            yeardiff = timediff.years
+            if yeardiff < 18:
+                raise ValueError('El usuario debe ser mayor de edad')
 
     @api.constrains('email')
     def _validate_email(self):
-        self.email.replace(" ", "")
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
-            raise ValidationError("Invalido. Ingrese el Correo nuevamente")
+        if self.email:
+            self.email.replace(" ", "")
+            if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
+                raise ValidationError("Invalido. Ingrese el Correo nuevamente")
 
     @api.constrains('phone')
     def validate_phone(self):
         if self.phone:
-            match = re.match('^[0]\d{10}$', self.phone)
-        if not match:
-            raise ValidationError('El Numero de Telefono no es Correcto')
+            if self.phone:
+                match = re.match('^[0]\d{10}$', self.phone)
+            if not match:
+                raise ValidationError('El Numero de Telefono no es Correcto')
 
-    name = fields.Char(string="Nombre", required=True)
-    birthyear = fields.Date(string="Año de nacimiento", required=True)
-    charge = fields.Many2one('empleados.cargos', string="Cargo", required=True)
-    phone = fields.Char(string="Número telefónico", required=True)
-    id_card = fields.Integer(string="Cédula", required=True)
-    email = fields.Char(string="Correo eletrónico", required=True)
-    address = fields.Char(string="Dirección", required=True)
+    name = fields.Char(string="Nombre")
+    birthyear = fields.Date(string="Año de nacimiento")
+    charge = fields.Many2one('empleados.cargos', string="Cargo")
+    phone = fields.Char(string="Número telefónico")
+    id_card = fields.Integer(string="Cédula")
+    email = fields.Char(string="Correo eletrónico")
+    address = fields.Char(string="Dirección")
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
     worked = fields.Char(string="Horas trabajadas")
