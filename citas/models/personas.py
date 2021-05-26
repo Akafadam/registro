@@ -37,6 +37,18 @@ class personas(models.Model):
         return super(personas, self).write(vals)
 
     def validate(self):
+        if self.name:
+            pass
+        else:
+            raise UserError('Los datos del nombre estan vacios')
+        if self.birthyear:
+            pass
+        else:
+            raise UserError('Los datos de la fecha de nacimiento estan vacios')
+        if self.address:
+            pass
+        else:
+            raise UserError('Los datos de la direccion estan vacios')
         self.state = 'accepted'
 
     def invalidate(self):
@@ -45,16 +57,18 @@ class personas(models.Model):
 
     @api.constrains('email')
     def _validate_email(self):
-        self.email.replace(" ", "")
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
-            raise ValidationError("Invalido. Ingrese el Correo nuevamente")
+        if self.email:
+            self.email.replace(" ", "")
+            if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
+                raise ValidationError("Invalido. Ingrese el Correo nuevamente")
 
     @api.constrains('phone')
     def validate_phone(self):
         if self.phone:
-            match = re.match('^[0]\d{10}$', self.phone)
-        if not match:
-            raise ValidationError('El Numero de Telefono no es Correcto')
+            if self.phone:
+                match = re.match('^[0]\d{10}$', self.phone)
+            if not match:
+                raise ValidationError('El Numero de Telefono no es Correcto')
 
     # @api.constrains('birthyear')
     # def _check_underage(self):
@@ -63,12 +77,12 @@ class personas(models.Model):
     #     if yeardiff < 18:
     #         raise ValueError('El usuario debe ser mayor de edad')
 
-    name = fields.Char(string="Nombre", required=True)
-    id_card = fields.Integer(string="CI", required=True)
-    birthyear = fields.Date(string="Año de nacimiento", required=True)
-    phone = fields.Char(string="Número telefónico", required=True)
-    email = fields.Char(string="Correo eletrónico", required=True)
-    address = fields.Char(string="Dirección", required=True)
+    name = fields.Char(string="Nombre")
+    id_card = fields.Integer(string="CI")
+    birthyear = fields.Date(string="Año de nacimiento")
+    phone = fields.Char(string="Número telefónico")
+    email = fields.Char(string="Correo eletrónico")
+    address = fields.Char(string="Dirección")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
