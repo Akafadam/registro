@@ -81,7 +81,7 @@ class productos(models.Model):
             border=4,
         )
         data = self[0]
-        qr.add_data(self.code)
+        qr.add_data(data.code)
         qr.make(fit=True)
         img = qr.make_image()
         temp = BytesIO()
