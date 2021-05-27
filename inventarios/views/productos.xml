@@ -51,6 +51,7 @@
             <group>
               <field name="name"/>
               <field name="code"/>
+              <field name="units"/>
               <field name="cost"/>
               <field name="qr_code" widget="image" class="oe_avatar"/>
             </group>

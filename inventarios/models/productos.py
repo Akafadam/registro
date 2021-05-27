@@ -77,7 +77,6 @@ class productos(models.Model):
         # for rec in self.transactions:
         #     if rec.reserve_type == 'ingreso':
 
-
     @api.onchange('code')
     @api.depends('code')
     def create_qr(self):
@@ -103,7 +102,8 @@ class productos(models.Model):
     qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
     # transactions = fields.One2many('inventarios.inventarios', 'product')
-    units = fields.Integer(string="Unidades")
+    units = fields.One2many('inventarios.inventarios',
+                            'product', string="Unidades")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
