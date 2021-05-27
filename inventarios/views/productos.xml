@@ -54,7 +54,9 @@
               <field name="cost"/>
               <field name="qr_code" widget="image" class="oe_avatar"/>
             </group>
-            
+            <!-- <data noupdate="1">
+              <function model="inventarios.productos" name='get_random_string' eval="[]"/>
+            </data> -->
           </sheet>
         </form>
       </field>

@@ -14,11 +14,12 @@ class productos(models.Model):
     _sql_constraints = [('products_record', 'UNIQUE(code)',
                          'Este producto ya esta registrado')]
 
-    # def get_random_string():
-    #     # choose from all lowercase letter
-    #     letters = string.ascii_uppercase
-    #     result_str = ''.join(random.choice(letters) for i in range(12))
-    #     return result_str
+    def get_random_string(self):
+        # choose from all lowercase letter
+        letters = string.ascii_uppercase
+        result_str = ''.join(random.choice(letters) for i in range(12))
+        # self.code = result_str
+        return result_str
 
     def validate(self):
         self.state = 'accepted'
@@ -26,6 +27,15 @@ class productos(models.Model):
     def invalidate(self):
         super(productos, self).write({'state': 'draft'})
         # self.state = 'draft'
+
+    @api.model
+    def create(self, vals):
+        # # print('Hola', self)
+        # super(productos, self).write({'code': 'ODNWOJBCJW'})
+        # print('Hello')
+        vals2 = vals
+        vals2['code'] = self.get_random_string()
+        return super(productos, self).create(vals2)
 
     @api.multi
     def unlink(self):
@@ -60,17 +70,6 @@ class productos(models.Model):
         else:
             raise UserError('El campo del codigo QR está vacio')
         self.state = 'accepted'
-    # @api.multi
-    # @api.depends('code')
-    # def _get_length(data=self):
-    #     # data = self[0]
-    #     data.code = f"item-00{len(data.env['productos.productos'].search([]))}"
-
-    # @api.multi
-    # def create(self):
-    #     lenght = len(self.env['productos.productos'].search([]))
-    #     # self.code = f'item-00{lenght}'
-    #     return super(productos, self).create({'code': f'item-00{lenght}'})
 
     @api.onchange('code')
     @api.depends('code')
@@ -82,7 +81,7 @@ class productos(models.Model):
             border=4,
         )
         data = self[0]
-        qr.add_data(data.code)
+        qr.add_data(self.code)
         qr.make(fit=True)
         img = qr.make_image()
         temp = BytesIO()
@@ -96,7 +95,6 @@ class productos(models.Model):
     cost = fields.Integer(string="Costo")
     qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
-
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
