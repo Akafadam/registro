@@ -9,6 +9,7 @@
           <field name="product"/>
           <field name="reserve_type"/>
           <field name="cuantity"/>
+          <field name="units"/>
           <field name="date"/>
         </tree>
       </field>
@@ -44,6 +45,7 @@
             <group>
               <field name="product" domain="[('state','=','accepted')]"/>
               <field name="reserve_type"/>
+              <field name="units"/>
               <field name="cuantity"/>
               <field name="date"/>
             </group>

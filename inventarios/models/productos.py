@@ -71,6 +71,13 @@ class productos(models.Model):
             raise UserError('El campo del codigo QR está vacio')
         self.state = 'accepted'
 
+    @api.depends('transactions')
+    def _set_units(self):
+        default = 0
+        # for rec in self.transactions:
+        #     if rec.reserve_type == 'ingreso':
+
+
     @api.onchange('code')
     @api.depends('code')
     def create_qr(self):
@@ -95,6 +102,8 @@ class productos(models.Model):
     cost = fields.Integer(string="Costo")
     qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
+    # transactions = fields.One2many('inventarios.inventarios', 'product')
+    units = fields.Integer(string="Unidades")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

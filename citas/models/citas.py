@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from . import personas
 from odoo import models, fields, api
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta

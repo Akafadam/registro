@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+# from citas.models.citas import citas
 from odoo import models, fields, api
+from . import citas
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 import re
@@ -50,6 +52,13 @@ class personas(models.Model):
         else:
             raise UserError('Los datos de la direccion estan vacios')
         self.state = 'accepted'
+
+    @api.model
+    def create(self, vals):
+        # print(citas)
+        vals2 = vals
+        vals2['state'] = 'accepted'
+        return super(personas, citas).create(vals2)
 
     def invalidate(self):
         super(personas, self).write({'state': 'draft'})
