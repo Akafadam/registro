@@ -43,10 +43,11 @@ class inventarios(models.Model):
                 if rec.reserve_type == 'ingreso':
                     total += rec.cuantity
                 if rec.reserve_type == 'egreso':
+                    if total - rec.cuantity >= 0:
                         total -= rec.cuantity
+                    else:
+                        raise UserError('El egreso no puede exceder la cantidad del producto')
         print(total)
-        if total < 0:
-            raise UserError('El egreso no puede exceder la cantidad del producto')
         
     @api.multi
     def unlink(self):
