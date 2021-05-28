@@ -51,14 +51,26 @@ class personas(models.Model):
             pass
         else:
             raise UserError('Los datos de la direccion estan vacios')
+        if self.is_underage or self.id_card:
+            pass
+        else:
+            raise UserError('Los datos de la cedula estan vacios')
+        if self.is_underage or self.email:
+            pass
+        else:
+            raise UserError('Los datos del correo estan vacios')
+        if self.is_underage or self.phone:
+            pass
+        else:
+            raise UserError('Los datos del telefono estan vacios')
         self.state = 'accepted'
 
-    @api.model
-    def create(self, vals):
-        # print(citas)
-        vals2 = vals
-        vals2['state'] = 'accepted'
-        return super(personas, citas).create(vals2)
+    # @api.model
+    # def create(self, vals):
+    #     # print(citas)
+    #     vals2 = vals
+    #     vals2['state'] = 'accepted'
+    #     return super(personas, citas).create(vals2)
 
     def invalidate(self):
         super(personas, self).write({'state': 'draft'})
@@ -79,12 +91,15 @@ class personas(models.Model):
             if not match:
                 raise ValidationError('El Numero de Telefono no es Correcto')
 
-    # @api.constrains('birthyear')
-    # def _check_underage(self):
-    #     timediff = relativedelta(date.today(), self.birthyear)
-    #     yeardiff = timediff.years
-    #     if yeardiff < 18:
-    #         raise ValueError('El usuario debe ser mayor de edad')
+    @api.onchange('birthyear')
+    def _check_underage(self):
+        timediff = relativedelta(date.today(), self.birthyear)
+        yeardiff = timediff.years
+        print(yeardiff)
+        if yeardiff < 18:
+            self.is_underage = True
+        else:
+            self.is_underage = False
 
     name = fields.Char(string="Nombre")
     id_card = fields.Integer(string="CI")
@@ -92,6 +107,7 @@ class personas(models.Model):
     phone = fields.Char(string="Número telefónico")
     email = fields.Char(string="Correo eletrónico")
     address = fields.Char(string="Dirección")
+    is_underage = fields.Boolean()
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
