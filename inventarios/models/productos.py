@@ -6,7 +6,9 @@ from io import BytesIO
 import base64
 import random
 import string
-
+# import zbar
+# import numpy as np
+# import cv2
 
 class productos(models.Model):
     _name = 'inventarios.productos'
@@ -83,7 +85,7 @@ class productos(models.Model):
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,
-            box_size=10,
+            box_size=20,
             border=4,
         )
         data = self[0]

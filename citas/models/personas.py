@@ -77,6 +77,7 @@ class personas(models.Model):
 
     # @api.constrains('id_card')
     #     if self.id_type == 'j':
+            
 
     @api.constrains('email')
     def _validate_email(self):

@@ -9,7 +9,6 @@
           <field name="product"/>
           <field name="reserve_type"/>
           <field name="cuantity"/>
-          <field name="units"/>
           <field name="date"/>
         </tree>
       </field>
@@ -42,12 +41,12 @@
                    statusbar_visible="draft,accepted"/>
           </header>s
           <sheet>
-            <group>
-              <field name="product" domain="[('state','=','accepted')]"/>
-              <field name="reserve_type"/>
-              <field name="units"/>
-              <field name="cuantity"/>
-              <field name="date"/>
+            <group string="Inventarios">
+              <field name="product" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
+              <field name="reserve_type" attrs="{'readonly':[('state','=','accepted')]}"/>
+              <field name="units" attrs="{'invisible':[True]}"/>
+              <field name="cuantity" attrs="{'readonly':[('state','=','accepted')]}"/>
+              <field name="date" attrs="{'readonly':[('state','=','accepted')]}"/>
             </group>
           </sheet>
         </form>

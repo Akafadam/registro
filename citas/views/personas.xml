@@ -47,20 +47,21 @@
           <sheet>
             <group col="4">
               <group string="Datos Personales" colspan="2">
-                <field name="name"/>
-                <field name="birthyear"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="address"/>
+                <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="birthyear" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="phone" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="email" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="address" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>
               <group string="Identificación">
                 <span>
                   <label for="id_card" style="float:left;font-weight:bold;"/>
-                  <field name="id_type" style="width:50px;float:left;height:25px;borfer"/>
-                  <field name="id_card" style="width: 200px;float:left;"/>
+                  <field name="id_type" attrs="{'readonly':[('state','=','accepted')]}" style="width:50px;float:left;height:25px;borfer"/>
+                  <field name="id_card" style="width: 200px;float:left;" 
+                  attrs="{'readonly':[('id_type','=',False),'|',('state','=','accepted')]}"/>
                 </span>
               </group>
-            <field name="is_underage" attrs="{'invisible':[True]}"/>
+            <field name="is_underage" attrs="{'invisible':[True],'readonly':[('state','=','accepted')]}"/>
             </group>
           </sheet>
         </form>

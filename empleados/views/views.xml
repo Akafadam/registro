@@ -48,17 +48,17 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
-                <field name="id_card"/>
-                <field name="birthyear"/>
-                <field name="schedule" domain="[('state','=','accepted')]"/>
-                <field name="phone"/>
+                <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="id_card" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="birthyear" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="schedule" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
+                <field name="phone" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>
               <group>
-                <field name="email"/>
-                <field name="charge" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
-                <field name="address"/>
-                <field name="speciality" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
+                <field name="email" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="charge" attrs="{'readonly':[('state','=','accepted')]}" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
+                <field name="address" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="speciality" attrs="{'readonly':[('state','=','accepted')]}" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
               </group>
                 <!-- <field name="attendance"/> -->
             </group>

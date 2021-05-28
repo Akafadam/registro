@@ -42,18 +42,24 @@
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
+            <!-- <button name="scan_qr"
+                    type="object"
+                    string="Escanear QR"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/> -->
+
             <field name="state"
                    widget="statusbar"
                    default="draft"
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
-            <group>
-              <field name="name"/>
-              <field name="code"/>
-              <field name="units"/>
-              <field name="cost"/>
-              <field name="qr_code" widget="image" class="oe_avatar"/>
+            <group string="Productos">
+              <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
+              <field name="code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}"/>
+              <field name="units" attrs="{'invisible':[True],'readonly':[('state','=','accepted')]}"/>
+              <field name="cost" attrs="{'readonly':[('state','=','accepted')]}"/>
+              <field name="qr_code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}" widget="image" class="oe_avatar"/>
             </group>
             <!-- <data noupdate="1">
               <function model="inventarios.productos" name='get_random_string' eval="[]"/>

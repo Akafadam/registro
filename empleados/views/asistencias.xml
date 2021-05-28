@@ -41,10 +41,10 @@
           <sheet>
             <group>
               <group string="Asistencia">
-                  <field name="employee" domain="[('state','=','accepted')]"/>
-                  <field name="date"/>
-                  <field name="arrive_time"/>
-                  <field name="leave_time"/>
+                  <field name="employee" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
+                  <field name="date" attrs="{'readonly':[('state','=','accepted')]}"/>
+                  <field name="arrive_time" attrs="{'readonly':[('state','=','accepted')]}"/>
+                  <field name="leave_time" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>
             </group>
           </sheet>

@@ -46,10 +46,11 @@
           <sheet>
             <group col="2">
               <group colspan="1" string="Datos del Cliente/Paciente">
-                <field name="client_data" 
+                <field name="client_data"
+                       attrs="{'readonly':[('state','=','accepted')]}" 
                        domain="[('state','=','accepted'),('is_underage','=',False)]"/>
                 <field name="pacient_data"
-                       attrs="{'readonly':[('is_client','=',True)]}" 
+                       attrs="{'readonly':[('is_client','=',True)],'readonly':[('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
@@ -57,7 +58,7 @@
                        options="{'no_quick_create':True,'no_create_edit':True}"
                        domain="[('state','=','accepted')]"
                        attrs="{
-                         'readonly':[('speciality','=',False),('search_by','=','especialidad')],
+                         'readonly':[('speciality','=',False),('search_by','=','especialidad'),'|',('state','=','accepted')],
                         }" 
                 />
                 <!-- <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
@@ -67,21 +68,21 @@
                        options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted')]" 
                        attrs="{
-                         'readonly': [('search_by','=','medico')],
+                         'readonly': [('search_by','=','medico'),'|',('state','=','accepted')],
                        }"
                 />
                 <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
                     'invisible': [('search_by','=','medico')],
                   }"/> -->
               </group>
-              <group colspan="1" string="Horario">
-                <field name="date_time"/>
-                <field name="time"/>
+              <group colspan="1" string="Fecha y Hora">
+                <field name="date_time" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="time" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>
               <div attrs="{'invisible': [('client_data', '=', False)]}">
                 <div style="display: flex;">
                   <label for="is_client"/>
-                  <field name="is_client"/>
+                  <field name="is_client" attrs="{'readonly':[('state','=','accepted')]}"/>
                 </div>
               </div>
             </group>
