@@ -45,14 +45,20 @@
                    statusbar_visible="draft,accepted"/>
           </header>
           <sheet>
-            <group string="Datos Personales" col="4">
-              <group colspan="3">
+            <group col="4">
+              <group string="Datos Personales" colspan="2">
                 <field name="name"/>
-                <field name="id_card"/>
                 <field name="birthyear"/>
                 <field name="phone"/>
                 <field name="email"/>
                 <field name="address"/>
+              </group>
+              <group string="Identificación">
+                <span>
+                  <label for="id_card" style="float:left;font-weight:bold;"/>
+                  <field name="id_type" style="width:50px;float:left;height:25px;borfer"/>
+                  <field name="id_card" style="width: 200px;float:left;"/>
+                </span>
               </group>
             <field name="is_underage" attrs="{'invisible':[True]}"/>
             </group>

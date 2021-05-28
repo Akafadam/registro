@@ -74,7 +74,9 @@ class personas(models.Model):
 
     def invalidate(self):
         super(personas, self).write({'state': 'draft'})
-        # self.state = 'draft'
+
+    # @api.constrains('id_card')
+    #     if self.id_type == 'j':
 
     @api.constrains('email')
     def _validate_email(self):
@@ -105,6 +107,7 @@ class personas(models.Model):
     birthyear = fields.Date(string="Año de nacimiento")
     phone = fields.Char(string="Número telefónico")
     email = fields.Char(string="Correo eletrónico")
+    id_type = fields.Selection([('v', 'V'), ('e', 'E'), ('j', 'J')])
     address = fields.Char(string="Dirección")
     is_underage = fields.Boolean()
     state = fields.Selection([
