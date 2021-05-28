@@ -54,7 +54,7 @@
                 <field name="email"/>
                 <field name="address"/>
               </group>
-            <field name="is_underage"/>
+            <field name="is_underage" attrs="{'invisible':[True]}"/>
             </group>
           </sheet>
         </form>

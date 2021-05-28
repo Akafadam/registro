@@ -95,7 +95,6 @@ class personas(models.Model):
     def _check_underage(self):
         timediff = relativedelta(date.today(), self.birthyear)
         yeardiff = timediff.years
-        print(yeardiff)
         if yeardiff < 18:
             self.is_underage = True
         else:
