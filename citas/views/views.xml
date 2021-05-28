@@ -47,8 +47,9 @@
             <group col="2">
               <group colspan="1" string="Datos del Cliente/Paciente">
                 <field name="client_data" 
-                       domain="[('state','=','accepted')]"/>
-                <field name="pacient_data" 
+                       domain="[('state','=','accepted'),('is_underage','=',False)]"/>
+                <field name="pacient_data"
+                       attrs="{'readonly':[('is_client','=',True)]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
