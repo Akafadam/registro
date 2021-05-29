@@ -7,6 +7,33 @@ from datetime import timedelta
 from pytz import timezone
 from odoo.exceptions import UserError, ValidationError
 
+hours = [
+    (0, '00:00'),
+    (1, '01:00'),
+    (2, '02:00'),
+    (3, '03:00'),
+    (4, '04:00'),
+    (5, '05:00'),
+    (6, '06:00'),
+    (7, '07:00'),
+    (8, '08:00'),
+    (9, '09:00'),
+    (10, '10:00'),
+    (11, '11:00'),
+    (12, '12:00'),
+    (13, '13:00'),
+    (14, '14:00'),
+    (15, '15:00'),
+    (16, '16:00'),
+    (17, '17:00'),
+    (18, '18:00'),
+    (19, '19:00'),
+    (20, '20:00'),
+    (21, '21:00'),
+    (22, '22:00'),
+    (23, '22:00')
+]
+
 
 class citas(models.Model):
     _name = 'citas.citas'
@@ -45,11 +72,9 @@ class citas(models.Model):
 
     def invalidate(self):
         super(citas, self).write({'state': 'draft'})
-        # self.state = 'draft'
 
     @api.multi
     def unlink(self):
-        # data = self[0]
         for rec in self:
             if rec.state == "accepted":
                 raise UserError(
@@ -75,7 +100,6 @@ class citas(models.Model):
             print(class_obj)
             speciality_list = []
             for data in class_obj:
-                # print(data.id)
                 speciality_list.append(data.id)
 
             res = {}
@@ -83,16 +107,9 @@ class citas(models.Model):
                 ('id', 'in', speciality_list), ('state', '=', 'accepted')]}
             return res
         else:
-            # print("fdsfsdfsd")
-            # self.speciality = False
             res = {}
             res['domain'] = {'medic_data': []}
             return res
-
-    # @api.onchange('medic_data')
-    # @api.depends('medic_data')
-    # def _set_specs(self):
-    #     self.speciality = self.medic_data.speciality
 
     @api.constrains('date_time', 'time')
     def _check_schedule(self):
@@ -116,23 +133,7 @@ class citas(models.Model):
                     'No se puede agendar una fecha para mas de dos meses en adelante')
 
     date_time = fields.Date(string="Fecha")
-    time = fields.Selection([(7, '07:00'),
-                             (8, '08:00'),
-                             (9, '09:00'),
-                             (10, '10:00'),
-                             (11, '11:00'),
-                             (12, '12:00'),
-                             (13, '13:00'),
-                             (14, '14:00'),
-                             (15, '15:00'),
-                             (16, '16:00'),
-                             (17, '17:00'),
-                             (18, '18:00'),
-                             (19, '19:00'),
-                             (20, '20:00'),
-                             (21, '21:00'),
-                             (22, '22:00')],
-                            string="Hora")
+    time = fields.Selection(hours, string="Hora")
     client_data = fields.Many2one(
         'citas.personas', string="Datos del cliente")
     is_client = fields.Boolean(string="Autocompletar paciente")
@@ -140,20 +141,11 @@ class citas(models.Model):
                                    compute="_auto_fill", readonly=False, store=True)
     speciality = fields.Many2one('empleados.especialidad', string="Especialidad Medica",
                                  related="medic_data.speciality", store=True)
-    # speciality_select = fields.Many2one(
-    #     'especialidad.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
-    # medic_data_get = fields.Many2one(
-    #     'empleados.empleados', string="Medico")
     search_by = fields.Selection(
         [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
     ], default="draft")
-
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
