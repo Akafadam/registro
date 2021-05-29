@@ -84,12 +84,12 @@
               </group>
               <div attrs="{'invisible': [('client_data', '=', False)]}">
                 <div style="display: flex;">
-                  <label for="is_client"/>
-                  <field name="is_client" attrs="{'readonly':[('state','=','accepted')]}"/>
+                  <label for="is_client" class="oe_edit_only"/>
+                  <field name="is_client" class="oe_edit_only"/>
                 </div>
               </div>
             </group>
-            <field name="search_by" widget='radio'/>
+            <field name="search_by" widget='radio' class="oe_edit_only"/>
           </sheet>
         </form>
       </field>
