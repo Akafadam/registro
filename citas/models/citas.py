@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import personas
 from odoo import models, fields, api
 from datetime import datetime, date
@@ -124,7 +123,7 @@ class citas(models.Model):
             elif self.date_time == date.today():
                 if self.time < local_rn.hour:
                     raise ValidationError('Esta hora ya paso')
-        if self.time:
+        if self.time and self.medic_data:
             if self.time < self.medic_data.schedule.arrive_time or self.time > self.medic_data.schedule.leave_time:
                 raise ValidationError('El médico no ocupa esa hora')
         if self.date_time:
