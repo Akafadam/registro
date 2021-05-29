@@ -48,10 +48,12 @@
             <group col="2">
               <group colspan="1" string="Datos del Cliente/Paciente">
                 <field name="client_data"
-                       attrs="{'readonly':[('state','=','accepted')]}" 
+                       attrs="{'readonly':[('state','=','accepted')]}"
+                       options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted'),('is_underage','=',False)]"/>
                 <field name="pacient_data"
-                       attrs="{'readonly':[('is_client','=',True)],'readonly':[('state','=','accepted')]}" 
+                       options="{'no_quick_create':True,'no_create_edit':True}"
+                       attrs="{'readonly':[('is_client','=',True),'|',('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
