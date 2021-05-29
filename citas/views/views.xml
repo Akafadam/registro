@@ -6,10 +6,11 @@
       <field name="name">Lista de Citas</field>
       <field name="model">citas.citas</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="client_data"/>
           <field name="pacient_data"/>
           <field name="medic_data"/>
+          <field name="state" attrs="{'invisible':[True]}"/>
           <field name="speciality"/>
           <field name="date_time"/>
           <field name="time"/>
