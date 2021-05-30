@@ -28,30 +28,40 @@ class inventarios(models.Model):
             pass
         else:
             raise UserError('El campo de fecha está vacio')
-
-        for data in self.env['inventarios.inventarios'].search([('product', '=', self.product.id)]):
-            if data.reserve_type == 'egreso':
-                if data.units - data.cuantity < 0:
-                    raise UserError('El egreso excede la cantidad')
+        total = 0
+        for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id), ('state', '=', 'accepted')]):
+            if rec.reserve_type == 'ingreso':
+                total += rec.cuantity
+            if rec.reserve_type == 'egreso':
+                total -= rec.cuantity
+        if self.reserve_type == 'egreso':
+            if total - self.cuantity < 0:
+                raise UserError(
+                    'El egreso excede la cantidad del producto')
+        self.units = total
+        # if rec.reserve_type == 'egreso':
+        #     if rec.units - rec.cuantity < 0:
+        #         raise UserError('El egreso es mayor a la cantidad')
+        # if self.reserve_type == 'egreso':
         self.state = 'accepted'
 
     def invalidate(self):
         super(inventarios, self).write({'state': 'draft'})
-        # self.state = 'draft'
 
     @api.depends('cuantity', 'reserve_type')
     @api.multi
     def _get_units(self):
-        total = 0
-        data = self[0]
-        for rec in self.env['inventarios.inventarios'].search([('product', '=', data.product.id)]):
-            if rec.state == "accepted":
-                if rec.reserve_type == 'ingreso':
-                    total += rec.cuantity
-                if rec.reserve_type == 'egreso':
-                    total -= rec.cuantity
+        pass
+        # total = 0
+        # # data = self[0]
+        # for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id), ('state', '=', 'accepted')]):
+        #     if rec.state == "accepted":
+        #         if rec.reserve_type == 'ingreso':
+        #             total += rec.cuantity
+        #         if rec.reserve_type == 'egreso':
+        #             total -= rec.cuantity
 
-            rec.units = total
+        #     rec.units = total
 
     @api.multi
     def unlink(self):
@@ -64,24 +74,9 @@ class inventarios(models.Model):
     @api.multi
     def write(self, vals):
         if self.state == "accepted":
-            raise UserError("El registro fue validado, no puede ser editado")
+            raise UserError(
+                f"El registro fue validado, no puede ser editado´{self}")
         return super(inventarios, self).write(vals)
-
-    # @api.model
-    # def create(self, vals):
-    #     default = 0
-    #     vals2 = vals
-    #     for rec in self:
-    #         if rec.state == 'validated':
-    #             if rec.reserve_type == 'ingreso':
-    #                 default += rec.cuantity
-    #             if rec.reserve_type == 'egreso':
-    #                 default -= rec.cuantity
-    #     if default < 0:
-    #         raise UserError('El egreso excede la cantidad de unidades')
-    #     else:
-    #         vals2['units'] = default
-    #     return super(inventarios, self).write(vals2)
 
     product = fields.Many2one('inventarios.productos',
                               string="Producto")
@@ -89,12 +84,8 @@ class inventarios(models.Model):
                                     ("egreso", "Egreso"), ("ingreso", "Ingreso")])
     cuantity = fields.Integer(string="Cantidad")
     date = fields.Date(string="Fecha")
-    units = fields.Integer(string="Total", compute="_get_units")
+    units = fields.Integer(string="Total")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
     ], default="draft")
-
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100

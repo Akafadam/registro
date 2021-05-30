@@ -39,7 +39,7 @@
                    widget="statusbar"
                    default="draft"
                    statusbar_visible="draft,accepted"/>
-          </header>s
+          </header>
           <sheet>
             <group string="Inventarios">
               <field name="product" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>

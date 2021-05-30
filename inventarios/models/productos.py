@@ -10,6 +10,7 @@ import string
 # import numpy as np
 # import cv2
 
+
 class productos(models.Model):
     _name = 'inventarios.productos'
 
@@ -79,6 +80,18 @@ class productos(models.Model):
         # for rec in self.transactions:
         #     if rec.reserve_type == 'ingreso':
 
+    @api.depends('table')
+    @api.onchange('table')
+    def _set_units(self):
+        total = 0
+        data = self[0]
+        for rec in data.table:
+            if rec.reserve_type == 'ingreso':
+                total += rec.cuantity
+            if rec.reserve_type == 'egreso':
+                total -= rec.cuantity
+        data.units = total
+
     @api.onchange('code')
     @api.depends('code')
     def create_qr(self):
@@ -104,8 +117,9 @@ class productos(models.Model):
     qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
     # transactions = fields.One2many('inventarios.inventarios', 'product')
-    units = fields.One2many('inventarios.inventarios',
-                            'product', string="Unidades")
+    table = fields.One2many('inventarios.inventarios',
+                            'product', domain=[('state', '=', 'accepted')])
+    units = fields.Integer(string="Unidades", compute="_set_units")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
