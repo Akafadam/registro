@@ -97,6 +97,11 @@ class citas(models.Model):
             if rec.is_client:
                 rec.pacient_data = rec.client_data
 
+    @api.onchange('speciality')
+    def _clean_medic_data(self):
+        if self.medic_data:
+            self.medic_data = False
+
     @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
         if self.search_by == 'especialidad':
