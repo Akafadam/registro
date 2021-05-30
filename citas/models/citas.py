@@ -99,8 +99,16 @@ class citas(models.Model):
 
     @api.onchange('speciality')
     def _clean_medic_data(self):
-        if self.medic_data:
-            self.medic_data = False
+        for rec in self:
+            if rec.search_by == 'especialidad':
+                rec.medic_data = False
+
+    @api.onchange('medic_data')
+    @api.depends('medic_data')
+    def _set_specs(self):
+        for rec in self:
+            if rec.search_by == 'medico':
+                rec.speciality = rec.medic_data.speciality
 
     @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
@@ -148,8 +156,8 @@ class citas(models.Model):
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
                                    readonly=False, inverse="_key_fill", compute="_auto_fill", store=True)
-    speciality = fields.Many2one('empleados.especialidad', string="Especialidad Medica",
-                                 related="medic_data.speciality", store=True)
+    speciality = fields.Many2one(
+        'empleados.especialidad', string="Especialidad Medica", store=True)
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
     search_by = fields.Selection(
