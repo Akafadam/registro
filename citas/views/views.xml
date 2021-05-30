@@ -53,7 +53,7 @@
                        domain="[('state','=','accepted'),('is_underage','=',False)]"/>
                 <field name="pacient_data"
                        options="{'no_quick_create':True,'no_create_edit':True}"
-                       attrs="{'readonly':[('is_client','=',True),'|',('state','=','accepted')]}" 
+                       attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
@@ -61,7 +61,7 @@
                        options="{'no_quick_create':True,'no_create_edit':True}"
                        domain="[('state','=','accepted')]"
                        attrs="{
-                         'readonly':[('speciality','=',False),('search_by','=','especialidad'),'|',('state','=','accepted')],
+                         'readonly':['|',('state','=','accepted'),'&amp;',('speciality','=',False),('search_by','=','especialidad')]
                         }" 
                 />
                 <!-- <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
@@ -71,7 +71,7 @@
                        options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted')]" 
                        attrs="{
-                         'readonly': [('search_by','=','medico'),'|',('state','=','accepted')],
+                         'readonly': ['|',('search_by','=','medico'),('state','=','accepted')],
                        }"
                 />
                 <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
