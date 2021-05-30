@@ -78,7 +78,7 @@ class citas(models.Model):
             if rec.state == "accepted":
                 raise UserError(
                     'El registro fue validado, no puede ser eliminado')
-        return super(citas, self).unlink()
+        return super(citas, rec).unlink()
 
     @api.multi
     def write(self, vals):
@@ -91,18 +91,17 @@ class citas(models.Model):
 
     @api.depends('is_client')
     @api.onchange('is_client', 'client_data')
-    # @api.multi
+    @api.multi
     def _auto_fill(self):
-        # for rec in self:
-        if self.is_client:
-            self.pacient_data = self.client_data
+        for rec in self:
+            if rec.is_client:
+                rec.pacient_data = rec.client_data
 
     @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
         if self.search_by == 'especialidad':
             class_obj = self.env['empleados.empleados'].search(
                 [('speciality', '=', self.speciality.id)])
-            print(class_obj)
             speciality_list = []
             for data in class_obj:
                 speciality_list.append(data.id)
