@@ -1,0 +1,63 @@
+<odoo>
+  <record model="ir.ui.view" id="empleados_nomina">
+      <field name="name">Lista de Nómina</field>
+      <field name="model">empleados.nomina</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="employee"/>
+          <field name="worked_hours"/>
+          <field name="pay"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empleados_nomina_form">
+      <field name="name">Formulario de Nómina</field>
+      <field name="model">empleados.nomina</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <field name="state" invisible="True"/>
+            <button name="validate"
+                    type="object"
+                    states="draft"
+                    string="Validar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <button name="invalidate"
+                    type="object"
+                    states="accepted"
+                    string="Invalidar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <field name="state"
+                   widget="statusbar"
+                   default="draft"
+                   statusbar_visible="draft,accepted"/>
+          </header>
+          <sheet>
+            <group>
+              <group string="Nomina">
+                <field name="employee"/>
+                <field name="worked_hours"/>
+                <field name="pay"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados.action_nomina">
+      <field name="name">Nómina</field>
+      <field name="res_model">empleados.nomina</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Empleados" id="empleados.menu_root"/>
+
+    <menuitem name="Nómina" id="empleados.menu_6" parent="empleados.menu_root" action="empleados.action_nomina"/>
+
+</odoo>

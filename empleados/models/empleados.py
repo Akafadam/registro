@@ -107,10 +107,9 @@ class empleados(models.Model):
     address = fields.Char(string="Dirección")
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
-    worked = fields.Char(string="Horas trabajadas")
-    pay = fields.Char(string="Remuneración")
     schedule = fields.Many2one('empleados.horario', string="Horario")
     attendance = fields.One2many('empleados.asistencias', 'employee')
+    payroll = fields.Many2one('empleados.nomina', 'employee')
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

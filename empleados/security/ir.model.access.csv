@@ -4,3 +4,4 @@ access_empleados_especialidad,empleados.especialidad,model_empleados_especialida
 access_empleados_cargos,empleados.cargos,model_empleados_cargos,,1,1,1,1
 access_empleados_horario,empleados.horario,model_empleados_horario,,1,1,1,1
 access_empleados_asistencias,empleados.asistencias,model_empleados_asistencias,,1,1,1,1
+access_empleados_nomina,empleados.nomina,model_empleados_nomina,,1,1,1,1
