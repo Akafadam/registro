@@ -48,6 +48,8 @@ class empleados(models.Model):
             raise UserError('Los datos del telefono estan vacios')
         if self.speciality:
             pass
+        elif not self.is_medic:
+            pass
         else:
             raise UserError('Los datos de la especialida estan vacios')
         if self.schedule:
@@ -74,6 +76,15 @@ class empleados(models.Model):
     def invalidate(self):
         super(empleados, self).write({'state': 'draft'})
         # self.state = 'draft'
+
+    @api.onchange('charge')
+    @api.depends('charge')
+    def _set_is_medic(self):
+        for rec in self:
+            if rec.charge.name == "Medico":
+                rec.is_medic = True
+            else:
+                rec.is_medic = False
 
     @api.constrains('birthyear')
     def _check_underage(self):
@@ -104,6 +115,8 @@ class empleados(models.Model):
     phone = fields.Char(string="Número telefónico")
     id_card = fields.Integer(string="Cédula")
     email = fields.Char(string="Correo eletrónico")
+    is_medic = fields.Boolean(compute="_set_is_medic",
+                              default=False, store=True)
     address = fields.Char(string="Dirección")
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
