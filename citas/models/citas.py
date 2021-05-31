@@ -78,7 +78,7 @@ class citas(models.Model):
             if rec.state == "accepted":
                 raise UserError(
                     'El registro fue validado, no puede ser eliminado')
-        return super(citas, rec).unlink()
+        return super(citas, self).unlink()
 
     @api.multi
     def write(self, vals):
