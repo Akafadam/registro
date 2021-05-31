@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
+import datetime
 
 
 class inventarios(models.Model):
     _name = 'inventarios.inventarios'
 
-    _sql_constraints = [
-        ('pacientes_record_birthyear', 'CHECK(date>current_date)', 'Esta fecha ya paso')
-    ]
-
     def validate(self):
+        if self.date > datetime.date.today():
+            raise UserError('La fecha no ha pasado')
         if self.product:
             pass
         else:
@@ -29,7 +29,9 @@ class inventarios(models.Model):
         else:
             raise UserError('El campo de fecha está vacio')
         total = 0
-        for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id), ('state', '=', 'accepted')]):
+        for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id),
+                                                               ('state', '=', 'accepted'),
+                                                               ('date','<',self.date)]):
             if rec.reserve_type == 'ingreso':
                 total += rec.cuantity
             if rec.reserve_type == 'egreso':
@@ -39,10 +41,6 @@ class inventarios(models.Model):
                 raise UserError(
                     'El egreso excede la cantidad del producto')
         self.units = total
-        # if rec.reserve_type == 'egreso':
-        #     if rec.units - rec.cuantity < 0:
-        #         raise UserError('El egreso es mayor a la cantidad')
-        # if self.reserve_type == 'egreso':
         self.state = 'accepted'
 
     def invalidate(self):
