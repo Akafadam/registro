@@ -3,8 +3,9 @@
       <field name="name">Lista de Nómina</field>
       <field name="model">empleados.nomina</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="employee"/>
+          <field name="state" attrs="{'invisible':[True]}"/>
           <field name="worked_hours"/>
           <field name="pay"/>
         </tree>

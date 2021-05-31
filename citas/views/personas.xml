@@ -6,9 +6,10 @@
       <field name="name">Lista de Personas</field>
       <field name="model">citas.personas</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="name"/>
           <field name="id_card"/>
+          <field name="state" attrs="{'invisible':[True]}"/>
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>

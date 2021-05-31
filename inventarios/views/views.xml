@@ -5,8 +5,9 @@
       <field name="name">Lista de Inventario</field>
       <field name="model">inventarios.inventarios</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="product"/>
+          <field name="state" attrs="{'invisible':[True]}"/>
           <field name="reserve_type"/>
           <field name="cuantity"/>
           <field name="date"/>

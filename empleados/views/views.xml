@@ -6,11 +6,12 @@
       <field name="name">Lista de Empleados</field>
       <field name="model">empleados.empleados</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="name"/>
           <field name="id_card"/>
           <field name="birthyear"/>
           <field name="phone"/>
+          <field name="state" attrs="{'invisible':[True]}"/>
           <field name="charge"/>
           <field name="email"/>
           <field name="address"/>
