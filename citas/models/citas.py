@@ -82,6 +82,7 @@ class citas(models.Model):
 
     @api.multi
     def write(self, vals):
+        print('\033[93m' + f"{self.speciality}")
         if self.state == "accepted":
             raise UserError("El registro fue validado, no puede ser editado")
         return super(citas, self).write(vals)
@@ -99,16 +100,41 @@ class citas(models.Model):
 
     @api.onchange('speciality')
     def _clean_medic_data(self):
+        print('\033[91m' + 'Limpiando datos del medico')
+        print('\033[94m' + f"{self.medic_data}")
+        print('\033[92m' + f"{self.speciality}")
         for rec in self:
+            print('\033[91m' + 'Limpiando datos del medico, dentro del loop')
+            print('\033[94m' + f"{self.medic_data}")
+            print('\033[92m' + f"{self.speciality}")
             if rec.search_by == 'especialidad':
+                print('\033[91m' + 'Limpiando datos del medico, dentro del loop, dentro del if')
                 rec.medic_data = False
+                print('\033[94m' + f"{self.medic_data}")
+                print('\033[92m' + f"{self.speciality}")
 
     @api.onchange('medic_data')
     @api.depends('medic_data')
     def _set_specs(self):
+        print('\033[91m' + 'Update especialidad')
+        print('\033[94m' + f"{self.medic_data}")
+        print('\033[92m' + f"{self.speciality}")
         for rec in self:
+            print('\033[91m' + 'Update especialidad, dentro del loop')
+            print('\033[94m' + f"{self.medic_data}")
+            print('\033[92m' + f"{self.speciality}")
             if rec.search_by == 'medico':
+                print('\033[91m' + 'Update especialidad, dentro del loop, dentro del if')
                 rec.speciality = rec.medic_data.speciality
+                rec.speciality = rec.medic_data.speciality
+                print('\033[94m' + f"{self.medic_data}")
+                print('\033[92m' + f"{self.speciality}")
+    
+    @api.model
+    def create(self, vals):
+        print('\033[93m' + f"{self.speciality}")
+        return super(citas, self).create(vals)
+        
 
     @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
