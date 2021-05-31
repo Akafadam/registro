@@ -108,7 +108,8 @@ class citas(models.Model):
             print('\033[94m' + f"{self.medic_data}")
             print('\033[92m' + f"{self.speciality}")
             if rec.search_by == 'especialidad':
-                print('\033[91m' + 'Limpiando datos del medico, dentro del loop, dentro del if')
+                print(
+                    '\033[91m' + 'Limpiando datos del medico, dentro del loop, dentro del if')
                 rec.medic_data = False
                 print('\033[94m' + f"{self.medic_data}")
                 print('\033[92m' + f"{self.speciality}")
@@ -124,17 +125,17 @@ class citas(models.Model):
             print('\033[94m' + f"{self.medic_data}")
             print('\033[92m' + f"{self.speciality}")
             if rec.search_by == 'medico':
-                print('\033[91m' + 'Update especialidad, dentro del loop, dentro del if')
+                print(
+                    '\033[91m' + 'Update especialidad, dentro del loop, dentro del if')
                 rec.speciality = rec.medic_data.speciality
                 rec.speciality = rec.medic_data.speciality
                 print('\033[94m' + f"{self.medic_data}")
                 print('\033[92m' + f"{self.speciality}")
-    
+
     @api.model
     def create(self, vals):
         print('\033[93m' + f"{self.speciality}")
         return super(citas, self).create(vals)
-        
 
     @api.onchange('search_by', 'speciality')
     def set_domain_for_teacher(self):
@@ -151,7 +152,8 @@ class citas(models.Model):
             return res
         else:
             res = {}
-            res['domain'] = {'medic_data': []}
+            res['domain'] = {'medic_data': [
+                ('state', '=', 'accepted'), ('is_medic', '=', True)]}
             return res
 
     @api.constrains('date_time', 'time')

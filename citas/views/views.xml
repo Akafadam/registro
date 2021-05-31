@@ -59,7 +59,6 @@
               <group colspan="1" string="Datos del Medico">
                 <field name="medic_data" 
                        options="{'no_quick_create':True,'no_create_edit':True}"
-                       domain="[('state','=','accepted')]"
                        attrs="{
                          'readonly':['|',('state','=','accepted'),'&amp;',('speciality','=',False),('search_by','=','especialidad')]
                         }" 
