@@ -3,9 +3,9 @@
       <field name="name">Lista de Nómina</field>
       <field name="model">empleados.nomina</field>
       <field name="arch" type="xml">
-        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
+        <tree>
           <field name="employee"/>
-          <field name="state" attrs="{'column_invisible':[True]}"/>
+          <field name="id_card"/>
           <field name="worked_hours"/>
           <field name="pay"/>
         </tree>
@@ -26,6 +26,13 @@
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
+            <button name="fill_rows"
+                    type="object"
+                    states="draft,accepted"
+                    string="Llenar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
             <button name="invalidate"
                     type="object"
                     states="accepted"
@@ -42,6 +49,7 @@
             <group>
               <group string="Nomina">
                 <field name="employee"/>
+                <field name="id_card"/>
                 <field name="worked_hours"/>
                 <field name="pay"/>
               </group>
