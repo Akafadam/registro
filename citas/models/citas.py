@@ -90,6 +90,9 @@ class citas(models.Model):
     def _key_fill(self):
         pass
 
+    def _specs_write(self):
+        pass
+
     @api.depends('is_client')
     @api.onchange('is_client', 'client_data')
     @api.multi
@@ -185,7 +188,8 @@ class citas(models.Model):
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
                                    readonly=False, inverse="_key_fill", compute="_auto_fill", store=True)
     speciality = fields.Many2one(
-        'empleados.especialidad', string="Especialidad Medica", store=True)
+        'empleados.especialidad', string="Especialidad Medica", store=True, readonly=False,
+                                  inverse="_specs_write", compute="_set_specs")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
     search_by = fields.Selection(
