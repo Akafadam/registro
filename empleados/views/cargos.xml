@@ -4,7 +4,7 @@
       <field name="model">empleados.cargos</field>
       <field name="arch" type="xml">
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="name"/>
         </tree>
       </field>

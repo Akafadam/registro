@@ -5,7 +5,7 @@
       <field name="arch" type="xml">
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <!-- <field name="employee"/> -->
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="arrive_time"/>
           <field name="leave_time"/>
         </tree>

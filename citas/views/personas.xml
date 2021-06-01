@@ -9,7 +9,7 @@
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="name"/>
           <field name="id_card"/>
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="birthyear"/>
           <field name="phone"/>
           <field name="email"/>

@@ -10,7 +10,7 @@
           <field name="client_data"/>
           <field name="pacient_data"/>
           <field name="medic_data"/>
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="speciality"/>
           <field name="date_time"/>
           <field name="time"/>

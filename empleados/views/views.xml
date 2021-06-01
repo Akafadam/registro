@@ -11,7 +11,7 @@
           <field name="id_card"/>
           <field name="birthyear"/>
           <field name="phone"/>
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="charge"/>
           <field name="email"/>
           <field name="address"/>

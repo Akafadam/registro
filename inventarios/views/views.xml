@@ -7,7 +7,7 @@
       <field name="arch" type="xml">
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="product"/>
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="reserve_type"/>
           <field name="cuantity"/>
           <field name="date"/>

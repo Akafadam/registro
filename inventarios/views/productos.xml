@@ -9,7 +9,7 @@
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="name"/>
           <field name="code"/>
-          <field name="state" attrs="{'invisible':[True]}"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="cost"/>
           <field name="units"/>
           <field name="qr_code"/>
