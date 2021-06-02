@@ -6,6 +6,8 @@
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="employee"/>
+          <field name="pay"/>
+          <field name="worked_hours"/>
           <field name="date"/>
           <field name="arrive_time"/>
           <field name="leave_time"/>
@@ -44,6 +46,8 @@
               <group string="Asistencia">
                   <field name="employee" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
                   <field name="date" attrs="{'readonly':[('state','=','accepted')]}"/>
+                  <field name="pay"/>
+                  <field name="worked_hours"/>
                   <field name="arrive_time" attrs="{'readonly':[('state','=','accepted')]}"/>
                   <field name="leave_time" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>

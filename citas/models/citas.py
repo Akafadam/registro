@@ -143,6 +143,8 @@ class citas(models.Model):
         ccs = timezone('America/Caracas')
         local_rn = right_now.astimezone(ccs)
         plusTwoMonth = timedelta(days=60) + date.today()
+        print('\033[94m' + f'{type(self.time)}')
+
 
         if self.date_time:
             if self.date_time < date.today():
