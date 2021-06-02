@@ -83,8 +83,8 @@ class asistencias(models.Model):
             result = 0
         return result
 
-    @api.onchange('arrive_time', 'leave_time')
-    @api.depends('arrive_time', 'leave_time')
+    @api.onchange('arrive_time', 'leave_time', 'employee')
+    @api.depends('arrive_time', 'leave_time', 'employee')
     def _set_pay(self):
         for rec in self:
             unit = 100
@@ -99,6 +99,7 @@ class asistencias(models.Model):
             if actual_worked > expected_worked:
                 extra_hours = actual_worked - expected_worked
             if actual_worked and expected_worked:
+                print('Hola')
                 pay = (actual_worked - extra_hours) * unit + extra_hours * unit * 1.5
             rec.pay = pay
             rec.worked_hours = actual_worked
