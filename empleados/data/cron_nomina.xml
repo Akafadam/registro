@@ -7,7 +7,7 @@
             <field name="user_id" ref="base.user_root" />
             <field name="type">ir.action.server</field>
             <field name="state">code</field>
-            <field name="interval_number">1</field>
+            <field name="interval_number">10</field>
             <field name="interval_type">minutes</field>
             <field name="code">model.fill_rows()</field>
             <field name="numbercall">-1</field>

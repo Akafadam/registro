@@ -57,7 +57,7 @@
                 <field name="is_medic" attrs="{'invisible': [True]}"/>
               </group>
               <group>
-                <field name="attendance" domain="['attendance.state','=','accepted']"/>
+                <field name="attendance"/>
                 <field name="email" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <field name="charge" attrs="{'readonly':[('state','=','accepted')]}" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
                 <field name="address" attrs="{'readonly':[('state','=','accepted')]}"/>

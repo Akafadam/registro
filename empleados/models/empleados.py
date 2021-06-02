@@ -73,6 +73,15 @@ class empleados(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(empleados, self).write(vals)
 
+    # @api.onchange('attendance')
+    # @api.depends('attendance')
+    # def _set_hours(self):
+    #     print('\033[93m' + f'{self.attendance}')
+    #     hours_list = []
+    #     for item in self.attendance:
+    #         hours_list.append(item.worked_hours)
+    #     print('\033[93m' + f'{hours_list}')
+
     def invalidate(self):
         super(empleados, self).write({'state': 'draft'})
         # self.state = 'draft'
@@ -121,7 +130,7 @@ class empleados(models.Model):
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
     schedule = fields.Many2one('empleados.horario', string="Horario")
-    attendance = fields.One2many('empleados.asistencias', 'employee')
+    attendance = fields.One2many('empleados.asistencias', 'employee', domain=[('state','=','accepted')])
     # payroll = fields.Many2one('empleados.nomina', 'employee')
     state = fields.Selection([
         ('draft', 'Borrador'),
