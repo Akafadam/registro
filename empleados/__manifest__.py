@@ -33,7 +33,9 @@
         'views/especialidad.xml',
         'views/views.xml',
         'views/templates.xml',
-        'report/external_layout.xml',
+        'report/asistencia.xml',
+        'report/empleados.xml',
+        'report/nomina.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
