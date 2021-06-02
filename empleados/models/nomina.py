@@ -7,16 +7,17 @@ class nomina(models.Model):
         for rec in self.env['empleados.empleados'].search([('state','=','accepted')]):
             vals2 = {
                 'employee':rec.name,
-                'id_card' : rec.id_card 
+                'id_card' : rec.id_card,
+                'worked_hours' : rec.attendance.worked_hours,
+                'pay' : rec.attendance.pay
             }
             # vals2['employee'] = rec.name
             super(nomina, self).create(vals2)
 
     employee = fields.Char(string="Empleados")
-    id_card = fields.Integer()
-    worked_hours = fields.Many2one(
-        'empleados.asistencia', string="Horas trabajadas")
-    pay = fields.Integer()
+    id_card = fields.Integer(string="Cedula")
+    worked_hours = fields.Integer(string="Horas Trabajadas")
+    pay = fields.Integer(string="Remuneracion")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
