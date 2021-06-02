@@ -29,6 +29,7 @@
         'views/cargos.xml',
         'views/asistencias.xml',
         'views/nomina.xml',
+        'data/cron_nomina.xml',
         'views/especialidad.xml',
         'views/views.xml',
         'views/templates.xml',

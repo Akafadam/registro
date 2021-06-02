@@ -3,6 +3,7 @@ from odoo.exceptions import UserError, ValidationError
 class nomina(models.Model):
     _name = 'empleados.nomina'
 
+    @api.model
     def fill_rows(self):
         for rec in self.env['empleados.empleados'].search([('state','=','accepted')]):
             vals2 = {
