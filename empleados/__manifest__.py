@@ -36,6 +36,9 @@
         'report/asistencia.xml',
         'report/empleados.xml',
         'report/nomina.xml',
+        'report/horario.xml',
+        'report/cargos.xml',
+        'report/especialidad.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

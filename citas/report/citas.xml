@@ -4,23 +4,23 @@
     <data>
 
 
-     <report id="citas.report"
+     <report id="citas_report"
 
      string="Reporte de Citas"
      model="citas.citas"
      report_type="qweb-pdf"
-     name="citas.report"
+     name="citas.citas_report"
      menu="True"
      print_report_name="'External Report %s %s citas'"
      
      />
 
 
-     <template id="report">
+     <template id="citas_report">
 
      <t t-call="web.html_container">
+     <t t-call="web.external_layout">
         <t t-foreach="docs" t-as="o">
-            <t t-call="web.external_layout">
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">

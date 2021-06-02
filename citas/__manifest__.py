@@ -29,7 +29,8 @@
         'views/views.xml',
         'views/personas.xml',
         'views/templates.xml',
-        'report/external_layout.xml'
+        'report/citas.xml',
+        'report/personas.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
