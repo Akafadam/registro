@@ -18,10 +18,8 @@ class productos(models.Model):
                          'Este producto ya esta registrado')]
 
     def get_random_string(self):
-        # choose from all lowercase letter
         letters = string.ascii_uppercase
         result_str = ''.join(random.choice(letters) for i in range(12))
-        # self.code = result_str
         return result_str
 
     def validate(self):
@@ -74,23 +72,24 @@ class productos(models.Model):
             raise UserError('El campo del codigo QR está vacio')
         self.state = 'accepted'
 
-    @api.depends('transactions')
-    def _set_units(self):
-        default = 0
-        # for rec in self.transactions:
-        #     if rec.reserve_type == 'ingreso':
+    # @api.depends('transactions')
+    # def _set_units(self):
+    #     default = 0
+    #     # for rec in self.transactions:
+    #     #     if rec.reserve_type == 'ingreso':
 
     @api.depends('table')
     @api.onchange('table')
+    @api.multi
     def _set_units(self):
         total = 0
-        data = self[0]
-        for rec in data.table:
-            if rec.reserve_type == 'ingreso':
-                total += rec.cuantity
-            if rec.reserve_type == 'egreso':
-                total -= rec.cuantity
-        data.units = total
+        for record in self:
+            for rec in record.table:
+                if rec.reserve_type == 'ingreso':
+                    total += rec.cuantity
+                if rec.reserve_type == 'egreso':
+                    total -= rec.cuantity
+            record.units = total
 
     @api.onchange('code')
     @api.depends('code')
@@ -101,14 +100,14 @@ class productos(models.Model):
             box_size=20,
             border=4,
         )
-        data = self[0]
-        qr.add_data(data.code)
-        qr.make(fit=True)
-        img = qr.make_image()
-        temp = BytesIO()
-        img.save(temp, format="PNG")
-        qr_image = base64.b64encode(temp.getvalue())
-        data.qr_code = qr_image
+        for data in self:
+            qr.add_data(data.code)
+            qr.make(fit=True)
+            img = qr.make_image()
+            temp = BytesIO()
+            img.save(temp, format="PNG")
+            qr_image = base64.b64encode(temp.getvalue())
+            data.qr_code = qr_image
 
     name = fields.Char(string="Nombre")
     code = fields.Char(
