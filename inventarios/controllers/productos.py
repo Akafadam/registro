@@ -1,11 +1,22 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 from odoo.http import request
+import json
 
 class productos(http.Controller):
     @http.route('/inventarios/inventarios/', type="json", auth='public', method=['POST'], csrf=False)
     def index(self, **post):
-        print(post)
+        print("\033[91m" + f"{post}")
+        # for i in post: 
+        #     print("\033[91m" + f"{i}")
+        # print(type(post))
+        # code = json.loads(post)
+        # print(code)
+        # print(post)
+        # code = post.get('code')
+        # print(code)
+        print(request.env['inventarios.productos'].search([("code",'=', post["code"])]).name)
+        return request.env['inventarios.productos'].search([("code",'=', post["code"])]).name
 
 #     @http.route('/inventarios/inventarios/objects/', auth='public')
 #     def list(self, **kw):
