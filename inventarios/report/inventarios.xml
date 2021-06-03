@@ -4,52 +4,52 @@
     <data>
 
 
-     <report id="reporte_productos_custom"
+     <report id="reporte_inventarios_custom"
 
-     string="Reporte de Productos"
-     model="inventarios.productos"
+     string="Reporte de Inventarios"
+     model="inventarios.inventarios"
      report_type="qweb-pdf"
-     name="inventarios.reporte_productos"
+     name="inventarios.reporte_inventarios"
      menu="True"
-     print_report_name="'External Report %s %s productos'"
+     print_report_name="'Internal Report %s %s inventarios'"
      
      />
 
 
-     <template id="reporte_productos">
+     <template id="reporte_inventarios">
 
+    <t t-call="web.internal_layout">
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-            <t t-call="web.external_layout">
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">
-                                <h2>Reporte de Productos</h2>
+                                <h2>Reporte de Inventarios</h2>
                                 <h4>Zona Medica</h4>
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Nombre: <span t-field="o.name"/>                     
+                                Producto: <span t-field="o.product"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Codigo: <span t-field="o.code"/>                     
+                                Tipo de reserva: <span t-field="o.reserve_type"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Costo: <span t-field="o.cost"/>                     
+                                Cantidad: <span t-field="o.cuantity"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Codigo QR: <img t-attf-src="data:image/jpg;base64,{{ o.qr_code }}" 
-                                style="align:left; width:100px;height:100px;"/>
+                                Fecha: <span t-field="o.date"/>                     
                             </div>                   
                         </div>
+                        <p style="page-break-after:always;"></p>
                 </div>
             </t>
         </t>
