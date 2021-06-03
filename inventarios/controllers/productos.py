@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from odoo import http
+from odoo.http import request
 
-# class Inventarios(http.Controller):
-#     @http.route('/inventarios/inventarios/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class productos(http.Controller):
+    @http.route('/inventarios/inventarios/', type="json", auth='public', method=['POST'], csrf=False)
+    def index(self, **post):
+        print(post)
 
 #     @http.route('/inventarios/inventarios/objects/', auth='public')
 #     def list(self, **kw):
