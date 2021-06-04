@@ -4,48 +4,73 @@
     <data>
 
 
-     <report id="reporte_asistencias_custom"
+     <report id="reporte_empleados_custom"
 
-     string="Reporte de Asistencia"
-     model="empleados.asistencias"
+     string="Reporte de Empleados"
+     model="empleados.empleados"
      report_type="qweb-pdf"
-     name="empleados.asistencias_report"
+     name="empleados.empleados_report"
      menu="True"
      print_report_name="'Internal Report %s %s empleados'"
      
      />
 
 
-     <template id="asistencias_report">
+     <template id="empleados_report">
     <t t-call="web.internal_layout">
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
                 <div class="page" style="font-size:18px">
                         <div class="row">
                             <div class="col-md-12" aling="center">
-                                <h2>Reporte de asistencias</h2>
+                                <h2>Reporte de Empleados</h2>
                                 <h4>Zona Medica</h4>
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
                         <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Empleado<span t-field="o.employee" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                                Nombre: <span t-field="o.name" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Fecha: <span t-field="o.date" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                                Cedula: <span t-field="o.id_card" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Hora de Llegada: <span t-field="o.arrive_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                                Fecha de Nacimiento: <span t-field="o.birthyear" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Hora de Salida: <span t-field="o.leave_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                                Numero Telefonico: <span t-field="o.phone" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Correo Electronico: <span t-field="o.email" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Direccion de Domicilio: <span t-field="o.address" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Cargo: <span t-field="o.charge" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Especialidad: <span t-field="o.speciality" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Horario: <span t-field="o.schedule" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>
