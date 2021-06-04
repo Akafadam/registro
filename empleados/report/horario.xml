@@ -28,14 +28,14 @@
                             <h5>Registros</h5>                       
                         </div>
                     </div>
-                    <div class="row mt8">
+                    <div class="row mt8" style="border: 1px solid black;position:relative">
                         <div class="col-md-12">
-                            Hora de Entrada<span t-field="o.arrive_time"/>                     
+                            Hora de Entrada<span t-field="o.arrive_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                         </div>                   
                     </div>
-                    <div class="row mt8">
+                    <div class="row mt8" style="border: 1px solid black;position:relative">
                         <div class="col-md-12">
-                            Hora de Salida: <span t-field="o.leave_time"/>                     
+                            Hora de Salida: <span t-field="o.leave_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                         </div>                   
                     </div>
                 </div>

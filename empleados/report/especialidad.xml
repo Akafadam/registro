@@ -28,9 +28,9 @@
                             <h5>Registros</h5>                       
                         </div>
                     </div>
-                    <div class="row mt8">
+                    <div class="row mt8" style="border: 1px solid black;position:relative">
                         <div class="col-md-12">
-                            Especialidad: <span t-field="o.name"/>                     
+                            Especialidad: <span t-field="o.name" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                         </div>                   
                     </div>
                 </div>
