@@ -44,7 +44,7 @@
           <sheet>
             <group>
               <group string="Asistencia">
-                  <field name="employee" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
+                  <field name="employee" options="{'no_quick_create':True,'no_create_edit':True}" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
                   <field name="date" attrs="{'readonly':[('state','=','accepted')]}"/>
                   <field name="pay"/>
                   <field name="worked_hours"/>

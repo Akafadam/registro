@@ -33,6 +33,7 @@ class especialidad(models.Model):
     ]
 
     name = fields.Char(string="Especialidad")
+    button_visible = fields.Boolean(default=True)
 
     state = fields.Selection([
         ('draft', 'Borrador'),

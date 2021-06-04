@@ -62,7 +62,7 @@
                 <field name="email" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <field name="charge" attrs="{'readonly':[('state','=','accepted')]}" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
                 <field name="address" attrs="{'readonly':[('state','=','accepted')]}"/>
-                <field name="speciality" attrs="{'readonly':[('state','=','accepted')], 'invisible':[('is_medic', '=', False)]}" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('state','=','accepted')]"/>
+                <field name="speciality" attrs="{'readonly':[('state','=','accepted')], 'invisible':[('is_medic', '=', False)]}" context="{'default_state':'accepted','default_button_visible': True}" domain="[('state','=','accepted')]"/>
               </group>
                 <!-- <field name="attendance"/> -->
             </group>
