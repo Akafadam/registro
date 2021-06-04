@@ -29,34 +29,34 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Nombre: <span t-field="o.name"/>                     
+                                Nombre: <span t-field="o.name" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Cédula: <span t-field="o.id_card"/>                     
+                                Cédula: <span t-field="o.id_card" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Fecha de nacimiento: <span t-field="o.birthyear"/>                     
+                                Fecha de nacimiento: <span t-field="o.birthyear" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Telefono: <span t-field="o.phone"/>                     
+                                Telefono: <span t-field="o.phone" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Correo: <span t-field="o.email"/>                     
+                                Correo: <span t-field="o.email" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Dirección: <span t-field="o.address"/>                     
+                                Dirección: <span t-field="o.address" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>
