@@ -28,24 +28,24 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Empleado<span t-field="o.employee"/>                     
+                                Empleado<span t-field="o.employee" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Fecha: <span t-field="o.date"/>                     
+                                Fecha: <span t-field="o.date" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Hora de Llegada: <span t-field="o.arrive_time"/>                     
+                                Hora de Llegada: <span t-field="o.arrive_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Hora de Salida: <span t-field="o.leave_time"/>                     
+                                Hora de Salida: <span t-field="o.leave_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>
