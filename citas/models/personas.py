@@ -110,6 +110,7 @@ class personas(models.Model):
     email = fields.Char(string="Correo eletrónico")
     id_type = fields.Selection([('v', 'V'), ('e', 'E'), ('j', 'J')])
     address = fields.Char(string="Dirección")
+    button_visible = fields.Boolean(default=True)
     is_underage = fields.Boolean()
     state = fields.Selection([
         ('draft', 'Borrador'),

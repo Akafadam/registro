@@ -27,14 +27,14 @@
             <field name="state" invisible="True"/>
             <button name="validate"
                     type="object"
-                    states="draft"
                     string="Validar"
+                    states="draft"
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
             <button name="invalidate"
                     type="object"
-                    states="accepted"
+                    attrs="{'invisible':['|',('state','=','draft'),('button_visible','=',True)]}"
                     string="Invalidar"
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
@@ -60,6 +60,7 @@
                   <field name="id_type" attrs="{'readonly':[('state','=','accepted')]}" style="width:50px;float:left;height:25px;borfer"/>
                   <field name="id_card" style="width: 200px;float:left;" 
                   attrs="{'readonly':[('id_type','=',False),'|',('state','=','accepted')]}"/>
+                  <field name="button_visible" invisible='True'/>
                 </span>
               </group>
             <field name="is_underage" attrs="{'invisible':[True],'readonly':[('state','=','accepted')]}"/>

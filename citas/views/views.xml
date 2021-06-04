@@ -49,10 +49,10 @@
               <group colspan="1" string="Datos del Cliente/Paciente">
                 <field name="client_data"
                        attrs="{'readonly':[('state','=','accepted')]}"
-                       options="{'no_quick_create':True,'no_create_edit':True}" 
+                       context="{'default_state':'accepted','default_button_visible': True}" 
                        domain="[('state','=','accepted'),('is_underage','=',False)]"/>
                 <field name="pacient_data"
-                       options="{'no_quick_create':True,'no_create_edit':True}"
+                       context="{'default_state':'accepted','default_button_visible': True}" 
                        attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
