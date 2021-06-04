@@ -13,6 +13,8 @@ class cargos(models.Model):
     def unlink(self):
 
         for rec in self:
+            if rec.name == 'Medico':
+                raise UserError('Este registro no se puede borrar')
             if rec.state == "accepted":
                 raise UserError(
                     'El registro fue validado, no puede ser eliminado')

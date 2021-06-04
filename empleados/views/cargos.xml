@@ -39,7 +39,7 @@
           <sheet>
             <group>
               <group string="Cargos">
-                <field name="name"/>
+                <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
               </group>
             </group>
           </sheet>
