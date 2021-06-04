@@ -29,25 +29,25 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Nombre: <span t-field="o.name"/>                     
+                                Nombre: <span t-field="o.name" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Codigo: <span t-field="o.code" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
+                            <div class="col-md-12">
+                                Costo: <span t-field="o.cost" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
                             <div class="col-md-12">
-                                Codigo: <span t-field="o.code"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Costo: <span t-field="o.cost"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Codigo QR: <img t-attf-src="data:image/jpg;base64,{{ o.qr_code }}" 
-                                style="align:left; width:200px;height:200px;"/>
+                                <img t-attf-src="data:image/jpg;base64,{{ o.qr_code }}" 
+                                style="align:left; width:200px;height:200px;border: 1px solid red;"/>
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>

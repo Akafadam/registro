@@ -29,24 +29,24 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Producto: <span t-field="o.product"/>                     
+                                Producto: <span t-field="o.product" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Tipo de reserva: <span t-field="o.reserve_type"/>                     
+                                Tipo de reserva: <span t-field="o.reserve_type" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Cantidad: <span t-field="o.cuantity"/>                     
+                                Cantidad: <span t-field="o.cuantity" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Fecha: <span t-field="o.date"/>                     
+                                Fecha: <span t-field="o.date" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>

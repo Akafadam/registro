@@ -28,24 +28,24 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Empleado: <span t-field="o.employee"/>                     
+                                Empleado: <span t-field="o.employee" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Cedula: <span t-field="o.id_card"/>                     
+                                Cedula: <span t-field="o.id_card" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Horas Trabajadas: <span t-field="o.worked_hours"/>                     
+                                Horas Trabajadas: <span t-field="o.worked_hours" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Remuneracion: <span t-field="o.pay"/>                     
+                                Remuneracion: <span t-field="o.pay" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <p style="page-break-after:always;"></p>
