@@ -15,9 +15,10 @@
      
      />
 
-
-     <template id="citas_report">
-
+     <template id="citas_report" name="Reportes de citas">
+     <!-- <xpath expr="." position="inside">
+        <link rel="stylesheet" href="citas/static/css/styles.css"/>
+      </xpath> -->
      <t t-call="web.html_container">
      <t t-call="web.external_layout">
         <t t-foreach="docs" t-as="o">
@@ -29,29 +30,29 @@
                                 <h5>Registros</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8">
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Datos del cliente: <span t-field="o.client_data"/>                     
+                                Datos del cliente: <span t-field="o.client_data" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
+                            <div class="col-md-12" style="border: 1px solid black;position:relative">
+                                Datos del paciente: <span t-field="o.pacient_data" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
+                            </div>                   
+                        </div>
+                        <div class="row mt8" style="border: 1px solid black;position:relative">
                             <div class="col-md-12">
-                                Datos del paciente: <span t-field="o.pacient_data"/>                     
+                                Fecha y Hora: <span t-field="o.date_time" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
-                            <div class="col-md-12">
-                                Fecha y Hora: <span t-field="o.date_time"/>                     
+                            <div class="col-md-12" style="border: 1px solid black;position:relative">
+                                Especialidad: <span t-field="o.speciality" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                         <div class="row mt8">
-                            <div class="col-md-12">
-                                Especialidad: <span t-field="o.speciality"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8">
-                            <div class="col-md-12">
-                                Medico: <span t-field="o.medic_data"/>                     
+                            <div class="col-md-12" style="border: 1px solid black;position:relative">
+                                Medico: <span t-field="o.medic_data" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
                             </div>                   
                         </div>
                 </div>
