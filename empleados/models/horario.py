@@ -75,6 +75,7 @@ class horario(models.Model):
     arrive_time = fields.Selection(time, string="Hora de llegada")
     leave_time = fields.Selection(time, string="Hora de salida")
     interval = fields.Char(compute="_set_interval")
+    button_visible = fields.Boolean(default=True)
 
     state = fields.Selection([
         ('draft', 'Borrador'),

@@ -53,7 +53,7 @@
                 <field name="id_card" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <field name="birthyear" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <!-- <field name="context">{'hide_statusbar'}</field> -->
-                <field name="schedule" context="{'default_state':'accepted'}" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
+                <field name="schedule" context="{'default_state':'accepted', 'default_button_visible': True}" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
                 <field name="phone" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <field name="is_medic" attrs="{'invisible': [True]}"/>
               </group>
