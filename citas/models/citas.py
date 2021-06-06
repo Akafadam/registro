@@ -86,12 +86,6 @@ class citas(models.Model):
             raise UserError("El registro fue validado, no puede ser editado")
         return super(citas, self).write(vals)
 
-    def _key_fill(self):
-        pass
-
-    def _specs_write(self):
-        pass
-
     @api.depends('is_client')
     @api.onchange('is_client', 'client_data')
     @api.multi
@@ -166,10 +160,9 @@ class citas(models.Model):
         'citas.personas', string="Datos del cliente")
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
-                                   readonly=False, inverse="_key_fill", compute="_auto_fill", store=True)
+                                   readonly=False, compute="_auto_fill", store=True)
     speciality = fields.Many2one(
-        'empleados.especialidad', string="Especialidad Medica", store=True, readonly=False,
-                                  inverse="_specs_write", compute="_set_specs")
+        'empleados.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
         'empleados.empleados', string="Medico")
     search_by = fields.Selection(

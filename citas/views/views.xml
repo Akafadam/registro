@@ -52,6 +52,7 @@
                        context="{'default_state':'accepted','default_button_visible': True}" 
                        domain="[('state','=','accepted'),('is_underage','=',False)]"/>
                 <field name="pacient_data"
+                       force_save="1" 
                        context="{'default_state':'accepted','default_button_visible': True}" 
                        attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
@@ -66,7 +67,8 @@
                 <!-- <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
                     'invisible':[('search_by','=','medico')],
                   }"/> -->
-                <field name="speciality" 
+                <field name="speciality"
+                       force_save="1" 
                        options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted')]" 
                        attrs="{
