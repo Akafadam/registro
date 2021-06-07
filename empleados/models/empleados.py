@@ -56,6 +56,7 @@ class empleados(models.Model):
             pass
         else:
             raise UserError('Los datos del horario estan vacios')
+        self._check_id()
         self._check_date()
         self._check_underage()
         self._validate_email()
@@ -110,6 +111,12 @@ class empleados(models.Model):
             yeardiff = timediff.years
             if yeardiff < 18:
                 raise UserError('El usuario debe ser mayor de edad')
+
+    def _check_id(self):
+        for rec in self:
+            if len(self.env['empleados.empleados'].search([('id_card','=', rec.id_card)])) > 1:
+                # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
+                raise UserError('Este usuario ya registrado')
 
     # @api.constrains('email')
     def _validate_email(self):
