@@ -10,8 +10,6 @@ class inventarios(models.Model):
     _name = 'inventarios.inventarios'
 
     def validate(self):
-        if self.date > datetime.date.today():
-            raise UserError('La fecha no ha pasado')
         if self.product:
             pass
         else:
@@ -28,6 +26,8 @@ class inventarios(models.Model):
             pass
         else:
             raise UserError('El campo de fecha está vacio')
+        if self.date > datetime.date.today():
+            raise UserError('La fecha no ha pasado')
         total = 0
         for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id),
                                                                ('state', '=', 'accepted'),
@@ -44,6 +44,18 @@ class inventarios(models.Model):
         self.state = 'accepted'
 
     def invalidate(self):
+        total = 0
+        for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id),
+                                                               ('state', '=', 'accepted'),
+                                                               ('date','<',self.date)]):
+            if rec.reserve_type == 'ingreso':
+                total += rec.cuantity
+            if rec.reserve_type == 'egreso':
+                total -= rec.cuantity
+        if self.reserve_type == 'ingreso':
+            if total - self.cuantity < 0:
+                raise UserError(
+                    'El egreso excede la cantidad del producto')
         super(inventarios, self).write({'state': 'draft'})
 
     @api.depends('cuantity', 'reserve_type')
