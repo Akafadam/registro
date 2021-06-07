@@ -109,6 +109,9 @@ class citas(models.Model):
                 rec.speciality = rec.medic_data.speciality
                 rec.speciality = rec.medic_data.speciality
 
+    def write_pacient(self):
+        pass
+
     @api.model
     def create(self, vals):
         return super(citas, self).create(vals)
@@ -161,7 +164,7 @@ class citas(models.Model):
         'citas.personas', string="Datos del cliente")
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
-                                   readonly=False, compute="_auto_fill", store=True)
+                                   readonly=False, compute="_auto_fill", inverse="write_pacient", store=True)
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
