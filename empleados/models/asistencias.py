@@ -68,8 +68,8 @@ class asistencias(models.Model):
         return super(asistencias, self).unlink()
 
     def _check_date(self):
-        for rec in self:
-            if len(self.env['empleados.asistencias'].search([('date','=', rec.date)])) > 1:
+        for rec in self.env['empleados.asistencias'].search([]):
+            if len(self.env['empleados.asistencias'].search([('date','=', rec.date),('employee','=',self.employee.id)])) > 1:
                 # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
                 raise UserError('Esta fecha ya esta registrada')
 
@@ -121,8 +121,8 @@ class asistencias(models.Model):
             result = 0
         return result
 
-    @api.onchange('arrive_time', 'leave_time', 'employee')
-    @api.depends('arrive_time', 'leave_time', 'employee')
+    @api.onchange('arrive_time', 'leave_time', 'employee', 'date')
+    @api.depends('arrive_time', 'leave_time', 'employee', 'date')
     def _set_pay(self):
         for rec in self:
             unit = 100
