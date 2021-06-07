@@ -114,7 +114,7 @@ class empleados(models.Model):
 
     def _check_id(self):
         for rec in self:
-            if len(self.env['empleados.empleados'].search([('id_card','=', rec.id_card)])) > 1:
+            if self.env['empleados.empleados'].search([('id_card','=', rec.id_card),('state','=','accepted')]):
                 # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
                 raise UserError('Este usuario ya registrado')
 
