@@ -165,7 +165,7 @@
    
     <!-- menu categories -->
     
-    <menuitem name="Personal" id="empleados.menu_1" parent="empleados.menu_root" action="empleados.action_personal"/>
+    <menuitem name="Personal" id="empleados.menu_1" sequence="1" parent="empleados.menu_root" action="empleados.action_personal"/>
     
     <!-- <menuitem name="Horario" id="empleados.menu_2" parent="empleados.menu_root" action="empleados.action_horario"/> -->
     

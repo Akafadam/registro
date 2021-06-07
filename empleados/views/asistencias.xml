@@ -65,6 +65,6 @@
 
     <menuitem name="Empleados" id="empleados.menu_root"/>
 
-    <menuitem name="Asistencias" id="empleados.menu_5" parent="empleados.menu_root" action="empleados.action_asistencias"/>
+    <menuitem name="Asistencias" id="empleados.menu_5" sequence="2" parent="empleados.menu_root" action="empleados.action_asistencias"/>
 
 </odoo>
