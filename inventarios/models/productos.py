@@ -118,7 +118,7 @@ class productos(models.Model):
     # transactions = fields.One2many('inventarios.inventarios', 'product')
     table = fields.One2many('inventarios.inventarios',
                             'product', domain=[('state', '=', 'accepted')])
-    units = fields.Integer(string="Unidades", compute="_set_units")
+    units = fields.Integer(string="Unidades", readonly=True, compute="_set_units")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
