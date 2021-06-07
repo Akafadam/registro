@@ -55,6 +55,7 @@ class asistencias(models.Model):
             pass
         else:
             raise UserError('No se ha especificado la hora de salida')
+        self._check_date()
         self.state = 'accepted'
 
     @api.multi
@@ -65,6 +66,12 @@ class asistencias(models.Model):
                 raise UserError(
                     'El registro fue validado, no puede ser eliminado')
         return super(asistencias, self).unlink()
+
+    def _check_date(self):
+        for rec in self:
+            if len(self.env['empleados.asistencias'].search([('date','=', rec.date)])) > 1:
+                # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
+                raise UserError('Esta fecha ya esta registrada')
 
     def _last_day(self, year, month):
         return calendar(year, month)[1]
