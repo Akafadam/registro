@@ -34,8 +34,9 @@ class productos(models.Model):
         # # print('Hola', self)
         # super(productos, self).write({'code': 'ODNWOJBCJW'})
         # print('Hello')
+        product_code = f"item-#000{len(self.env['inventarios.productos'].search([])) + 1}"
         vals2 = vals
-        vals2['code'] = self.get_random_string()
+        vals2['code'] = product_code
         return super(productos, self).create(vals2)
 
     @api.multi
