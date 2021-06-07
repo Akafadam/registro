@@ -19,15 +19,15 @@
             <field name="state" invisible="True"/>
             <button name="validate"
                     type="object"
-                    attrs="{'invisible':['|',('state','=','draft'),('name','=','Medico')]}"
                     string="Validar"
+                    states="draft"
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
             <button name="invalidate"
                     type="object"
-                    attrs="{'invisible':['|',('state','=','accepted'),('name','=','Medico')]}"
                     string="Invalidar"
+                    states="accepted"
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
