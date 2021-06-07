@@ -59,7 +59,7 @@
                   <label for="id_card" style="float:left;font-weight:bold;"/>
                   <field name="id_type" attrs="{'readonly':[('state','=','accepted')]}" style="width:50px;float:left;height:25px;borfer"/>
                   <field name="id_card" style="width: 200px;float:left;" 
-                  attrs="{'readonly':[('id_type','=',False),'|',('state','=','accepted')]}"/>
+                  attrs="{'readonly':['|',('id_type','=',False),('state','=','accepted')]}"/>
                 </span>
               </group>
             <field name="is_underage" attrs="{'invisible':[True],'readonly':[('state','=','accepted')]}"/>
