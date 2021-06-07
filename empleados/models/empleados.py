@@ -10,12 +10,12 @@ from odoo.exceptions import UserError, ValidationError
 class empleados(models.Model):
     _name = 'empleados.empleados'
 
-    _sql_constraints = [
-        ('employees_record_id_card', 'UNIQUE(id_card)',
-         'Este usuario ya esta registrado'),
-        ('employees_record_pastdate',
-         'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
-    ]
+    # _sql_constraints = [
+    #     ('employees_record_id_card', 'UNIQUE(id_card)',
+    #      'Este usuario ya esta registrado'),
+    #     ('employees_record_pastdate',
+    #      'CHECK(birthyear<current_date)', 'Esta fecha aun no existe')
+    # ]
 
     def validate(self):
         if self.name:
@@ -56,7 +56,15 @@ class empleados(models.Model):
             pass
         else:
             raise UserError('Los datos del horario estan vacios')
+        self._check_date()
+        self._check_underage()
+        self._validate_email()
+        self.validate_phone()
         self.state = 'accepted'
+
+    def _check_date(self):
+        if self.birthyear > date.today():
+            raise UserError('Esta fecha aún no existe')
 
     @api.multi
     def unlink(self):
@@ -95,22 +103,22 @@ class empleados(models.Model):
             else:
                 rec.is_medic = False
 
-    @api.constrains('birthyear')
+    # @api.constrains('birthyear')
     def _check_underage(self):
         if self.birthyear:
             timediff = relativedelta(date.today(), self.birthyear)
             yeardiff = timediff.years
             if yeardiff < 18:
-                raise ValueError('El usuario debe ser mayor de edad')
+                raise UserError('El usuario debe ser mayor de edad')
 
-    @api.constrains('email')
+    # @api.constrains('email')
     def _validate_email(self):
         if self.email:
             self.email.replace(" ", "")
             if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
                 raise ValidationError("Invalido. Ingrese el Correo nuevamente")
 
-    @api.constrains('phone')
+    # @api.constrains('phone')
     def validate_phone(self):
         if self.phone:
             if self.phone:
