@@ -12,12 +12,12 @@ from odoo.exceptions import UserError, ValidationError
 class personas(models.Model):
     _name = 'citas.personas'
 
-    _sql_constraints = [
-        ('clients_record_id_card', 'UNIQUE(id_card)',
-         'Este usuario ya esta registrado'),
-        ('clients_record_birthday', 'CHECK(birthyear<current_date)',
-         'Esta fecha aun no existe'),
-    ]
+    # _sql_constraints = [
+    #     ('clients_record_id_card', 'UNIQUE(id_card)',
+    #      'Este usuario ya esta registrado'),
+    #     ('clients_record_birthday', 'CHECK(birthyear<current_date)',
+    #      'Esta fecha aun no existe'),
+    # ]
 
     # _constraints = [
     #     ('check_underage', 'El usuario debe ser mayor de edad', ['birthyear'])
@@ -63,6 +63,8 @@ class personas(models.Model):
             pass
         else:
             raise UserError('Los datos del telefono estan vacios')
+        self._check_id()
+        self._check_birthdate()
         self.state = 'accepted'
 
     # @api.model
@@ -71,6 +73,16 @@ class personas(models.Model):
     #     vals2 = vals
     #     vals2['state'] = 'accepted'
     #     return super(personas, citas).create(vals2)
+
+    def _check_id(self):
+        for rec in self:
+            if len(self.env['citas.personas'].search([('id_card','=', rec.id_card)])) > 1:
+                # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
+                raise UserError('Este usuario ya registrado')
+
+    def _check_birthdate(self):
+        if self.birthyear > date.today():
+            raise UserError('Esta fecha aún no ha pasado')
 
     def invalidate(self):
         super(personas, self).write({'state': 'draft'})
