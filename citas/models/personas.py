@@ -65,6 +65,8 @@ class personas(models.Model):
             raise UserError('Los datos del telefono estan vacios')
         self._check_id()
         self._check_birthdate()
+        self.validate_phone()
+        self._validate_email()
         self.state = 'accepted'
 
     # @api.model
@@ -91,14 +93,14 @@ class personas(models.Model):
     #     if self.id_type == 'j':
             
 
-    @api.constrains('email')
+    # @api.constrains('email')
     def _validate_email(self):
         if self.email:
             self.email.replace(" ", "")
             if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email):
                 raise ValidationError("Invalido. Ingrese el Correo nuevamente")
 
-    @api.constrains('phone')
+    # @api.constrains('phone')
     def validate_phone(self):
         if self.phone:
             if self.phone:
