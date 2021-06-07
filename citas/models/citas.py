@@ -67,6 +67,7 @@ class citas(models.Model):
             pass
         else:
             raise UserError('Los datos de especialidad estan vacios')
+        self._check_schedule()
         self.state = 'accepted'
 
     def invalidate(self):
@@ -131,7 +132,7 @@ class citas(models.Model):
                 ('state', '=', 'accepted'), ('is_medic', '=', True)]}
             return res
 
-    @api.constrains('date_time', 'time')
+    # @api.constrains('date_time', 'time')
     def _check_schedule(self):
         right_now = datetime.now()
         ccs = timezone('America/Caracas')
