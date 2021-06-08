@@ -12,14 +12,14 @@ class nomina(models.Model):
 
     def _last_day(self, year, month):
         last_day = calendar.monthrange(year, month)[1]
-        print('\033[94m' + f"{last_day}")
+        # print('\033[94m' + f"{last_day}")
         return date(year, month, last_day)
 
     @api.model
     def fill_rows(self):
         current_year = date.today().year
         current_month = date.today().month
-        start = 0
+        start = None
 
         if date.today().day < 15:
             start = self._last_day(current_year, current_month - 1)
@@ -30,9 +30,12 @@ class nomina(models.Model):
             worked_hours = 0
             pay = 0
 
-            for item in rec.attendance.search([('date','>=',start)]):
-                worked_hours += item.worked_hours
-                pay += item.pay
+            for item in rec.attendance:
+                if item.date >= start:
+                    print('\033[91m' + f'{start}')
+                    print('\033[93m' + f'{item.date}')
+                    worked_hours += item.worked_hours
+                    pay += item.pay
 
             vals2 = {
                 'employee':rec.name,
@@ -40,7 +43,7 @@ class nomina(models.Model):
                 'worked_hours' : worked_hours,
                 'pay' : pay
             }
-            print(vals2)
+            # print(vals2)
             row = self.env['empleados.nomina'].search([('id_card','=',rec.id_card)])
             if row:
                 super(nomina, row).write(vals2)
