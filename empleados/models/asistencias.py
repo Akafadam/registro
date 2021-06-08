@@ -74,7 +74,8 @@ class asistencias(models.Model):
                 raise UserError('Esta fecha ya esta registrada')
 
     def _last_day(self, year, month):
-	last_day = calendar.monthrange(year, month)[1]
+        last_day = calendar.monthrange(year, month)[1]
+        print('\033[94m' + f"{last_day}")
         return date(year, month, last_day)
 
    # def _mid_day(self, year, month):
