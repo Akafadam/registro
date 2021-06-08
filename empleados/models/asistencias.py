@@ -86,23 +86,23 @@ class asistencias(models.Model):
    #     date = datetime.date.today()
    #     return date.replace(month=month, year=year, day=1)
 
-    @api.constrains('date')
-    def _check_interval(self):
-        current_year = date.today().year
-        current_month = date.today().month
-        if  date.today() < date(current_year, current_month, 15):
-            print('\033[94m' + f'{current_year}')
-            print('\033[91m' + f'{current_month}')
-            print('\033[93m' + f'{self.date.today()}')
-            if self.date < self._last_day(current_year, current_month - 1):
-                raise UserError('La fecha es inferior al intervalo')
-            if self.date > date(current_year, current_month, 15):
-                raise UserError('La fecha es superior al intervalo')
-        if date.today() >= date(current_year, current_month, 15):
-            if self.date < date(current_year, current_month, 15):
-                raise UserError('La fecha es inferior al intervalo')
-            if self.date > self._last_day(current_year, current_month):
-                raise UserError('La fecha es superior al intervalo')
+    # @api.constrains('date')
+    # def _check_interval(self):
+    #     current_year = date.today().year
+    #     current_month = date.today().month
+    #     if  date.today() < date(current_year, current_month, 15):
+    #         print('\033[94m' + f'{current_year}')
+    #         print('\033[91m' + f'{current_month}')
+    #         print('\033[93m' + f'{self.date.today()}')
+    #         if self.date < self._last_day(current_year, current_month - 1):
+    #             raise UserError('La fecha es inferior al intervalo')
+    #         if self.date > date(current_year, current_month, 15):
+    #             raise UserError('La fecha es superior al intervalo')
+    #     if date.today() >= date(current_year, current_month, 15):
+    #         if self.date < date(current_year, current_month, 15):
+    #             raise UserError('La fecha es inferior al intervalo')
+    #         if self.date > self._last_day(current_year, current_month):
+    #             raise UserError('La fecha es superior al intervalo')
 
     @api.multi
     def write(self, vals):
