@@ -69,7 +69,7 @@ class asistencias(models.Model):
 
     def _check_date(self):
         for rec in self.env['empleados.asistencias'].search([]):
-            if self.env['empleados.asistencias'].search([('date','=', rec.date),('state','=','accepted'),('employee','=',self.employee.id)]):
+            if self.env['empleados.asistencias'].search([('date','=', self.date),('state','=','accepted'),('employee','=',self.employee.id)]):
                 # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
                 raise UserError('Esta fecha ya esta registrada')
 
