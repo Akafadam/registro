@@ -41,10 +41,11 @@ class nomina(models.Model):
                 'employee':rec.name,
                 'id_card' : rec.id_card,
                 'worked_hours' : worked_hours,
-                'pay' : pay
+                'pay' : pay,
+                'start' : start
             }
             # print(vals2)
-            row = self.env['empleados.nomina'].search([('id_card','=',rec.id_card)])
+            row = self.env['empleados.nomina'].search([('id_card','=',rec.id_card),('start','=',start)])
             if row:
                 super(nomina, row).write(vals2)
             else:
@@ -52,7 +53,7 @@ class nomina(models.Model):
 
     employee = fields.Char(string="Empleados")
     id_card = fields.Integer(string="Cedula")
-    start = fields.Date()
+    start = fields.Date(string="Comienzo del ciclo")
     worked_hours = fields.Integer(string="Horas Trabajadas")
     pay = fields.Integer(string="Remuneracion")
     state = fields.Selection([
