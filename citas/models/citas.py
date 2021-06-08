@@ -116,8 +116,10 @@ class citas(models.Model):
     def create(self, vals):
         return super(citas, self).create(vals)
 
+    # @api.depends('search_by')
     @api.onchange('search_by', 'speciality')
-    def set_domain_for_teacher(self):
+    def set_domain_for_teacher(self): 
+        print('\033[91m' + f'{self.search_by}') 
         if self.search_by == 'especialidad':
             class_obj = self.env['empleados.empleados'].search(
                 [('speciality', '=', self.speciality.id)])
@@ -168,7 +170,7 @@ class citas(models.Model):
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad Medica")
     medic_data = fields.Many2one(
-        'empleados.empleados', string="Medico")
+        'empleados.empleados', string="Medico", domain="[('is_medic','=',True)]")
     search_by = fields.Selection(
         [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([

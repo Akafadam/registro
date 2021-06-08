@@ -72,7 +72,9 @@
                        options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted')]" 
                        attrs="{
-                         'readonly': ['|',('search_by','=','medico'),('state','=','accepted')],
+                         'readonly': ['|',('state','=','accepted'),('search_by','=','medico')],
+                         'invisible':[('search_by','=','medico'),('medic_data','=',False)]
+
                        }"
                 />
                 <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
