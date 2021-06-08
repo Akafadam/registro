@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
-import datetime
+from datetime import date, datetime
 import calendar
 
 time = [
@@ -74,30 +74,31 @@ class asistencias(models.Model):
                 raise UserError('Esta fecha ya esta registrada')
 
     def _last_day(self, year, month):
-        return calendar(year, month)[1]
+	last_day = calendar.monthrange(year, month)[1]
+        return date(year, month, last_day)
 
-    def _mid_day(self, year, month):
-        date = datetime.date.today()
-        return date.replace(month=month, year=year, day=15)
-
-    def _first_day(self, year, month):
-        date = datetime.date.today()
-        return date.replace(month=month, year=year, day=1)
+   # def _mid_day(self, year, month):
+   #     date = datetime.date.today()
+   #     return date.replace(month=month, year=year, day=15)
+   #	
+   # def _first_day(self, year, month):
+   #     date = datetime.date.today()
+   #     return date.replace(month=month, year=year, day=1)
 
     @api.constrains('date')
     def _check_interval(self):
-        current_year = datetime.date.today().year
-        current_month = datetime.date.today().month
-        if datetime.date.today().day < 15:
+        current_year = date.today().year
+        current_month = date.today().month
+        if  date.today() < date(current_year, current_month, 15):
             print('\033[94m' + f'{current_year}')
             print('\033[91m' + f'{current_month}')
             print('\033[93m' + f'{self.date.today()}')
-            if self.date < self._first_day(current_year, current_month):
+            if self.date < self._last_day(current_year, current_month - 1):
                 raise UserError('La fecha es inferior al intervalo')
-            if self.date > self._mid_day(current_year, current_month):
+            if self.date > date(current_year, current_month, 15):
                 raise UserError('La fecha es superior al intervalo')
-        if datetime.date.today().day >= 15:
-            if self.date < self._mid_day(current_year, current_month):
+        if date.today() >= date(current_year, current_month, 15):
+            if self.date < date(current_year, current_month, 15):
                 raise UserError('La fecha es inferior al intervalo')
             if self.date > self._last_day(current_year, current_month):
                 raise UserError('La fecha es superior al intervalo')
