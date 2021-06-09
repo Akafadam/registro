@@ -28,7 +28,7 @@
             <button name="invalidate"
                     type="object"
                     string="Invalidar"
-                    attrs="{'invisible':['|',('state','=','draft'),('button_visible','=',True)]}"
+                    attrs="{'invisible':[('state','=','draft')]}"
                     style="background:#7c7bad; color:white"
                     class="btn btn-primary"/>
 
@@ -42,7 +42,6 @@
               <group string="Horarios">
                 <field name="arrive_time"/>
                 <field name="leave_time"/>
-                <field name="button_visible" invisible='True'/>
               </group>
             </group>
           </sheet>
