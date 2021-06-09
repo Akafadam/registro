@@ -26,6 +26,9 @@ class productos(models.Model):
         self.state = 'accepted'
 
     def invalidate(self):
+        for item in self.transactions:
+            if item.state == 'accepted':
+                raise UserError("Este registro no puede ser invalidado, ya que está referenciado en otro registro validado")
         super(productos, self).write({'state': 'draft'})
         # self.state = 'draft'
 
@@ -116,7 +119,7 @@ class productos(models.Model):
     cost = fields.Integer(string="Costo")
     qr_code = fields.Binary(string="Código QR",
                             compute="create_qr")
-    # transactions = fields.One2many('inventarios.inventarios', 'product')
+    transactions = fields.One2many('inventarios.inventarios', 'product')
     table = fields.One2many('inventarios.inventarios',
                             'product', domain=[('state', '=', 'accepted')])
     units = fields.Integer(string="Unidades", readonly=True, compute="_set_units")

@@ -7,7 +7,7 @@
       <field name="arch" type="xml">
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="product"/>
-          <field name="state" attrs="{'column_invisible':[True]}"/>
+          <field name="state"/>
           <field name="reserve_type"/>
           <field name="cuantity"/>
           <field name="date"/>
@@ -46,6 +46,7 @@
               <field name="product" attrs="{'readonly':[('state','=','accepted')]}" domain="[('state','=','accepted')]"/>
               <field name="reserve_type" attrs="{'readonly':[('state','=','accepted')]}"/>
               <field name="units" attrs="{'invisible':[True]}"/>
+              <field name="state"/>
               <field name="cuantity" attrs="{'readonly':[('state','=','accepted')]}"/>
               <field name="date" attrs="{'readonly':[('state','=','accepted')]}"/>
             </group>

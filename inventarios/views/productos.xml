@@ -60,6 +60,7 @@
               <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
               <field name="code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}"/>
               <field name="units"/>
+              <field name="table"/>
               <field name="cost" attrs="{'readonly':[('state','=','accepted')]}"/>
               <field name="qr_code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}" widget="image" class="oe_avatar"/>
             </group>
