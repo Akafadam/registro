@@ -1,3 +1,4 @@
+
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
@@ -24,6 +25,8 @@ class especialidad(models.Model):
         self.state = 'accepted'
 
     def invalidate(self):
+        if self.employees:
+            raise UserError("No se puede invalidar la especilidad ya que hay un empleado con ella")
         super(especialidad, self).write({'state': 'draft'})
         # self.state = 'draft'
 
@@ -33,6 +36,7 @@ class especialidad(models.Model):
     ]
 
     name = fields.Char(string="Especialidad")
+    employees = fields.One2many('empleados.empleados', 'speciality', domain=[('state','=','accepted')])
 
     state = fields.Selection([
         ('draft', 'Borrador'),
