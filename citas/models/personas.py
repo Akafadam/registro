@@ -76,6 +76,16 @@ class personas(models.Model):
     #     vals2['state'] = 'accepted'
     #     return super(personas, citas).create(vals2)
 
+    def check_appointments_client(self):
+        for item in self.appointments_client:
+            if item.state == 'accepted':
+                raise UserError("Este registro no puede ser invalidado, ya que está referenciado en otro registro validado") 
+
+    def check_appointments_pacient(self):
+        for item in self.appointments_pacient:
+            if item.state == 'accepted':
+                raise UserError("Este registro no puede ser invalidado, ya que está referenciado en otro registro validado") 
+
     def _check_id(self):
         for rec in self:
             if self.env['citas.personas'].search([('id_card','=', rec.id_card),('state','=','accepted')]):
@@ -87,6 +97,8 @@ class personas(models.Model):
             raise UserError('Esta fecha aún no ha pasado')
 
     def invalidate(self):
+        self.check_appointments_client()
+        self.check_appointments_pacient()
         super(personas, self).write({'state': 'draft'})
 
     # @api.constrains('id_card')
@@ -121,6 +133,8 @@ class personas(models.Model):
     id_card = fields.Integer(string="CI")
     birthyear = fields.Date(string="Año de nacimiento")
     phone = fields.Char(string="Número telefónico")
+    appointments_client = fields.One2many('citas.citas', 'client_data')
+    appointments_pacient = fields.One2many('citas.citas', 'pacient_data')
     email = fields.Char(string="Correo eletrónico")
     id_type = fields.Selection([('v', 'V'), ('e', 'E'), ('j', 'J')])
     address = fields.Char(string="Dirección")
