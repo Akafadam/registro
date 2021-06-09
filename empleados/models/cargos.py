@@ -30,10 +30,13 @@ class cargos(models.Model):
         self.state = 'accepted'
 
     def invalidate(self):
+        if self.employees:
+            raise UserError("No se puede invalidar el cargo por que hay un empleado que lo está usando")
         super(cargos, self).write({'state': 'draft'})
 
     name = fields.Char(string="Cargos",
                        readonly=False, required=True)
+    employees = fields.One2many('empleados.empleados', 'charge', domain=[('state','=','accepted')])
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
