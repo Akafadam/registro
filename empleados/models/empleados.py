@@ -92,6 +92,8 @@ class empleados(models.Model):
     #     print('\033[93m' + f'{hours_list}')
 
     def invalidate(self):
+        if self.attendance:
+            raise UserError("El registro de empleado no puede ser invalidado porque hay asistencias con su nombre")
         super(empleados, self).write({'state': 'draft'})
         # self.state = 'draft'
 
