@@ -68,6 +68,8 @@ class horario(models.Model):
         self.state = 'accepted'
 
     def invalidate(self):
+        if self.employees:
+            raise UserError('No se puede invalidar este horario porque existe un registro validado con él')
         super(horario, self).write({'state': 'draft'})
 
     # employee = fields.Many2one('empleados.empleados', string="Empleados")
@@ -75,7 +77,7 @@ class horario(models.Model):
     arrive_time = fields.Selection(time, string="Hora de llegada")
     leave_time = fields.Selection(time, string="Hora de salida")
     interval = fields.Char(compute="_set_interval")
-
+    employees = fields.One2many('empleados.empleados', 'schedule', domain=[('state','=','accepted')])
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
