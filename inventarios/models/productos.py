@@ -17,13 +17,22 @@ class productos(models.Model):
     _sql_constraints = [('products_record', 'UNIQUE(code)',
                          'Este producto ya esta registrado')]
 
-    def get_random_string(self):
-        letters = string.ascii_uppercase
-        result_str = ''.join(random.choice(letters) for i in range(12))
-        return result_str
+    # def get_random_string(self):
+    #     letters = string.ascii_uppercase
+    #     result_str = ''.join(random.choice(letters) for i in range(12))
+    #     return result_s
 
-    def validate(self):
-        self.state = 'accepted'
+    def get_code(self):
+        num = 1
+        product_code = f"item-#000{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
+        while(self.env['inventarios.productos'].search([('code', '=', product_code)])):
+            num += 1
+            product_code = f"item-#000{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
+        return product_code
+
+    # def validate(self):
+    #     self.code = self.get_code()
+    #     self.state = 'accepted'
 
     def invalidate(self):
         for item in self.transactions:
@@ -32,15 +41,14 @@ class productos(models.Model):
         super(productos, self).write({'state': 'draft'})
         # self.state = 'draft'
 
-    @api.model
-    def create(self, vals):
-        # # print('Hola', self)
-        # super(productos, self).write({'code': 'ODNWOJBCJW'})
-        # print('Hello')
-        product_code = f"item-#000{len(self.env['inventarios.productos'].search([])) + 1}"
-        vals2 = vals
-        vals2['code'] = product_code
-        return super(productos, self).create(vals2)
+    # @api.model
+    # def create(self, vals):
+    #     # # print('Hola', self)
+    #     # super(productos, self).write({'code': 'ODNWOJBCJW'})
+    #     # print('Hello')
+    #     vals2 = vals
+    #     vals2['code'] = product_code
+    #     return super(productos, self).create(vals2)
 
     @api.multi
     def unlink(self):
@@ -62,6 +70,7 @@ class productos(models.Model):
             pass
         else:
             raise UserError('El campo del nombre está vacio')
+        self.code = self.get_code()
         if self.code:
             pass
         else:
