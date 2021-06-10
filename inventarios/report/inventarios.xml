@@ -21,33 +21,115 @@
     <t t-call="web.internal_layout">
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-                <div class="page" style="font-size:18px">
-                        <div class="row">
-                            <div class="col-md-12" aling="center">
-                                <h2>Reporte de Inventarios</h2>
-                                <h4>Zona Medica</h4>
-                                <h5>Registros</h5>                       
+                <div class="page" style="font-size:14px">
+                    <div class="row">
+                            <div class="col-md-12" style="text-align:right">
+                                <h5>CENTRO MÉDICO</h5>
+                                <h6>RIF.:J-940830840</h6>
+                                <h6>Dirección: Narnia</h6>                       
+                                <h6>Telefono: 02699388493</h6>                       
+                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
+                            </div>
+                            <div class="col-md-12" style="text-align:left">
+                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
+                                <h6>Recibo: 009/2021</h6>                       
                             </div>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Producto: <span t-field="o.product" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Producto:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.product"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tipo de reserva:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.reserve_type"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cantidad:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.cuantity"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.date"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="border-top: 1px solid black;width:200px;margin:50px auto;">
+                            <p style="text-align:center;padding-top:20px;">
+                                Recibí conforme
+                            </p>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Tipo de reserva: <span t-field="o.reserve_type" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+          
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:right">
+                                <h5>CENTRO MÉDICO</h5>
+                                <h6>RIF.:J-940830840</h6>
+                                <h6>Dirección: Narnia</h6>                       
+                                <h6>Telefono: 02699388493</h6>                       
+                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
+                            </div>
+                            <div class="col-md-12" style="text-align:left">
+                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
+                                <h6>Recibo: 009/2021</h6>                       
+                            </div>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Cantidad: <span t-field="o.cuantity" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Fecha: <span t-field="o.date" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Producto:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.product"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tipo de reserva:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.reserve_type"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cantidad:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.cuantity"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.date"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="border-top: 1px solid black;width:200px;margin:50px auto;">
+                            <p style="text-align:center;padding-top:20px;">
+                                Recibí conforme
+                            </p>
                         </div>
                         <p style="page-break-after:always;"></p>
                 </div>
