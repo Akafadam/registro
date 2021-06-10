@@ -31,7 +31,8 @@ class empleados(models.Model):
         else:
             raise UserError('Los datos de la fecha estan vacios')
         if self.charge:
-            pass
+            if self.charge.state == 'draft':
+                raise UserError('El cargo no está validado')
         else:
             raise UserError('Los datos del cargo estan vacios')
         if self.email:
@@ -47,13 +48,15 @@ class empleados(models.Model):
         else:
             raise UserError('Los datos del telefono estan vacios')
         if self.speciality:
-            pass
+            if self.speciality.state == 'draft':
+                raise UserError('La especialidad no está validada')
         elif not self.is_medic:
             pass
         else:
             raise UserError('Los datos de la especialida estan vacios')
         if self.schedule:
-            pass
+            if self.schedule.state == 'draft':
+                raise UserError('El horario no está validado')
         else:
             raise UserError('Los datos del horario estan vacios')
         self._check_id()
