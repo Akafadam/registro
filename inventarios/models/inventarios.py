@@ -11,7 +11,8 @@ class inventarios(models.Model):
 
     def validate(self):
         if self.product:
-            pass
+            if self.product.state == 'draft':
+                raise UserError('El producto no está invalidado')
         else:
             raise UserError('El campo de productos está vacio')
         if self.reserve_type:
@@ -46,14 +47,15 @@ class inventarios(models.Model):
     def invalidate(self):
         total = 0
         for rec in self.env['inventarios.inventarios'].search([('product', '=', self.product.id),
-                                                               ('state', '=', 'accepted'),
-                                                               ('date','<',self.date)]):
+                                                               ('state', '=', 'accepted')]):
             if rec.reserve_type == 'ingreso':
                 total += rec.cuantity
             if rec.reserve_type == 'egreso':
                 total -= rec.cuantity
         if self.reserve_type == 'ingreso':
             if total - self.cuantity < 0:
+                print('\033[91m' + f'{total}')
+                print('\033[94m' + f'{self.cuantity}')
                 raise UserError(
                     'El egreso excede la cantidad del producto')
         super(inventarios, self).write({'state': 'draft'})
