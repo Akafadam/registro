@@ -57,6 +57,7 @@ class asistencias(models.Model):
         else:
             raise UserError('No se ha especificado la hora de salida')
         self._check_date()
+        self._check_interval()
         self.state = 'accepted'
 
     @api.multi
@@ -71,7 +72,6 @@ class asistencias(models.Model):
     def _check_date(self):
         for rec in self.env['empleados.asistencias'].search([]):
             if self.env['empleados.asistencias'].search([('date','=', self.date),('state','=','accepted'),('employee','=',self.employee.id)]):
-                # print(self.env['citas.personas'].search([('id_card','=', self.id_card)]).name)
                 raise UserError('Esta fecha ya esta registrada')
 
     def _last_day(self, year, month):
@@ -79,31 +79,19 @@ class asistencias(models.Model):
         print('\033[94m' + f"{last_day}")
         return date(year, month, last_day)
 
-   # def _mid_day(self, year, month):
-   #     date = datetime.date.today()
-   #     return date.replace(month=month, year=year, day=15)
-   #	
-   # def _first_day(self, year, month):
-   #     date = datetime.date.today()
-   #     return date.replace(month=month, year=year, day=1)
-
-    # @api.constrains('date')
-    # def _check_interval(self):
-    #     current_year = date.today().year
-    #     current_month = date.today().month
-    #     if  date.today() < date(current_year, current_month, 15):
-    #         print('\033[94m' + f'{current_year}')
-    #         print('\033[91m' + f'{current_month}')
-    #         print('\033[93m' + f'{self.date.today()}')
-    #         if self.date < self._last_day(current_year, current_month - 1):
-    #             raise UserError('La fecha es inferior al intervalo')
-    #         if self.date > date(current_year, current_month, 15):
-    #             raise UserError('La fecha es superior al intervalo')
-    #     if date.today() >= date(current_year, current_month, 15):
-    #         if self.date < date(current_year, current_month, 15):
-    #             raise UserError('La fecha es inferior al intervalo')
-    #         if self.date > self._last_day(current_year, current_month):
-    #             raise UserError('La fecha es superior al intervalo')
+    def _check_interval(self):
+        current_year = date.today().year
+        current_month = date.today().month
+        if  date.today() < date(current_year, current_month, 15):
+            if self.date < self._last_day(current_year, current_month - 1):
+                raise UserError('La fecha es inferior al intervalo')
+            if self.date > date(current_year, current_month, 15):
+                raise UserError('La fecha es superior al intervalo')
+        if date.today() >= date(current_year, current_month, 15):
+            if self.date < date(current_year, current_month, 15):
+                raise UserError('La fecha es inferior al intervalo')
+            if self.date > self._last_day(current_year, current_month):
+                raise UserError('La fecha es superior al intervalo')
 
     @api.multi
     def write(self, vals):
