@@ -40,7 +40,8 @@ class asistencias(models.Model):
 
     def validate(self):
         if self.employee:
-            pass
+            if self.employee.state == 'draft':
+                raise UserError('EL empleado está invalidado')
         else:
             raise UserError('No se ha especificado al empleado')
         if self.date:

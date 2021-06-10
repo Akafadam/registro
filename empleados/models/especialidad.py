@@ -22,6 +22,10 @@ class especialidad(models.Model):
         return super(especialidad, self).write(vals)
 
     def validate(self):
+        if self.name:
+            pass
+        else:
+            raise UserError('El campo esta vacio')
         self.state = 'accepted'
 
     def invalidate(self):
