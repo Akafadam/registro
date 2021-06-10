@@ -23,41 +23,144 @@
         <t t-foreach="docs" t-as="o">
                 <div class="page" style="font-size:18px">
                         <div class="row">
-                            <div class="col-md-12" aling="center">
-                                <h2>Reporte de Citas</h2>
-                                <h4>Zona Medica</h4>
-                                <h5>Registros</h5>                       
+                            <div class="col-md-12" style="text-align:right">
+                                <h3>CENTRO MÉDICO</h3>
+                                <h5>RIF.:J-940830840</h5>
+                                <h5>Dirección: Narnia</h5>                       
+                                <h5>Telefono: 02699388493</h5>                       
+                                <h5>Correo electrónico: centro.medico@gmail.com</h5>                       
+                            </div>
+                            <div class="col-md-12" style="text-align:left">
+                                <h5>Fecha:<span t-esc="datetime.date.today()"/></h5>
+                                <h5>Recibo: 009/2021</h5>                       
                             </div>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Nombre: <span t-field="o.name" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Nombre:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cédula:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.id_card"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha de nacimiento:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.birthyear"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Telefono:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.phone"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Correo electrónico:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.email"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Dirección:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.address"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="border-top: 1px solid black;width:200px;margin:100px auto;">
+                            <p style="text-align:center;padding-top:20px;">
+                                Recibí conforme
+                            </p>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Cédula: <span t-field="o.id_card" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:right">
+                                <h3>CENTRO MÉDICO</h3>
+                                <h5>RIF.:J-940830840</h5>
+                                <h5>Dirección: Narnia</h5>                       
+                                <h5>Telefono: 02699388493</h5>                       
+                                <h5>Correo electrónico: centro.medico@gmail.com</h5>                       
+                            </div>
+                            <div class="col-md-12" style="text-align:left">
+                                <h5>Fecha:<span t-esc="datetime.date.today()"/></h5>
+                                <h5>Recibo: 009/2021</h5>                       
+                            </div>
                         </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Fecha de nacimiento: <span t-field="o.birthyear" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Telefono: <span t-field="o.phone" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Correo: <span t-field="o.email" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
-                        </div>
-                        <div class="row mt8" style="border: 1px solid black;position:relative">
-                            <div class="col-md-12">
-                                Dirección: <span t-field="o.address" style="position:absolute;left:500px;border-left: 1px solid black;"/>                     
-                            </div>                   
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Nombre:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cédula:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.id_card"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fecha de nacimiento:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.birthyear"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Telefono:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.phone"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Correo electrónico:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.email"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Dirección:
+                                    </td>
+                                    <td>
+                                        <span t-field="o.address"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="border-top: 1px solid black;width:200px;margin:100px auto;">
+                            <p style="text-align:center;padding-top:20px;">
+                                Recibí conforme
+                            </p>
                         </div>
                         <p style="page-break-after:always;"></p>
                 </div>
