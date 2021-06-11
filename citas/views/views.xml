@@ -53,7 +53,7 @@
                        force_save="1" 
                        options="{'no_quick_create':True,'no_create_edit':True}"
                        attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
-                       domain="[('state','=','accepted')]"/>
+                       domain="[('state','=','accepted'),'|',('id_card','=',False),('id_type','!=','j')]"/>
               </group>
               
               <group colspan="1" string="Fecha y Hora">

@@ -61,6 +61,8 @@ class citas(models.Model):
         if self.pacient_data:
             if self.pacient_data.state == 'draft':
                 raise UserError('El paciente esta invalidado')
+            if self.pacient_data.id_type == 'j':
+                raise UserError('EL usuario no es una personas natural')
         else:
             raise UserError('Los datos del paciente estan vacios')
         if self.medic_id:
