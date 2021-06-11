@@ -43,7 +43,8 @@ class nomina(models.Model):
                 'id_card' : rec.id_card,
                 'worked_hours' : worked_hours,
                 'pay' : pay,
-                'start' : start
+                'start' : start,
+                'end' : end
             }
             row = self.env['empleados.nomina'].search([('id_card','=',rec.id_card),('start','=',start)])
             if worked_hours > 0:

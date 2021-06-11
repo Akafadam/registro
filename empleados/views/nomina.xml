@@ -6,6 +6,8 @@
         <tree>
           <field name="employee"/>
           <field name="id_card"/>
+          <field name="start"/>
+          <field name="end"/>
           <field name="worked_hours"/>
           <field name="pay"/>
         </tree>
@@ -17,41 +19,15 @@
       <field name="model">empleados.nomina</field>
       <field name="arch" type="xml">
         <form>
-          <header>
-            <field name="state" invisible="True"/>
-            <button name="validate"
-                    type="object"
-                    states="draft"
-                    string="Validar"
-                    style="background:#7c7bad; color:white"
-                    class="btn btn-primary"/>
-
-            <button name="fill_rows"
-                    type="object"
-                    states="draft,accepted"
-                    string="Llenar"
-                    style="background:#7c7bad; color:white"
-                    class="btn btn-primary"/>
-
-            <button name="invalidate"
-                    type="object"
-                    states="accepted"
-                    string="Invalidar"
-                    style="background:#7c7bad; color:white"
-                    class="btn btn-primary"/>
-
-            <field name="state"
-                   widget="statusbar"
-                   default="draft"
-                   statusbar_visible="draft,accepted"/>
-          </header>
           <sheet>
             <group>
               <group string="Nomina">
-                <field name="employee"/>
-                <field name="id_card"/>
-                <field name="worked_hours"/>
-                <field name="pay"/>
+                <field name="employee" readonly='True'/>
+                <field name="id_card" readonly='True'/>
+                <field name="start" readonly='True'/>
+                <field name="end" readonly='True'/>
+                <field name="worked_hours" readonly='True'/>
+                <field name="pay" readonly='True'/>
               </group>
             </group>
           </sheet>

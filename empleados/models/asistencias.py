@@ -137,9 +137,9 @@ class asistencias(models.Model):
     date = fields.Date(string="Fecha")
     arrive_time = fields.Selection(time, string="Hora de llegada")
     leave_time = fields.Selection(time, string="Hora de salida")
-    pay = fields.Integer()
+    pay = fields.Integer(string="Remuneración")
     # expected_worked_hours = fields.Integer()
-    worked_hours = fields.Integer()
+    worked_hours = fields.Integer(string="Horas trabajadas")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')
