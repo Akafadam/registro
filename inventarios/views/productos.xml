@@ -58,10 +58,10 @@
           <sheet>
             <group string="Productos">
               <field name="name" attrs="{'readonly':[('state','=','accepted')]}"/>
-              <field name="code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}"/>
+              <field name="code" attrs="{'readonly':[('state','=','accepted')]}" readonly="True"/>
               <field name="units"/>
               <field name="cost" attrs="{'readonly':[('state','=','accepted')]}"/>
-              <field name="qr_code" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','accepted')]}" widget="image" class="oe_avatar"/>
+              <field name="qr_code" attrs="{'invisible':[('code','=',False)], 'readonly':[('state','=','accepted')]}" widget="image" class="oe_avatar"/>
             </group>
             <!-- <data noupdate="1">
               <function model="inventarios.productos" name='get_random_string' eval="[]"/>
