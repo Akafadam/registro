@@ -107,13 +107,15 @@ class productos(models.Model):
     #     # for rec in self.transactions:
     #     #     if rec.reserve_type == 'ingreso':
 
-    @api.depends('table')
-    @api.onchange('table')
+    # @api.depends('table')
+    # @api.onchange('table')
     @api.multi
     def _set_units(self):
-        total = 0
         for record in self:
+            total = 0
+            print(record.name)
             for rec in record.table:
+                print(rec)
                 if rec.reserve_type == 'ingreso':
                     total += rec.cuantity
                 if rec.reserve_type == 'egreso':
@@ -147,7 +149,7 @@ class productos(models.Model):
     transactions = fields.One2many('inventarios.inventarios', 'product')
     table = fields.One2many('inventarios.inventarios',
                             'product', domain=[('state', '=', 'accepted')])
-    units = fields.Integer(string="Unidades", readonly=True, compute="_set_units", store=True)
+    units = fields.Integer(string="Unidades", readonly=True, compute="_set_units")
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('accepted', 'Validado')

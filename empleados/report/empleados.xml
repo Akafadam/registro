@@ -20,20 +20,20 @@
     <t t-call="web.internal_layout">
      <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-                            <div class="page" style="font-size:14px">
+                            <div class="page" style="font-size:12px">
                         <div class="row">
                     <img src="/citas/static/src/img/hospital.jpg" style="width:100px;position:absolute"/>
 
                             <div class="col-md-12" style="text-align:right">
-                                <h5>CENTRO MÉDICO</h5>
-                                <h6>RIF.:J-940830840</h6>
-                                <h6>Dirección: Narnia</h6>                       
-                                <h6>Telefono: 02699388493</h6>                       
-                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
+                                <h6>CENTRO MÉDICO</h6>
+                                <h7>RIF.:J-940830840</h7>
+                                <h7>Dirección: Narnia</h7>                       
+                                <h7>Telefono: 02699388493</h7>                       
+                                <h7>Correo electrónico: centro.medico@gmail.com</h7>                       
                             </div>
                             <div class="col-md-12" style="text-align:left">
-                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
-                                <h6>Recibo: 009/2021</h6>                       
+                                <h7>Fecha:<span t-esc="datetime.date.today()"/></h7>
+                                <h7>Recibo: 009/2021</h7>                       
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -121,15 +121,15 @@
                     <img src="/citas/static/src/img/hospital.jpg" style="width:100px;position:absolute"/>
 
                             <div class="col-md-12" style="text-align:right">
-                                <h5>CENTRO MÉDICO</h5>
-                                <h6>RIF.:J-940830840</h6>
-                                <h6>Dirección: Narnia</h6>                       
-                                <h6>Telefono: 02699388493</h6>                       
-                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
+                                <h6>CENTRO MÉDICO</h6>
+                                <h7>RIF.:J-940830840</h7>
+                                <h7>Dirección: Narnia</h7>                       
+                                <h7>Telefono: 02699388493</h7>                       
+                                <h7>Correo electrónico: centro.medico@gmail.com</h7>                       
                             </div>
                             <div class="col-md-12" style="text-align:left">
-                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
-                                <h6>Recibo: 009/2021</h6>                       
+                                <h7>Fecha:<span t-esc="datetime.date.today()"/></h7>
+                                <h7>Recibo: 009/2021</h7>                       
                             </div>
                         </div>
                         <table class="table table-bordered">

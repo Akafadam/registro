@@ -54,7 +54,7 @@ class nomina(models.Model):
                     super(nomina, self).create(vals2)
 
     employee = fields.Char(string="Empleados")
-    id_card = fields.Integer(string="Cedula")
+    id_card = fields.Integer(string="Cedula", group_operator=False)
     start = fields.Date(string="Comienzo del ciclo")
     end = fields.Date(string="Final del ciclo")
     worked_hours = fields.Integer(string="Horas Trabajadas")
