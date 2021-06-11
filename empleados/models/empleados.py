@@ -111,6 +111,10 @@ class empleados(models.Model):
             else:
                 rec.is_medic = False
 
+    @api.onchange('charge')
+    def _clean_specs(self):
+        self.speciality = False
+
     # @api.constrains('birthyear')
     def _check_underage(self):
         if self.birthyear:
