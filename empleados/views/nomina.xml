@@ -37,6 +37,7 @@
 
     <record model="ir.actions.act_window" id="empleados.action_nomina">
       <field name="name">Nómina</field>
+      <field name="context">{'group_by':'start'}</field>
       <field name="res_model">empleados.nomina</field>
       <field name="view_mode">tree,form</field>
     </record>
