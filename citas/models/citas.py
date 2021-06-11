@@ -54,6 +54,8 @@ class citas(models.Model):
         if self.client_data:
             if self.client_data.state == 'draft':
                 raise UserError('El cliente esta invalidado')
+            if self.client_data.is_underage:
+                raise UserError('El cliente es menor de edad')
         else:
             raise UserError('Los datos del cliente estan vacios')
         if self.pacient_data:
@@ -64,11 +66,15 @@ class citas(models.Model):
         if self.medic_id:
             if self.medic_id.state == 'draft':
                 raise UserError('El medico esta invalidado')
+            if not self.medic_id.is_medic:
+                raise UserError('El empleados no es medico')
         else:
             raise UserError('Los datos del medico estan vacios')
         if self.speciality:
-            if self.medic_id.state == 'draft':
+            if self.speciality.state == 'draft':
                 raise UserError('La especialidad esta invalidada')
+            if not self.speciality == self.medic_id.speciality:
+                raise UserError('La especialidad no concuerda con el médico')
         else:
             raise UserError('Los datos de especialidad estan vacios')
         self._check_schedule()
