@@ -23,6 +23,8 @@
         <t t-foreach="docs" t-as="o">
                 <div class="page" style="font-size:14px">
                         <div class="row">
+                    <img src="/citas/static/src/img/hospital.jpg" style="width:100px;position:absolute"/>
+
                             <div class="col-md-12" style="text-align:right">
                                 <h5>CENTRO MÉDICO</h5>
                                 <h6>RIF.:J-940830840</h6>
@@ -93,6 +95,8 @@
                             </p>
                         </div>
                         <div class="row">
+                    <img src="/citas/static/src/img/hospital.jpg" style="width:100px;position:absolute"/>
+
                             <div class="col-md-12" style="text-align:right">
                                 <h5>CENTRO MÉDICO</h5>
                                 <h6>RIF.:J-940830840</h6>

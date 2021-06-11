@@ -1,0 +1,118 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="citas_list">
+      <field name="name">Lista de Citas</field>
+      <field name="model">citas.citas</field>
+      <field name="arch" type="xml">
+        <tree decoration-danger="state=='draft'" default_order = "state, id desc">
+          <field name="client_data"/>
+          <field name="pacient_data"/>
+          <field name="state" attrs="{'column_invisible':[True]}"/>
+          <field name="date_time"/>
+          <field name="time"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="citas_form">
+      <field name="name">Formulario de Cita</field>
+      <field name="model">citas.citas</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <field name="state" invisible="True"/>
+            <button name="validate"
+                    type="object"
+                    states="draft"
+                    string="Validar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <button name="invalidate"
+                    type="object"
+                    states="accepted"
+                    string="Invalidar"
+                    style="background:#7c7bad; color:white"
+                    class="btn btn-primary"/>
+
+            <field name="state"
+                   widget="statusbar"
+                   default="draft"
+                   statusbar_visible="draft,accepted"/>
+          </header>
+          <sheet>
+            <group col="2">
+              <group colspan="1" string="Datos del Cliente/Paciente">
+                <field name="client_data"
+                       decoration-danger="state=="
+                       attrs="{'readonly':[('state','=','accepted')]}"
+                       options="{'no_quick_create':True,'no_create_edit':True}" 
+                       domain="[('state','=','accepted'),('is_underage','=',False)]"/>
+                <field name="pacient_data"
+                       force_save="1" 
+                       options="{'no_quick_create':True,'no_create_edit':True}"
+                       attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
+                       domain="[('state','=','accepted')]"/>
+              </group>
+              
+              <group colspan="1" string="Fecha y Hora">
+                <field name="date_time" attrs="{'readonly':[('state','=','accepted')]}"/>
+                <field name="time" attrs="{'readonly':[('state','=','accepted')]}"/>
+              </group>
+              <div attrs="{'invisible': [('client_data', '=', False)]}">
+                <div style="display: flex;">
+                  <label for="is_client" class="oe_edit_only"/>
+                  <field name="is_client" class="oe_edit_only"/>
+                </div>
+              </div>
+            </group>
+            <field name="search_by" widget='radio' class="oe_edit_only"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+   
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="citas.action_window">
+      <field name="name">Citas</field>
+      <field name="res_model">citas.citas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+   
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="citas.action_server">
+      <field name="name">citas server</field>
+      <field name="model_id" ref="model_citas_citas"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Citas" id="citas.menu_root"/>
+   
+    <!-- menu categories -->
+    <menuitem name="Citas" id="citas.menu_1" parent="citas.menu_root" action="citas.action_window"/>
+   
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="citas.menu_1_list" parent="citas.menu_1"
+              action="citas.action_window"/>
+    <menuitem name="Server to list" id="citas" parent="citas.menu_2"
+              action="citas.action_server"/>
+    -->
+  </data>
+</odoo>
