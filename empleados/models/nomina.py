@@ -22,11 +22,11 @@ class nomina(models.Model):
         start = None
         end = None
 
-        if date.today().day < 15:
+        if date.today().day <= 15:
             start = self._last_day(current_year, current_month - 1)
             end = date(current_year, current_month, 15)
         else:
-            start = date(current_year, current_month, 15)
+            start = date(current_year, current_month, 16)
             end = self._last_day(current_year, current_month)
 
         for rec in self.env['empleados.empleados'].search([('state','=','accepted')]):
@@ -35,8 +35,6 @@ class nomina(models.Model):
 
             for item in rec.attendance:
                 if item.date >= start and item.date <= end:
-                    print('\033[91m' + f'{start}')
-                    print('\033[93m' + f'{item.date}')
                     worked_hours += item.worked_hours
                     pay += item.pay
 
@@ -47,12 +45,12 @@ class nomina(models.Model):
                 'pay' : pay,
                 'start' : start
             }
-            # print(vals2)
             row = self.env['empleados.nomina'].search([('id_card','=',rec.id_card),('start','=',start)])
-            if row:
-                super(nomina, row).write(vals2)
-            else:
-                super(nomina, self).create(vals2)
+            if worked_hours > 0:
+                if row:
+                    super(nomina, row).write(vals2)
+                else:
+                    super(nomina, self).create(vals2)
 
     employee = fields.Char(string="Empleados")
     id_card = fields.Integer(string="Cedula")
