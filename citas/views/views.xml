@@ -10,7 +10,6 @@
           <field name="client_data"/>
           <field name="pacient_data"/>
           <field name="state" attrs="{'column_invisible':[True]}"/>
-          <field name="speciality"/>
           <field name="date_time"/>
           <field name="time"/>
         </tree>
@@ -56,21 +55,7 @@
                        attrs="{'readonly':['|',('is_client','=',True),('state','=','accepted')]}" 
                        domain="[('state','=','accepted')]"/>
               </group>
-              <group colspan="1" string="Datos del Medico">
-        
-                <field name="speciality"
-                       force_save="1" 
-                       options="{'no_quick_create':True,'no_create_edit':True}" 
-                       domain="[('state','=','accepted')]" 
-                       attrs="{'readonly': ['|',('state','=','accepted'),('search_by','=','medico')],
-                         'invisible':[('search_by','=','medico'),('medic_id','=',False)]
-
-                       }"
-                />
-                <!-- <field name="speciality" domain="[('is_medic', '=', True),('state','=','accepted')]" attrs="{
-                    'invisible': [('search_by','=','medico')],
-                  }"/> -->
-              </group>
+              
               <group colspan="1" string="Fecha y Hora">
                 <field name="date_time" attrs="{'readonly':[('state','=','accepted')]}"/>
                 <field name="time" attrs="{'readonly':[('state','=','accepted')]}"/>

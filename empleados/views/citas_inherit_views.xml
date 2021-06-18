@@ -5,13 +5,27 @@
       <field name="model">citas.citas</field>
       <field name="inherit_id" ref="citas.citas_form"/>
       <field name="arch" type="xml">
-        <xpath expr="/form/sheet/group/group[1]/field[@name='speciality']" position="after">
+        <xpath expr="/form/sheet/group" position="inside">
+          <group colspan="1" string="Datos del Medico">
             <field name="medic_id" 
                        options="{'no_quick_create':True,'no_create_edit':True}"
                        attrs="{
                          'readonly':['|',('state','=','accepted'),'&amp;',('speciality','=',False),('search_by','=','especialidad')]
                         }" 
-                />       
+                />
+            <field name="speciality"
+                    force_save="1" 
+                    options="{'no_quick_create':True,'no_create_edit':True}" 
+                    domain="[('state','=','accepted')]" 
+                    attrs="{'readonly': ['|',('state','=','accepted'),('search_by','=','medico')],
+                      'invisible':[('search_by','=','medico'),('medic_id','=',False)]
+
+                    }"
+            />       
+        
+               
+          </group>
+            
         </xpath>
       </field>
     </record>   

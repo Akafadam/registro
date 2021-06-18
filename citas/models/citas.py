@@ -95,19 +95,7 @@ class citas(models.Model):
             if rec.is_client:
                 rec.pacient_data = rec.client_data
 
-    @api.onchange('speciality')
-    def _clean_medic_data(self):
-        for rec in self:
-            if rec.search_by == 'especialidad':
-                rec.medic_data = False
-
-    @api.onchange('medic_data')
-    @api.depends('medic_data')
-    def _set_specs(self):
-        for rec in self:
-            if rec.search_by == 'medico':
-                rec.speciality = rec.medic_data.speciality
-                rec.speciality = rec.medic_data.speciality
+   
 
     def write_pacient(self):
         pass
@@ -115,27 +103,6 @@ class citas(models.Model):
     @api.model
     def create(self, vals):
         return super(citas, self).create(vals)
-
-    # @api.depends('search_by')
-    @api.onchange('search_by', 'speciality')
-    def set_domain_for_teacher(self): 
-        print('\033[91m' + f'{self.search_by}') 
-        if self.search_by == 'especialidad':
-            class_obj = self.env['empleados.empleados'].search(
-                [('speciality', '=', self.speciality.id)])
-            speciality_list = []
-            for data in class_obj:
-                speciality_list.append(data.id)
-
-            res = {}
-            res['domain'] = {'medic_data': [
-                ('id', 'in', speciality_list), ('state', '=', 'accepted')]}
-            return res
-        else:
-            res = {}
-            res['domain'] = {'medic_data': [
-                ('state', '=', 'accepted'), ('is_medic', '=', True)]}
-            return res
 
     # @api.constrains('date_time', 'time')
     def _check_schedule(self):
@@ -167,8 +134,7 @@ class citas(models.Model):
     is_client = fields.Boolean(string="Autocompletar paciente")
     pacient_data = fields.Many2one('citas.personas', string="Datos del paciente",
                                    readonly=False, compute="_auto_fill", inverse="write_pacient", store=True)
-    speciality = fields.Many2one(
-        'empleados.especialidad', string="Especialidad Medica")
+   
     search_by = fields.Selection(
         [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([
