@@ -52,19 +52,23 @@ class citas(models.Model):
         else:
             raise UserError('Los datos de hora estan vacios')
         if self.client_data:
-            pass
+            if self.client_data.state == 'draft':
+                raise UserError('El cliente esta invalidado')
         else:
             raise UserError('Los datos del cliente estan vacios')
         if self.pacient_data:
-            pass
+            if self.pacient_data.state == 'draft':
+                raise UserError('El paciente esta invalidado')
         else:
             raise UserError('Los datos del paciente estan vacios')
-        if self.medic_data:
-            pass
+        if self.medic_id:
+            if self.medic_id.state == 'draft':
+                raise UserError('El medico esta invalidado')
         else:
             raise UserError('Los datos del medico estan vacios')
         if self.speciality:
-            pass
+            if self.medic_id.state == 'draft':
+                raise UserError('La especialidad esta invalidada')
         else:
             raise UserError('Los datos de especialidad estan vacios')
         self._check_schedule()

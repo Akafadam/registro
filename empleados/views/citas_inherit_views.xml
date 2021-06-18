@@ -1,5 +1,16 @@
 <odoo>
   <data>
+    <record model="ir.ui.view" id="citas_list">
+      <field name="name">citas.citas.tree.inherit</field>
+      <field name="model">citas.citas</field>
+      <field name="inherit_id" ref="citas.citas_list"/>
+      <field name="arch" type="xml">
+      <xpath expr="/tree/field[@name='pacient_data']" position="after">
+        <field name="medic_id"/>
+        <field name="speciality"/>
+      </xpath>
+      </field>
+    </record>
     <record model="ir.ui.view" id="citas_form_inherit">
       <field name="name">citas.citas.form.inherit</field>
       <field name="model">citas.citas</field>
