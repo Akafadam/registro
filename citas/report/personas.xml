@@ -21,18 +21,18 @@
         <t t-call="web.external_layout">
         <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-                <div class="page" style="font-size:18px">
+                <div class="page" style="font-size:14px">
                         <div class="row">
                             <div class="col-md-12" style="text-align:right">
-                                <h3>CENTRO MÉDICO</h3>
-                                <h5>RIF.:J-940830840</h5>
-                                <h5>Dirección: Narnia</h5>                       
-                                <h5>Telefono: 02699388493</h5>                       
-                                <h5>Correo electrónico: centro.medico@gmail.com</h5>                       
+                                <h5>CENTRO MÉDICO</h5>
+                                <h6>RIF.:J-940830840</h6>
+                                <h6>Dirección: Narnia</h6>                       
+                                <h6>Telefono: 02699388493</h6>                       
+                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
                             </div>
                             <div class="col-md-12" style="text-align:left">
-                                <h5>Fecha:<span t-esc="datetime.date.today()"/></h5>
-                                <h5>Recibo: 009/2021</h5>                       
+                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
+                                <h6>Recibo: 009/2021</h6>                       
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -87,22 +87,22 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div style="border-top: 1px solid black;width:200px;margin:100px auto;">
+                        <div style="border-top: 1px solid black;width:200px;margin:50px auto;">
                             <p style="text-align:center;padding-top:20px;">
                                 Recibí conforme
                             </p>
                         </div>
                         <div class="row">
                             <div class="col-md-12" style="text-align:right">
-                                <h3>CENTRO MÉDICO</h3>
-                                <h5>RIF.:J-940830840</h5>
-                                <h5>Dirección: Narnia</h5>                       
-                                <h5>Telefono: 02699388493</h5>                       
-                                <h5>Correo electrónico: centro.medico@gmail.com</h5>                       
+                                <h5>CENTRO MÉDICO</h5>
+                                <h6>RIF.:J-940830840</h6>
+                                <h6>Dirección: Narnia</h6>                       
+                                <h6>Telefono: 02699388493</h6>                       
+                                <h6>Correo electrónico: centro.medico@gmail.com</h6>                       
                             </div>
                             <div class="col-md-12" style="text-align:left">
-                                <h5>Fecha:<span t-esc="datetime.date.today()"/></h5>
-                                <h5>Recibo: 009/2021</h5>                       
+                                <h6>Fecha:<span t-esc="datetime.date.today()"/></h6>
+                                <h6>Recibo: 009/2021</h6>                       
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -157,7 +157,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div style="border-top: 1px solid black;width:200px;margin:100px auto;">
+                        <div style="border-top: 1px solid black;width:200px;margin:50px auto;">
                             <p style="text-align:center;padding-top:20px;">
                                 Recibí conforme
                             </p>
