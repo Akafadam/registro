@@ -169,8 +169,6 @@ class citas(models.Model):
                                    readonly=False, compute="_auto_fill", inverse="write_pacient", store=True)
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad Medica")
-    medic_data = fields.Many2one(
-        'empleados.empleados', string="Medico", domain="[('is_medic','=',True)]")
     search_by = fields.Selection(
         [('medico', 'Medico'), ('especialidad', 'Especialidad')], default='medico')
     state = fields.Selection([

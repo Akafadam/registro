@@ -146,6 +146,7 @@ class empleados(models.Model):
     address = fields.Char(string="Dirección")
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
+    appointment_ids = fields.One2many(comodel_name='citas.citas', inverse_name='medic_id', string="Citas")
     schedule = fields.Many2one('empleados.horario', string="Horario")
     attendance = fields.One2many('empleados.asistencias', 'employee', domain=[('state','=','accepted')])
     # payroll = fields.Many2one('empleados.nomina', 'employee')

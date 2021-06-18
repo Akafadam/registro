@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="citas_form_inherit">
+      <field name="name">citas.citas.form.inherit</field>
+      <field name="model">citas.citas</field>
+      <field name="inherit_id" ref="citas.citas_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="/form/sheet/group/group[1]/field[@name='speciality']" position="after">
+            <field name="medic_id" 
+                       options="{'no_quick_create':True,'no_create_edit':True}"
+                       attrs="{
+                         'readonly':['|',('state','=','accepted'),'&amp;',('speciality','=',False),('search_by','=','especialidad')]
+                        }" 
+                />       
+        </xpath>
+      </field>
+    </record>   
+  </data>
+</odoo>

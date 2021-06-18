@@ -5,3 +5,4 @@ from . import cargos
 from . import horario
 from . import nomina
 from . import asistencias
+from . import citas_inherit

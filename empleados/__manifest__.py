@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'citas'],
 
     # always loaded
     'data': [
@@ -32,6 +32,7 @@
         'data/cron_nomina.xml',
         'views/especialidad.xml',
         'views/views.xml',
+        'views/citas_inherit_views.xml',
         'views/templates.xml',
         'report/asistencia.xml',
         'report/empleados.xml',

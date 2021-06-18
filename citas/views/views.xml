@@ -9,7 +9,6 @@
         <tree decoration-danger="state=='draft'" default_order = "state, id desc">
           <field name="client_data"/>
           <field name="pacient_data"/>
-          <field name="medic_data"/>
           <field name="state" attrs="{'column_invisible':[True]}"/>
           <field name="speciality"/>
           <field name="date_time"/>
@@ -58,22 +57,13 @@
                        domain="[('state','=','accepted')]"/>
               </group>
               <group colspan="1" string="Datos del Medico">
-                <field name="medic_data" 
-                       options="{'no_quick_create':True,'no_create_edit':True}"
-                       attrs="{
-                         'readonly':['|',('state','=','accepted'),'&amp;',('speciality','=',False),('search_by','=','especialidad')]
-                        }" 
-                />
-                <!-- <field name="medic_data" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('speciality','=',speciality),('state','=','accepted')]" attrs="{
-                    'invisible':[('search_by','=','medico')],
-                  }"/> -->
+        
                 <field name="speciality"
                        force_save="1" 
                        options="{'no_quick_create':True,'no_create_edit':True}" 
                        domain="[('state','=','accepted')]" 
-                       attrs="{
-                         'readonly': ['|',('state','=','accepted'),('search_by','=','medico')],
-                         'invisible':[('search_by','=','medico'),('medic_data','=',False)]
+                       attrs="{'readonly': ['|',('state','=','accepted'),('search_by','=','medico')],
+                         'invisible':[('search_by','=','medico'),('medic_id','=',False)]
 
                        }"
                 />
