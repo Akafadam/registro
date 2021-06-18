@@ -23,12 +23,28 @@ class productos(models.Model):
     #     return result_s
 
     def get_code(self):
-        num = 1
-        product_code = f"item-#000{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
-        while(self.env['inventarios.productos'].search([('code', '=', product_code)])):
-            num += 1
-            product_code = f"item-#000{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
-        return product_code
+        arg = []
+        items = None
+        # product_code = f"item-#{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
+        if self.env['inventarios.productos'].search([('state','=','accepted')]):
+            items = self.env['inventarios.productos'].search([('state','=','accepted')])
+            for p in items:
+                arg.append(p.create_date)
+            last =  max(arg)
+            item_result = self.env['inventarios.productos'].search([('create_date','=',last)])
+            next = int(item_result.code.split('#')[1])
+            return f'item-#{next + 1}'
+        else:
+            return f'item-#1'
+
+
+        
+        print(max(arg))
+        raise UserError('Stop')
+        # while(self.env['inventarios.productos'].search([('code', '=', product_code)])):
+        #     num += 1
+        #     product_code = f"item-#000{len(self.env['inventarios.productos'].search([('state','=','accepted')])) + num}"
+        # return product_code
 
     # def validate(self):
     #     self.code = self.get_code()
