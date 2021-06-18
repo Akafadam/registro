@@ -94,6 +94,8 @@ class empleados(models.Model):
     def invalidate(self):
         if self.attendance:
             raise UserError("El registro de empleado no puede ser invalidado porque hay asistencias con su nombre")
+        if self.appointment_ids:
+            raise UserError("El registro de empleado no puede ser invaidado por que hay una cita con su nombre")
         super(empleados, self).write({'state': 'draft'})
         # self.state = 'draft'
 
@@ -146,7 +148,7 @@ class empleados(models.Model):
     address = fields.Char(string="Dirección")
     speciality = fields.Many2one(
         'empleados.especialidad', string="Especialidad/Grado")
-    appointment_ids = fields.One2many(comodel_name='citas.citas', inverse_name='medic_id', string="Citas")
+    appointment_ids = fields.One2many(comodel_name='citas.citas', inverse_name='medic_id', domain=[('state','=','accepted')])
     schedule = fields.Many2one('empleados.horario', string="Horario")
     attendance = fields.One2many('empleados.asistencias', 'employee', domain=[('state','=','accepted')])
     # payroll = fields.Many2one('empleados.nomina', 'employee')
